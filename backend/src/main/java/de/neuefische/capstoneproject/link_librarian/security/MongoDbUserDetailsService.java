@@ -3,7 +3,7 @@ package de.neuefische.capstoneproject.link_librarian.security;
 
 
 import de.neuefische.capstoneproject.link_librarian.dao.UserDao;
-import de.neuefische.capstoneproject.link_librarian.model.LinkLibrarianUser;
+import de.neuefische.capstoneproject.link_librarian.model.LoginUser;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,7 +24,7 @@ public class MongoDbUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<LinkLibrarianUser> userById = userDao.findById(username);
+        Optional<LoginUser> userById = userDao.findById(username);
         if(userById.isEmpty()){
             throw new UsernameNotFoundException("user not found");
         }
