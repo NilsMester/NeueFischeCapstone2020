@@ -2,7 +2,7 @@ package de.neuefische.capstoneproject.link_librarian.controller;
 
 import de.neuefische.capstoneproject.link_librarian.dao.UserDao;
 import de.neuefische.capstoneproject.link_librarian.dto.LoginDto;
-import de.neuefische.capstoneproject.link_librarian.model.LinkLibrarianUser;
+import de.neuefische.capstoneproject.link_librarian.model.LoginUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,7 +41,7 @@ class LoginControllerTest {
     public void setupUser() {
         userDao.deleteAll();
         String password = new BCryptPasswordEncoder().encode("password1234");
-        userDao.save(new LinkLibrarianUser("franci", password));
+        userDao.save(new LoginUser("franci", password));
     }
 
     @Test

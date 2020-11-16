@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Document(collection = "user")
 @Builder
-public class LinkLibrarianUser {
+public class LoginUser {
 
     @Id
     private String username;
