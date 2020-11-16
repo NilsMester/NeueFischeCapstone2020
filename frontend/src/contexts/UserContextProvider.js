@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import UserContext from './UserContext';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
