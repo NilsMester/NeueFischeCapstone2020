@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class LinkLibrarianUser {
 
     @Id
-    private String mail;
+    private String email;
     private ArrayList<Record> recordList;
 
 
