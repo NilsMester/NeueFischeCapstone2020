@@ -41,7 +41,7 @@ class LoginControllerTest {
     public void setupUser() {
         userDao.deleteAll();
         String password = new BCryptPasswordEncoder().encode("password1234");
-        userDao.save(new LoginUser("franci", password));
+        userDao.save(new LoginUser("franci@web.de", password, "franci"));
     }
 
     @Test
@@ -49,7 +49,7 @@ class LoginControllerTest {
 
         //GIVEN
         LoginDto loginDto = new LoginDto(
-                "franci",
+                "franci@web.de",
                 "password1234"
         );
 
@@ -62,7 +62,7 @@ class LoginControllerTest {
         String token = response.getBody();
         Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
 
-        assertThat(claims.getSubject(), is("franci"));
+        assertThat(claims.getSubject(), is("franci@web.de"));
         assertThat(claims.getExpiration().after(new Date()), is(true));
     }
 
@@ -71,8 +71,8 @@ class LoginControllerTest {
 
         //GIVEN
         LoginDto loginDto = new LoginDto(
-                "franci",
-                "password12345"
+                "franci@web.de",
+                "password123455555"
         );
 
         //WHEN

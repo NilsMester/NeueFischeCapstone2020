@@ -7,15 +7,18 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "user")
+@Document(collection = "linklibrarianuser")
 @Builder
-public class LoginUser {
+public class LinkLibrarianUser {
 
     @Id
-    private String mail;
-    private String password;
-    private String firstName;
+    private String email;
+    private List<Record> recordList;
+
+
 }
