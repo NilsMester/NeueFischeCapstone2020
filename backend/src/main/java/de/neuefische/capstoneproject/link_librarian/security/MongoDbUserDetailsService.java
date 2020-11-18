@@ -23,11 +23,11 @@ public class MongoDbUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<LoginUser> userById = userDao.findById(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Optional<LoginUser> userById = userDao.findById(email);
         if(userById.isEmpty()){
             throw new UsernameNotFoundException("user not found");
         }
-        return new User(username, userById.get().getPassword(), List.of());
+        return new User(email, userById.get().getPassword(), List.of());
     }
 }

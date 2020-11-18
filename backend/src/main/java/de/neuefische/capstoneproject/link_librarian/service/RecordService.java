@@ -1,44 +1,33 @@
 package de.neuefische.capstoneproject.link_librarian.service;
 
-import de.neuefische.capstoneproject.link_librarian.dao.LinkLibrarianUserDao;
 import de.neuefische.capstoneproject.link_librarian.dto.AddRecordDto;
 import de.neuefische.capstoneproject.link_librarian.model.LinkLibrarianUser;
 import de.neuefische.capstoneproject.link_librarian.model.Record;
 import de.neuefische.capstoneproject.link_librarian.utilities.IdUtilities;
 import de.neuefische.capstoneproject.link_librarian.utilities.TimeStampUtilities;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.http.HttpStatus;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
-import java.util.List;
 
 @Service
 public class RecordService {
 
-    private final LinkLibrarianUserDao linkLibrarianUserDao;
+
     private final IdUtilities idUtilities;
     private final TimeStampUtilities timeStampUtilities;
-
-    ApplicationContext ctx =
-            new AnnotationConfigApplicationContext(LinkLibrarianUserDao.class);
-    MongoOperations mongoOperation =
-            (MongoOperations) ctx.getBean("mongoTemplate");
+    private final MongoTemplate mongoTemplate;
 
 
     @Autowired
-    public RecordService(LinkLibrarianUserDao linkLibrarianUserDao, IdUtilities idUtilities, TimeStampUtilities timeStampUtilities) {
-        this.linkLibrarianUserDao = linkLibrarianUserDao;
+    public RecordService(IdUtilities idUtilities, TimeStampUtilities timeStampUtilities, MongoTemplate mongoTemplate) {
+
         this.idUtilities = idUtilities;
         this.timeStampUtilities = timeStampUtilities;
+        this.mongoTemplate = mongoTemplate;
     }
 
     public Record addRecord(AddRecordDto addRecordDto, String principalName) {
@@ -54,45 +43,14 @@ public class RecordService {
 
         Query query = new Query();
         query.addCriteria(Criteria.where("email").is(principalName));
-        query.fields().include("email");
-
-        LinkLibrarianUser actualUser = mongoOperation.findOne(query,LinkLibrarianUser.class);
 
         Update update = new Update();
         update.addToSet("recordList", recordToBeAdded);
 
-        mongoOperation.updateFirst(query, update, LinkLibrarianUser.class);
-
-      /*  LinkLibrarianUser user = linkLibrarianUserDao.findById(principalName).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-
-        Record recordToBeAdded = buildRecordWithRecordDto(addRecordDto);
-        LinkLibrarianUser linkLibrarianUser = copyUserWithNewRecord(user, recordToBeAdded);
-
-        linkLibrarianUserDao.save(linkLibrarianUser);*/
+        mongoTemplate.updateFirst(query, update, LinkLibrarianUser.class);
 
         return recordToBeAdded;
     }
 
-    private Record buildRecordWithRecordDto (AddRecordDto addRecordDto){
-
-        return Record.builder()
-                .id(idUtilities.generateId())
-                .timestamp(timeStampUtilities.generateTimestampEpochSeconds())
-                .description(addRecordDto.getDescription())
-                .recordLink(addRecordDto.getRecordLink())
-                .publicStatus(true)
-                .tagsList(addRecordDto.getTagsList())
-                .build();
-    }
-
-    private LinkLibrarianUser copyUserWithNewRecord (LinkLibrarianUser linkLibrarianUser, Record toBeAddedComment){
-        List<Record> records = linkLibrarianUser.getRecordList();
-        records.add(toBeAddedComment);
-
-        return LinkLibrarianUser.builder()
-                .email(linkLibrarianUser.getEmail())
-                .recordList(records)
-                .build();
-    }
 
 }
