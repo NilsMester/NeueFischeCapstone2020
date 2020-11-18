@@ -50,7 +50,6 @@ public class RecordService {
         mongoTemplate.updateFirst(query, update, LinkLibrarianUser.class);
 
         return recordToBeAdded;
-    }
-
+  }
 
 }

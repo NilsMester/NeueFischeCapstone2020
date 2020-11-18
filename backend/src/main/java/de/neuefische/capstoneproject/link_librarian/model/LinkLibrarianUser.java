@@ -20,5 +20,4 @@ public class LinkLibrarianUser {
     private String email;
     private List<Record> recordList;
 
-
 }
