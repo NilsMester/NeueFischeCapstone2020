@@ -24,7 +24,7 @@ public class RecordController {
 
     @PostMapping
     public Record addRecord(@RequestBody AddRecordDto addRecordDto, Principal principal){
-        return this.recordService.addRecord(addRecordDto, principal);
+        return this.recordService.addRecord(addRecordDto, principal.getName());
 
     }
 }

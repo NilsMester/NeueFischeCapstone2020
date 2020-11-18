@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -12,6 +14,7 @@ public class AddRecordDto {
 private String recordLink;
 private String description;
 private boolean publicStatus;
-private String[] tagsList;
+private List<String> tagsList;
+
 
 }

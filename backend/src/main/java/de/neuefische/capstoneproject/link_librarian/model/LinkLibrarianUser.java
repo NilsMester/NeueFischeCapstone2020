@@ -18,7 +18,6 @@ public class LinkLibrarianUser {
 
     @Id
     private String mail;
-    private String fristName;
     private ArrayList<Record> recordList;
 
 
