@@ -18,13 +18,12 @@ import static org.mockito.Mockito.*;
 
 public class RecordServiceTest{
 
-    final IdUtilities idUtilities = mock(IdUtilities.class);
-    final TimeStampUtilities timeStampUtilities = mock(TimeStampUtilities.class);
+        final IdUtilities idUtilities = mock(IdUtilities.class);
+        final TimeStampUtilities timeStampUtilities = mock(TimeStampUtilities.class);
 
-    final LinkLibrarianUserDao linkLibrarianUserDao = mock(LinkLibrarianUserDao.class);
+        final LinkLibrarianUserDao linkLibrarianUserDao = mock(LinkLibrarianUserDao.class);
 
-    final RecordService recordService = new RecordService(linkLibrarianUserDao, idUtilities, timeStampUtilities);
-
+        final RecordService recordService = new RecordService(linkLibrarianUserDao, idUtilities, timeStampUtilities);
 
 
 
@@ -56,7 +55,6 @@ void addRecordTest(){
         when(idUtilities.generateId()).thenReturn(expectedId);
         when(timeStampUtilities.generateTimestampEpochSeconds()).thenReturn(expectedTime);
         when(linkLibrarianUserDao.findById(principalName)).thenReturn(Optional.of(userAlex));
-//      when(linkLibrarianUserDao.save())
 
         //When
         Record addedRecord = recordService.addRecord(recordToAdd,principalName);
