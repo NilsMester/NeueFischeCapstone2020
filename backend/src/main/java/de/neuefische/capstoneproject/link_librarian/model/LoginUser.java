@@ -17,5 +17,5 @@ public class LoginUser {
     @Id
     private String mail;
     private String password;
-    private String fristName;
+    private String firstName;
 }
