@@ -53,11 +53,11 @@ public class RecordService {
     }
 
     private LinkLibrarianUser copyUserWithNewRecord (LinkLibrarianUser linkLibrarianUser, Record toBeAddedComment){
-        ArrayList<Record> records = linkLibrarianUser.getRecordList();
+        List<Record> records = linkLibrarianUser.getRecordList();
         records.add(toBeAddedComment);
 
         return LinkLibrarianUser.builder()
-                .mail(linkLibrarianUser.getMail())
+                .email(linkLibrarianUser.getEmail())
                 .recordList(records)
                 .build();
     }
