@@ -72,7 +72,7 @@ class LoginControllerTest {
         //GIVEN
         LoginDto loginDto = new LoginDto(
                 "franci@web.de",
-                "password12345"
+                "password123455555"
         );
 
         //WHEN
