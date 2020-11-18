@@ -27,7 +27,7 @@ public class LoginController {
 
     @PostMapping
     public String login(@RequestBody LoginDto loginDto){
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(),loginDto.getPassword()));
-        return jwtUtilities.createJwtToken(loginDto.getUsername(),new HashMap<>());
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getEmail(),loginDto.getPassword()));
+        return jwtUtilities.createJwtToken(loginDto.getEmail(),new HashMap<>());
     }
 }

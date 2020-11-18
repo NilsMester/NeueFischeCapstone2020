@@ -20,8 +20,8 @@ export default function LoginPage(){
                     <label>
                         Username
                         <input
-                            name="username"
-                            value={credentials.username}
+                            name="email"
+                            value={credentials.email}
                             onChange={handleChange}
                             type="text"
                         />
