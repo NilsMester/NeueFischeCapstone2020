@@ -18,7 +18,7 @@ public class LinkLibrarianUser {
 
     @Id
     private String email;
-    private ArrayList<Record> recordList;
+    private List<Record> recordList;
 
 
 }
