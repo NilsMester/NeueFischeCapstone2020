@@ -184,7 +184,4 @@ public class RecordControllerIntegrationTest {
         assertThat(response.getBody(), is(expectedRecord));
         assertThat(updatedLinkLibrarianUser, is(expectedLinkLibrarianUser));
     }
-
-
-
 }

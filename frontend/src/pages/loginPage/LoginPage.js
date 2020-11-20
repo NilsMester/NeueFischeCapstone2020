@@ -21,7 +21,7 @@ export default function LoginPage(){
                         Username
                         <input
                             name="email"
-                            value={credentials.email}
+                            value={credentials.email || ""}
                             onChange={handleChange}
                             type="text"
                         />
@@ -30,7 +30,7 @@ export default function LoginPage(){
                         Password
                         <input
                             name="password"
-                            value={credentials.password}
+                            value={credentials.password || ""}
                             onChange={handleChange}
                             type="password"
                         />
