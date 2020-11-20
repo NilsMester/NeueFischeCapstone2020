@@ -129,6 +129,36 @@ public class RecordControllerIntegrationTest {
     }
 
     @Test
+    @DisplayName("The \"getUserRecordsList\" method should return the fitting list of records")
+    public void getUserRecordsListTest(){
+        //Given
+        String url = linkLibrarianUserAccessUrl();
+
+        //When
+        HttpEntity<Void> entity = getValidAuthorizationEntity(null);
+        ResponseEntity<Record[]> response = restTemplate.exchange(url, HttpMethod.GET,entity,Record[].class);
+
+        List<Record> expectedList = new ArrayList<>(List.of(
+                new Record("1",
+                        "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
+                        "tutorial box gradient borders with curves ",
+                        Instant.parse("2020-11-18T18:35:24.00Z"),
+                        true,
+                        new ArrayList<>(List.of("Css", "Styled-component"))),
+                new Record("2",
+                        "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
+                        "nice sidebar",
+                        Instant.parse("2020-11-19T18:35:24.00Z"),
+                        true,
+                        new ArrayList<>(List.of("React", "Css", "Styled-component")))
+        ));
+
+        assertThat(response.getStatusCode(),is(HttpStatus.OK));
+        assertThat(response.getBody(), is(expectedList.toArray()));
+
+    }
+
+    @Test
     @DisplayName("The \"add\" method should add to the fitting LinkLibrarianUser and return the added record object")
     public void postRecordIntegrationTest (){
         //Given
