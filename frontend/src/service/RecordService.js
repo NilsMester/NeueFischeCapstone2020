@@ -12,7 +12,7 @@ export const getUserRecordsList = (token) =>
         .get('api/records', header(token))
         .then((response) => response.data)
 
-export const addRecord = (recordLink, tagsList, description, publicStaus, token) =>
+export const addRecord = (titel, recordLink, tagsList, description, publicStaus, token) =>
     axios
-.post('/api/records', {recordLink, description, publicStaus, tagsList}, header(token))
+.post('/api/records', {titel, recordLink, description, publicStaus, tagsList}, header(token))
 .then((response) => response.data)

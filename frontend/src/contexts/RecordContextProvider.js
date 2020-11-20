@@ -15,8 +15,8 @@ export default function RecordContextProvider({children}) {
             .catch(console.log);
     }, [token, tokenIsValid]);
 
-    const createRecord = (recordLink, tagsList, description, publicStaus) =>
-        addRecord(recordLink, tagsList, description, publicStaus, token)
+    const createRecord = (titel, recordLink, tagsList, description, publicStaus) =>
+        addRecord(titel, recordLink, tagsList, description, publicStaus, token)
             .then((newRecord) => setRecords([...records, newRecord]))
             .catch(console.log);
 

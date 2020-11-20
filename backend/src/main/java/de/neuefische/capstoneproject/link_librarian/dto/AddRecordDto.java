@@ -11,7 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddRecordDto {
-private String recordLink;
+    private String titel;
+    private String recordLink;
 private String description;
 private boolean publicStatus;
 private List<String> tagsList;

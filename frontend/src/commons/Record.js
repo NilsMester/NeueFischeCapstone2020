@@ -3,7 +3,8 @@ import React from 'react'
 export default function Record({record, action =[], className }){
     return(
         <section className={className}>
-            <h2>{record.recordLink}</h2>
+            <h2>{record.titel}</h2>
+            <p>{record.recordLink}</p>
             <ul>
                 {record.tagsList?.map((tag, i) => (
                         <li key={i} className="tag">

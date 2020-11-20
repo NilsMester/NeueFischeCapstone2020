@@ -16,6 +16,15 @@ export default function RecordForm({onSave, record = initialState}) {
 
     return(
         <form onSubmit={handleSubmit}>
+
+            <label>
+                Titel
+                <input name="titel"
+                       value={recordData.titel || ""}
+                       onChange={handleChange}
+                       type="text"/>
+            </label>
+
             <label>
                 RecordLink
                 <input name="recordLink"

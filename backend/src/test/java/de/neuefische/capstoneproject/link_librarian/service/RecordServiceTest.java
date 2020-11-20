@@ -39,12 +39,14 @@ public class RecordServiceTest {
                         new ArrayList<>(List.of(
 
                                 new Record("1",
+                                        "someTitel",
                                         "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
                                         "tutorial box gradient borders with curves ",
                                         expectedTime,
                                         true,
                                         new ArrayList<>(List.of("Css", "Styled-component"))),
                                 new Record("uniqueId",
+                                        "someTitel",
                                         "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
                                         "nice sidebar",
                                         expectedTime,
@@ -61,12 +63,14 @@ public class RecordServiceTest {
                 List<Record> expectedList = new ArrayList<>(List.of(
 
                         new Record("1",
+                                "someTitel",
                                 "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
                                 "tutorial box gradient borders with curves ",
                                 expectedTime,
                                 true,
                                 new ArrayList<>(List.of("Css", "Styled-component"))),
                         new Record("uniqueId",
+                                "someTitel",
                                 "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
                                 "nice sidebar",
                                 expectedTime,
@@ -88,6 +92,7 @@ public class RecordServiceTest {
                 Update update = new Update();
 
                 AddRecordDto recordToAdd = new AddRecordDto(
+                        "someTitel",
                         "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
                         "nice sidebar",
                         true,
@@ -100,6 +105,7 @@ public class RecordServiceTest {
                 Record addedRecord = recordService.addRecord(recordToAdd, principalName);
 
                 Record expectedRecord = new Record("uniqueId",
+                        "someTitel",
                         "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
                         "nice sidebar",
                         expectedTime,
@@ -110,37 +116,5 @@ public class RecordServiceTest {
                 assertThat(addedRecord, is(expectedRecord));
                 verify(mongoTemplate).updateFirst(query, update.addToSet("recordList", expectedRecord), LinkLibrarianUser.class);
         }
-
-        /* DAS BRAUCHE ICH BESTIMMT NOCHMAL! ;-P */
-
-        /*LinkLibrarianUser userAlex = new LinkLibrarianUser(
-                "alex@web.de",
-                new ArrayList<>(List.of(
-                        new Record("1",
-                                "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
-                                "tutorial box gradient borders with curves ",
-                                expectedTime,
-                                true,
-                                new ArrayList<>(List.of("Css", "Styled-component")))))
-        );*/
-
-        /* LinkLibrarianUser expectedUser = new LinkLibrarianUser(
-                "alex@web.de",
-                new ArrayList<>(List.of(
-
-                        new Record("1",
-                                "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
-                                "tutorial box gradient borders with curves ",
-                                expectedTime,
-                                true,
-                                new ArrayList<>(List.of("Css", "Styled-component"))),
-                        new Record("uniqueId",
-                                "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
-                                "nice sidebar",
-                                expectedTime,
-                                true,
-                                new ArrayList<>(List.of("React", "Css", "Styled-component")))
-                ))
-        );*/
 
 }
