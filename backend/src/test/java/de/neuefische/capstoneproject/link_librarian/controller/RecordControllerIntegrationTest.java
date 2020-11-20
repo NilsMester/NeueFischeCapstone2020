@@ -62,12 +62,14 @@ public class RecordControllerIntegrationTest {
                         new ArrayList<>(List.of(
 
                                 new Record("1",
+                                        "someTitel",
                                         "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
                                         "tutorial box gradient borders with curves ",
                                         Instant.parse("2020-11-18T18:35:24.00Z"),
                                         true,
                                         new ArrayList<>(List.of("Css", "Styled-component"))),
                                 new Record("2",
+                                        "someTitel",
                                         "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
                                         "nice sidebar",
                                         Instant.parse("2020-11-19T18:35:24.00Z"),
@@ -79,12 +81,14 @@ public class RecordControllerIntegrationTest {
                         new ArrayList<>(List.of(
 
                                 new Record("1",
+                                        "someTitel",
                                         "https://www.youtube.com/watch?v=fMVhvMXHSIo&list=RDfMVhvMXHSIo&start_radio=1",
                                         "Iron Sky live on dutch television",
                                         Instant.parse("2020-11-18T18:35:24.00Z"),
                                         true,
                                         new ArrayList<>(List.of("Paolo Nutini", "Music"))),
                                 new Record("2",
+                                        "someTitel",
                                         "https://www.youtube.com/watch?v=BNMKGYiJpvg",
                                         "Feeling Good original",
                                         Instant.parse("2020-11-19T18:35:24.00Z"),
@@ -140,12 +144,14 @@ public class RecordControllerIntegrationTest {
 
         List<Record> expectedList = new ArrayList<>(List.of(
                 new Record("1",
+                        "someTitel",
                         "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
                         "tutorial box gradient borders with curves ",
                         Instant.parse("2020-11-18T18:35:24.00Z"),
                         true,
                         new ArrayList<>(List.of("Css", "Styled-component"))),
                 new Record("2",
+                        "someTitel",
                         "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
                         "nice sidebar",
                         Instant.parse("2020-11-19T18:35:24.00Z"),
@@ -165,6 +171,7 @@ public class RecordControllerIntegrationTest {
         String url = linkLibrarianUserAccessUrl();
 
         AddRecordDto recordToAdd = new AddRecordDto(
+                "someTitel",
                 "https://mkyong.com/mongodb/spring-data-mongodb-update-document/",
                 "Update document with query",
                 true,
@@ -183,18 +190,21 @@ public class RecordControllerIntegrationTest {
                 new ArrayList<>(List.of(
 
                         new Record("1",
+                                "someTitel",
                                 "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
                                 "tutorial box gradient borders with curves ",
                                 Instant.parse("2020-11-18T18:35:24.00Z"),
                                 true,
                                 new ArrayList<>(List.of("Css", "Styled-component"))),
                         new Record("2",
+                                "someTitel",
                                 "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
                                 "nice sidebar",
                                 Instant.parse("2020-11-19T18:35:24.00Z"),
                                 true,
                                 new ArrayList<>(List.of("React", "Css", "Styled-component"))),
                         new Record("new generated id",
+                                "someTitel",
                                 "https://mkyong.com/mongodb/spring-data-mongodb-update-document/",
                                 "Update document with query",
                                 Instant.parse("2020-11-22T18:35:24.00Z"),
@@ -203,6 +213,7 @@ public class RecordControllerIntegrationTest {
                 ))));
 
         Record expectedRecord = new Record("new generated id",
+                "someTitel",
                 "https://mkyong.com/mongodb/spring-data-mongodb-update-document/",
                 "Update document with query",
                 Instant.parse("2020-11-22T18:35:24.00Z"),

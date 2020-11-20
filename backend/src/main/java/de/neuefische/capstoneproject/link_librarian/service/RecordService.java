@@ -47,6 +47,7 @@ public class RecordService {
         Record recordToBeAdded = Record.builder()
                 .id(idUtilities.generateId())
                 .timestamp(timeStampUtilities.generateTimestampEpochSeconds())
+                .titel(addRecordDto.getTitel())
                 .description(addRecordDto.getDescription())
                 .recordLink(addRecordDto.getRecordLink())
                 .publicStatus(true)
