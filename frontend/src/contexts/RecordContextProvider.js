@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import UserContext from "./UserContext";
-import {addRecord} from "../service/RecordService";
+import {addRecord, getUserRecordsList} from "../service/RecordService";
 import RecordContext from "./RecordContext";
 
 
@@ -10,7 +10,9 @@ export default function RecordContextProvider({children}) {
     const {token, tokenIsValid} = useContext(UserContext);
 
     useEffect(() => {
-        tokenIsValid();
+        tokenIsValid() && getUserRecordsList(token)
+            .then(setRecords)
+            .catch(console.log);
     }, [token, tokenIsValid]);
 
     const createRecord = (recordLink, tagsList, description, publicStaus) =>

@@ -6,6 +6,7 @@ import ProtectedRoute from "./routing/ProtectedRoute";
 import HomePage from "./pages/HomePage";
 import AddRecordPage from "./pages/addRecordPage/AddRecordPage"
 import RecordContextProvider from "./contexts/RecordContextProvider";
+import UserRecordsListPage from "./pages/userRecordsListPage/UserRecordsListPage";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Switch>
                     <Route path="/login" component={LoginPage}/>
                     <ProtectedRoute path="/home" component={HomePage}/>
+                    <ProtectedRoute path="/records" component={UserRecordsListPage}/>
                     <ProtectedRoute path= "/newRecord" component={AddRecordPage}/>
 
                     <Route path="/">
