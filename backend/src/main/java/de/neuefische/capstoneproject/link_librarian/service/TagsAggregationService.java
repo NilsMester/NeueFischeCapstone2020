@@ -2,22 +2,20 @@ package de.neuefische.capstoneproject.link_librarian.service;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Accumulators;
-import com.mongodb.client.model.Aggregates;
+
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Projections;
 import de.neuefische.capstoneproject.link_librarian.dao.LinkLibrarianUserDao;
+
 import org.bson.Document;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import static com.mongodb.client.model.Aggregates.group;
+import static com.mongodb.client.model.Aggregates.*;
+
 
 @Service
 public class TagsAggregationService {
@@ -48,22 +46,52 @@ public class TagsAggregationService {
         return list;
     }*/
 
-   public List<Document> tagsList(String principalName) {
+    /*Arrays.asList(
+            Aggregates.match(Filters.eq("email", principalName)),
+                        *//*group("$", Accumulators.sum("count", 1)
+                        Aggregates.unwind()*//*
+            Aggregates.project(
+            Projections.fields(
+            Projections.exclude(),
+            Projections.include("tagsList")
+            )
+            )
+            )*/
+
+  /*  db.linklibrarianuser.aggregate([{"$match":{"_id":"saskia@web.net"}},
+    {"$unwind":"$recordList"},
+
+    {$group:{_id:"$recordList.tagsList", count:{$sum:1}}},
+    {"$unwind":"$_id"},
+
+            ])*/
+
+  /*  db.linklibrarianuser.aggregate([{"$match":{"_id":"saskia@web.net"}},
+    {$group:{_id:"$recordList.tagsList"}},
+    {$project:{_id:1, tagsList:1}},
+    {"$unwind":"$_id"},
+    {"$unwind":"$_id"},
+    {$group:{_id:"$_id", count:{$sum:1}}},*/
+
+
+
+   public List<Document> userTagsList(String principalName) {
         MongoCollection<Document> collection = mongoTemplate.getCollection("linklibrarianuser");
         collection.aggregate(
                 Arrays.asList(
-                        Aggregates.match(Filters.eq("email", principalName)),
-                        /*group("$", Accumulators.sum("count", 1)
-                        Aggregates.unwind()*/
-                        Aggregates.project(
+                        match(Filters.eq("email", principalName)),
+                        group("$recordList.tagsList"),
+                        project(
                                 Projections.fields(
                                         Projections.exclude(),
                                         Projections.include("tagsList")
                                 )
-                        )
-                )
+                        ),
+                        unwind("_id"),
+                        unwind("_id"),
+                        group("§_id", Accumulators.sum("count",1) ))
         );
-        return null;
+        return (List<Document>) collection;
     }
 
 

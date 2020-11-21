@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import RecordContext from "../contexts/RecordContext";
+import UserRecordsListPage from "../pages/userRecordsListPage/UserRecordsListPage";
 
 const initialState = {
     recordLink: '',
@@ -9,8 +11,8 @@ const initialState = {
 }
 
 export default function RecordForm({onSave, record = initialState}) {
+    const{userTagsList} = useContext(RecordContext)
     const [recordData, setRecordData] = useState(record);
-    /*const [tagsList, setTagsList] = useState([]);*/
     const [tag, setTag] = useState("");
     const history = useHistory();
 
@@ -55,6 +57,7 @@ export default function RecordForm({onSave, record = initialState}) {
             <button type="button" onClick={onCancel}>Cancel</button>
             <button>Save</button>
 
+            <UserTagsList/>
         </form>
 
     );
@@ -90,5 +93,19 @@ function TagList() {
     )
 
 }
+
+    function UserTagsList() {
+        return (
+            <ul>
+                {userTagsList.tagsList?.map((userTag, i) => (
+                        <li key={i} className="tag">
+                            {userTag}
+                        </li>
+                    )
+                )}
+            </ul>
+        )
+
+    }
 
 }
