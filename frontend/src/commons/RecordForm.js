@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import UserTagList from "./UserTagList";
 
 const initialState = {
     recordLink: '',
@@ -10,11 +11,10 @@ const initialState = {
 
 export default function RecordForm({onSave, record = initialState}) {
     const [recordData, setRecordData] = useState(record);
-    /*const [tagsList, setTagsList] = useState([]);*/
     const [tag, setTag] = useState("");
     const history = useHistory();
 
-    return(
+    return (
         <form onSubmit={handleSubmit}>
 
             <label>
@@ -55,6 +55,7 @@ export default function RecordForm({onSave, record = initialState}) {
             <button type="button" onClick={onCancel}>Cancel</button>
             <button>Save</button>
 
+            <UserTagList/>
         </form>
 
     );
@@ -67,7 +68,7 @@ export default function RecordForm({onSave, record = initialState}) {
         history.goBack();
     }
 
-    function handleTagKlick(){
+    function handleTagKlick() {
         setRecordData({...recordData, tagsList: [...recordData.tagsList, tag]});
         setTag("");
     }
@@ -77,18 +78,17 @@ export default function RecordForm({onSave, record = initialState}) {
         onSave(recordData);
     }
 
-function TagList() {
-    return (
-        <ul>
-            {recordData.tagsList?.map((tag, i) => (
-                    <li key={i} className="tag">
-                        {tag}
-                    </li>
-                )
-            )}
-        </ul>
-    )
+    function TagList() {
+        return (
+            <ul>
+                {recordData.tagsList?.map((tag, i) => (
+                        <li key={i} className="tag">
+                            {tag}
+                        </li>
+                    )
+                )}
+            </ul>
+        )
 
-}
-
+    }
 }
