@@ -1,7 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import RecordContext from "../contexts/RecordContext";
-import UserRecordsListPage from "../pages/userRecordsListPage/UserRecordsListPage";
 
 const initialState = {
     recordLink: '',
@@ -97,7 +96,7 @@ function TagList() {
     function UserTagsList() {
         return (
             <ul>
-                {userTagsList.tagsList?.map((userTag, i) => (
+                {userTagsList?.map((userTag, i) => (
                         <li key={i} className="tag">
                             {userTag}
                         </li>

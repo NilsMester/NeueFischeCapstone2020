@@ -1,5 +1,6 @@
 package de.neuefische.capstoneproject.link_librarian.service;
 
+import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Accumulators;
 
@@ -7,14 +8,18 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Projections;
 import de.neuefische.capstoneproject.link_librarian.dao.LinkLibrarianUserDao;
 
-import org.bson.Document;
+import de.neuefische.capstoneproject.link_librarian.model.LinkLibrarianUser;
+import de.neuefische.capstoneproject.link_librarian.model.Tags;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.*;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.mongodb.client.model.Aggregates.*;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 
 @Service
@@ -73,9 +78,24 @@ public class TagsAggregationService {
     {"$unwind":"$_id"},
     {$group:{_id:"$_id", count:{$sum:1}}},*/
 
+    public List<Tags> userTagsLists(String principalName) {
 
+        Aggregation aggregation = newAggregation(
+                match(new Criteria("email").is(principalName)),
+                group("recordList.tagsList"),
+                project("_id", "tagsList"),
+                unwind("_id"),
+                unwind("_id"),
+                group("_id").count().as("count")
+        );
 
-   public List<Document> userTagsList(String principalName) {
+        AggregationResults<Tags> userResults = mongoTemplate.aggregate(aggregation, LinkLibrarianUser.class, Tags.class);
+        List<Tags> userTagsList = userResults.getMappedResults();
+        System.out.println(userTagsList);
+        return userTagsList;
+    }
+
+  /*  public List<Document> userTagsList(String principalName) {
         MongoCollection<Document> collection = mongoTemplate.getCollection("linklibrarianuser");
         collection.aggregate(
                 Arrays.asList(
@@ -92,7 +112,7 @@ public class TagsAggregationService {
                         group("§_id", Accumulators.sum("count",1) ))
         );
         return (List<Document>) collection;
-    }
+    }*/
 
 
 }

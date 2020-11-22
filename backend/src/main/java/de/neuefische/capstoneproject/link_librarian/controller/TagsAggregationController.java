@@ -1,5 +1,6 @@
 package de.neuefische.capstoneproject.link_librarian.controller;
 
+import de.neuefische.capstoneproject.link_librarian.model.Tags;
 import de.neuefische.capstoneproject.link_librarian.service.TagsAggregationService;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,7 +24,7 @@ public class TagsAggregationController {
     }
 
     @GetMapping
-    public List<Document> userTagsList(Principal principal){
-        return this.tagsAggregationService.userTagsList(principal.getName());
+    public List<Tags> userTagsLists(Principal principal){
+        return this.tagsAggregationService.userTagsLists(principal.getName());
     }
 }
