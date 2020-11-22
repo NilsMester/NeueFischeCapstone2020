@@ -43,6 +43,8 @@ public class TagsAggregationService {
 
     public List<Tags> userTagsLists(String principalName) {
 
+
+        //<<<--- Version 2 --->>>
         Aggregation aggregation = newAggregation(
                 match(new Criteria("email").is(principalName)),
                 group("recordList.tagsList"),
@@ -57,6 +59,8 @@ public class TagsAggregationService {
         System.out.println(userTagsList);
         return userTagsList;
     }
+
+    //<<<--- Version 1 --->>>
 
   /*  public List<Document> userTagsList(String principalName) {
         MongoCollection<Document> collection = mongoTemplate.getCollection("linklibrarianuser");
