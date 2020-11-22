@@ -1,6 +1,6 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import RecordContext from "../contexts/RecordContext";
+import UserTagList from "./UserTagList";
 
 const initialState = {
     recordLink: '',
@@ -10,12 +10,11 @@ const initialState = {
 }
 
 export default function RecordForm({onSave, record = initialState}) {
-    const{userTagsList} = useContext(RecordContext)
     const [recordData, setRecordData] = useState(record);
     const [tag, setTag] = useState("");
     const history = useHistory();
 
-    return(
+    return (
         <form onSubmit={handleSubmit}>
 
             <label>
@@ -56,7 +55,7 @@ export default function RecordForm({onSave, record = initialState}) {
             <button type="button" onClick={onCancel}>Cancel</button>
             <button>Save</button>
 
-            <UserTagsList/>
+            <UserTagList/>
         </form>
 
     );
@@ -69,7 +68,7 @@ export default function RecordForm({onSave, record = initialState}) {
         history.goBack();
     }
 
-    function handleTagKlick(){
+    function handleTagKlick() {
         setRecordData({...recordData, tagsList: [...recordData.tagsList, tag]});
         setTag("");
     }
@@ -79,26 +78,12 @@ export default function RecordForm({onSave, record = initialState}) {
         onSave(recordData);
     }
 
-function TagList() {
-    return (
-        <ul>
-            {recordData.tagsList?.map((tag, i) => (
-                    <li key={i} className="tag">
-                        {tag}
-                    </li>
-                )
-            )}
-        </ul>
-    )
-
-}
-
-    function UserTagsList() {
+    function TagList() {
         return (
             <ul>
-                {userTagsList?.map((userTag, i) => (
+                {recordData.tagsList?.map((tag, i) => (
                         <li key={i} className="tag">
-                            {userTag}
+                            {tag}
                         </li>
                     )
                 )}
@@ -106,5 +91,4 @@ function TagList() {
         )
 
     }
-
 }
