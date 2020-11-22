@@ -60,42 +60,4 @@ public class TagsAggregationService {
         return userTagsList;
     }
 
-    //<<<--- Version 1 --->>>
-
-  /*  public List<Document> userTagsList(String principalName) {
-        MongoCollection<Document> collection = mongoTemplate.getCollection("linklibrarianuser");
-        collection.aggregate(
-                Arrays.asList(
-                        match(Filters.eq("email", principalName)),
-                        group("$recordList.tagsList"),
-                        project(
-                                Projections.fields(
-                                        Projections.exclude(),
-                                        Projections.include("tagsList")
-                                )
-                        ),
-                        unwind("_id"),
-                        unwind("_id"),
-                        group("§_id", Accumulators.sum("count",1) ))
-        );
-        return (List<Document>) collection;
-    }*/
-
-
-/*  public List<String> tagList (String principalName){
-        Query query = new Query();
-        query.addCriteria(Criteria.where("email").is(principalName));
-        query.fields().include("tagsList");
-
-        List<String> list = mongoTemplate.find(query, String.class);
-
-        Set<Object> tagSet = new HashSet<Object>();
-
-        *//*for (Object tag : list)
-            if(!tagSet.contains(tag))
-                tagSet.add(tag);
-            else(
-*//*
-        return list;
-    }*/
 }
