@@ -54,7 +54,6 @@ public class TagsAggregationService {
 
         AggregationResults<Tags> userResults = mongoTemplate.aggregate(aggregation, LinkLibrarianUser.class, Tags.class);
         List<Tags> userTagsList = userResults.getMappedResults();
-        System.out.println(userTagsList);
         return userTagsList;
     }
 
