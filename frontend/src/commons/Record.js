@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Record({record, action =[], className }){
+export default function Record({record, actions =[], className }){
     return(
         <section className={className}>
             <h2>{record.titel}</h2>
@@ -14,7 +14,7 @@ export default function Record({record, action =[], className }){
                 )}
             </ul>
             <p>{record.description}</p>
-            <button>{action}</button>
+            <button>{actions}</button>
         </section>
 
     )
