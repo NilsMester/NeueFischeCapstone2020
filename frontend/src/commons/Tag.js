@@ -1,10 +1,11 @@
 import React from 'react'
+import TagDesign from "./TagDesign";
 
 export default function Tag({userTag, action =[], className }){
     return(
-        <section className={className}>
-            <p>{userTag._id}</p>
-        </section>
+        <TagDesign className={className}>
+            {userTag._id}
+        </TagDesign>
 
     )
 
