@@ -16,8 +16,8 @@ export default function AddRecordPage() {
     )
 
     function handleSave(record) {
-        const{titel, recordLink, tagsList, description, publicStatus} = record;
-        createRecord(titel, recordLink, tagsList, description, publicStatus);
+        const{titel, recordLink, description, publicStaus, tagsList} = record;
+        createRecord(titel, recordLink, description, publicStaus, tagsList);
         history.push('/');
 
     }

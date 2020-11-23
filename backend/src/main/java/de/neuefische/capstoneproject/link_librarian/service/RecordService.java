@@ -1,5 +1,6 @@
 package de.neuefische.capstoneproject.link_librarian.service;
 
+import com.mongodb.BasicDBObject;
 import de.neuefische.capstoneproject.link_librarian.dao.LinkLibrarianUserDao;
 import de.neuefische.capstoneproject.link_librarian.dto.AddRecordDto;
 import de.neuefische.capstoneproject.link_librarian.model.LinkLibrarianUser;
@@ -16,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -65,7 +67,7 @@ public class RecordService {
         return recordToBeAdded;
     }
 
-    public Record updateRecord(Record record, String name) {
+    public Record updateRecord(Record record, String principalName) {
 
         Record recordToBeUpdated = Record.builder()
                 .id(record.getId())
@@ -77,11 +79,26 @@ public class RecordService {
                 .tagsList(record.getTagsList())
                 .build();
 
+        Query query = new Query(new Criteria().andOperator(
+                Criteria.where("email").is(principalName),
+                Criteria.where("recordList").elemMatch(Criteria.where("_id").is(record.getId()))));
 
-        return null;
+        Update update = new Update();
+        update.set("recordList.$", recordToBeUpdated);
+
+        mongoTemplate.updateFirst(query, update, LinkLibrarianUser.class);
+
+        return recordToBeUpdated;
     }
 
-    public void deleteRecord(String recordId, String name) {
+    public void deleteRecord(String recordId, String principalName) {
+        Query query = new Query(new Criteria().andOperator(
+                Criteria.where("email").is(principalName),
+                Criteria.where("recordList").elemMatch(Criteria.where("_id").is(recordId))));
 
+        Update update = new Update();
+        update.pull("recordList", new BasicDBObject("_id", recordId));
+
+        mongoTemplate.updateFirst(query, update, LinkLibrarianUser.class);
     }
 }

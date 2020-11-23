@@ -23,8 +23,8 @@ export default function RecordContextProvider({children}) {
             .catch(console.log);
     }, [token, tokenIsValid]);
 
-    const createRecord = (titel, recordLink, tagsList, description, publicStaus) =>
-        addRecord(titel, recordLink, tagsList, description, publicStaus, token)
+    const createRecord = (titel, recordLink, description, publicStaus, tagsList) =>
+        addRecord(titel, recordLink, description, publicStaus, tagsList, token)
             .then((newRecord) => setRecords([...records, newRecord]))
             .catch(console.log);
 
@@ -33,8 +33,8 @@ export default function RecordContextProvider({children}) {
             .then(() => setRecords(records.filter((record) => record.id !== id)))
             .catch(console.log);
 
-    const editRecord = (id, titel, recordLink, tagsList, description, publicStaus) =>{
-        updateRecord(id, titel, recordLink, tagsList, description, publicStaus, token)
+    const editRecord = (id, titel, recordLink, description, timestamp, publicStaus, tagsList) =>{
+        updateRecord(id, titel, recordLink, description, timestamp, publicStaus, tagsList, token)
             .then((updatedRecord) => setRecords([...records.filter((record) => record.id !== updatedRecord.id), updatedRecord]))
             .catch(console.log)
     }

@@ -18,8 +18,8 @@ export default function EditIdeaPage() {
     );
 
     function handleSave(record) {
-        const {id, titel, recordLink, tagsList, description, publicStaus} = record;
-        editRecord(id, titel, recordLink, tagsList, description, publicStaus);
+        const {id, titel, recordLink, description, timestamp, publicStaus, tagsList} = record;
+        editRecord(id, titel, recordLink, description, timestamp, publicStaus, tagsList);
         history.goBack();
     }
 }
