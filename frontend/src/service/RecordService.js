@@ -23,5 +23,5 @@ export const removeRecord = (id, token) =>
 
 export const updateRecord = (id, titel, recordLink, tagsList, description, publicStaus, token) =>
     axios
-        .put('/api/records/' + id, {id, titel, recordLink, description, publicStaus, tagsList}, header(token))
+        .put('/api/records', {id, titel, recordLink, description, publicStaus, tagsList}, header(token))
         .then((response) => response.data);
