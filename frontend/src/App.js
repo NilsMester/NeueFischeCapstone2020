@@ -19,6 +19,7 @@ function App() {
                     <ProtectedRoute path="/records" component={UserRecordsListPage}/>
                     <ProtectedRoute path= "/newRecord" component={AddRecordPage}/>
                     <ProtectedRoute path= "/record/:id" component={SingleRecordPage}/>
+                    <ProtectedRoute path= "/edit/:id" component={SingleRecordPage}/>
 
                     <Route path="/">
                         <Redirect to="/newRecord"/>

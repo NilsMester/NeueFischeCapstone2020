@@ -103,7 +103,7 @@ const LeftHide = styled.div`
 `
 const RightHide = styled.div`
    position: absolute;
-    top: 5px;
+    top: 6px;
     right: -12px;
     width: 12px;
     height: 20px;

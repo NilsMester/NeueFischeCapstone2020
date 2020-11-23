@@ -13,7 +13,7 @@ const initialState = {
 
 export default function RecordForm({onSave, record = initialState}) {
     const [recordData, setRecordData] = useState(record);
-    const [tag, setTag] = useState("");
+    const [tag, setTag] = useState(record.tagsList);
     const history = useHistory();
 
     return (
@@ -34,7 +34,6 @@ export default function RecordForm({onSave, record = initialState}) {
                            onChange={handleChange}
                            type="text"/>
                 </label>
-
                 <p>Tags</p>
                 <TagList/>
 
@@ -52,10 +51,10 @@ export default function RecordForm({onSave, record = initialState}) {
             <SidebarStyled>
                 <SidebarSection1Styled/>
                 <SidebarSection2Styled>
-                <SideBarActionButton>Tags</SideBarActionButton>
+                    <SideBarActionButton>Tags</SideBarActionButton>
                 </SidebarSection2Styled>
                 <SidebarSection3Styled>
-                <UserTagList/>
+                    <UserTagList/>
                 </SidebarSection3Styled>
                 <SidebarSection2Styled>
                     <SideBarActionButton>New Tag</SideBarActionButton>
