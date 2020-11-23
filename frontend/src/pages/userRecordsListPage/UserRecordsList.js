@@ -3,6 +3,7 @@ import RecordContext from "../../contexts/RecordContext";
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import Record from "../../commons/Record";
+import RecordActionButton from "../../commons/RecordActionButton";
 
 export default function UserRecordsList () {
 
@@ -16,11 +17,11 @@ export default function UserRecordsList () {
                     <Record
                         record={record}
                         actions={[
-                        <button>
-                            key="details"
-                            onClick={() => history.push(`record/${record.id}`)}
-                        </button>
-                    ]}
+                            <RecordActionButton key="details"
+                                                onClick={() => history.push(`/record/${record.id}`)}>
+                                Details
+                            </RecordActionButton>
+                        ]}
                     />
                 </li>
             ))}
