@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import styled from 'styled-components/macro';
 import UserTagList from "./UserTagList";
+import SideBarActionButton from "./SideBarActionButton";
 
 const initialState = {
     recordLink: '',
@@ -17,7 +18,7 @@ export default function RecordForm({onSave, record = initialState}) {
 
     return (
         <FormStyled onSubmit={handleSubmit}>
-            <div>
+            <DivStyled>
                 <label>
                     Titel
                     <input name="titel"
@@ -47,21 +48,28 @@ export default function RecordForm({onSave, record = initialState}) {
 
                 <button type="button" onClick={onCancel}>Cancel</button>
                 <button>Save</button>
-            </div>
-            <div>
+            </DivStyled>
+            <SidebarStyled>
+                <SidebarSection1Styled/>
+                <SidebarSection2Styled>
+                <SideBarActionButton>Tags</SideBarActionButton>
+                </SidebarSection2Styled>
+                <SidebarSection3Styled>
                 <UserTagList/>
-                <label>
-                    Tags
+                </SidebarSection3Styled>
+                <SidebarSection2Styled>
+                    <SideBarActionButton>New Tag</SideBarActionButton>
+                </SidebarSection2Styled>
+                <SidebarSection4Styled>
                     <input name="newTag"
                            value={tag || ""}
                            onChange={event => setTag(event.target.value)}
                            type="text"/>
                     <button type="button" onClick={handleTagKlick}>Add Tag</button>
-                </label>
-            </div>
+                </SidebarSection4Styled>
+            </SidebarStyled>
 
         </FormStyled>
-
     );
 
     function handleChange(event) {
@@ -96,10 +104,42 @@ export default function RecordForm({onSave, record = initialState}) {
     }
 }
 
-    const FormStyled = styled.form`
+const FormStyled = styled.form`
     display: grid;
     grid-template-columns: 1fr 0.5fr;
 `;
 
+const DivStyled = styled.div`
+display: grid;
+grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+`
 
+const SidebarStyled = styled.div`
+display: grid;
+align-content: end;
+justify-content: end;
+row-gap: 12px;
+`
+const SidebarSection1Styled = styled.section`
+height: 25px;
+`
 
+const SidebarSection2Styled = styled.section`
+display: grid;
+align-content: end;
+justify-content: end;
+`
+
+const SidebarSection3Styled = styled.section`
+display: grid;
+height: 50vh;
+justify-content: end;
+overflow-y: scroll;
+`
+
+const SidebarSection4Styled = styled.label`
+display: grid;
+align-content: end;
+justify-content: end;
+grid-template-rows: 1fr 1fr 1fr;
+`

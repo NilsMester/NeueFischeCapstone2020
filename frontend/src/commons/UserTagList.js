@@ -8,24 +8,29 @@ export default function UserRecordsList () {
     const {userTagsList} = useContext(RecordContext);
 
     return (
-        <StyledRecordsList>
+        <StyledTagsList>
             {userTagsList?.map((userTag) => (
-                <li key={userTag._id}>
+                <StyledListItem key={userTag._id}>
                     <Tag
                         userTag={userTag}
                         actions={[
                         ]}
                     />
-                </li>
+                </StyledListItem>
             ))}
-        </StyledRecordsList>
+        </StyledTagsList>
     );
 }
 
-const StyledRecordsList = styled.ul `
-    li:last-child:after {
-    content: '';
-    display: block;
-    height: 56px;
-  }
+const StyledTagsList = styled.ul `
+list-style: none;
+padding: 0;
+margin: 0;
+
     `;
+
+const StyledListItem = styled.li`
+max-height: 40px;
+display: grid;
+align-content: center;
+`
