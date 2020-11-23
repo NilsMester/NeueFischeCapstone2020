@@ -26,11 +26,11 @@ const StyledTagsList = styled.ul `
 list-style: none;
 padding: 0;
 margin: 0;
-
     `;
 
 const StyledListItem = styled.li`
 max-height: 40px;
 display: grid;
 align-content: center;
+padding: 2px 0;
 `

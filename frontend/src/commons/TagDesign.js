@@ -14,26 +14,26 @@ export default function TagDesign({children}){
 }
 
 const VisualBorder = styled.div`
-    width: 65px;
-    height: 30.5px;
-    margin: var(--size-m);
+    width: 80px;
+    height: 35.5px;
     position: relative;
     padding: 2px;
+    margin-right: 4px;
     border-radius: 4px;
     background: linear-gradient(
         to right,
-    #2C2C2C,
-    #2C2C2C,
-    #2C2C2C,
-    #2C2C2C
+    #FFC491,
+    #FFC491,
+    #FFC491,
+    #FFC491
 );
  
  &::before{
     content: "";
     display: block;
     position: absolute;
-    top: 6px;
-    left: -12px;
+    top: 8px;
+    left: -6px;
     width: 18px;
     height: 18px;
     border-radius: 50%;
@@ -45,7 +45,7 @@ const VisualBorder = styled.div`
 content: "";
     display: block;
     position: absolute;
-    top: 6px;
+    top: 8px;
     right: -12px;
     width: 18px;
     height: 18px;
@@ -70,12 +70,12 @@ const BorderVisualWrapper = styled.div`
     content: "";
     display: block;
     position: absolute;
-    top: 6px;
-    left: -12px;
+    top: 8px;
+    left: -6px;
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: var(--white1);
+    background: #414141;
     z-index: 3;
     };
     
@@ -83,7 +83,7 @@ const BorderVisualWrapper = styled.div`
     content: "";
     display: block;
     position: absolute;
-    top: 6px;
+    top: 8px;
     right: -12px;
     width: 14px;
     height: 14px;
@@ -95,10 +95,10 @@ const BorderVisualWrapper = styled.div`
 const LeftHide = styled.div`
     position: absolute;
     top: 5px;
-    left: -12px;
-    width: 12px;
-    height: 20px;
-    background: var(--white1);
+    left: 2px;
+    width: 10px;
+    height: 25px;
+    background: #414141;
     z-index: 4;
 `
 const RightHide = styled.div`
