@@ -7,7 +7,7 @@ import Record from "../../commons/Record";
 import RecordActionButton from "../../commons/RecordActionButton";
 
 export default function SingleRecordPage(){
-    const{records, editRecord, deleteRecord} = useContext(RecordContext);
+    const{records, deleteRecord} = useContext(RecordContext);
 
     const {id} = useParams();
     const history = useHistory();
