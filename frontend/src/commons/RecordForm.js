@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import styled from 'styled-components/macro';
 import UserTagList from "./UserTagList";
 import SideBarActionButton from "./SideBarActionButton";
+import RecordTagsList from "./RecordTagsList";
 
 const initialState = {
     recordLink: '',
@@ -13,7 +14,7 @@ const initialState = {
 
 export default function RecordForm({onSave, record = initialState}) {
     const [recordData, setRecordData] = useState(record);
-    const [tag, setTag] = useState(record.tagsList);
+    const [recordTags, setRecordTags] = useState(record.tagsList);
     const history = useHistory();
 
     return (
@@ -35,7 +36,7 @@ export default function RecordForm({onSave, record = initialState}) {
                            type="text"/>
                 </label>
                 <p>Tags</p>
-                <TagList/>
+                <RecordTagsList tagsList={recordData.tagsList}/>
 
                 <label>
                     Description
@@ -61,8 +62,8 @@ export default function RecordForm({onSave, record = initialState}) {
                 </SidebarSection2Styled>
                 <SidebarSection4Styled>
                     <input name="newTag"
-                           value={tag || ""}
-                           onChange={event => setTag(event.target.value)}
+                           value={recordTags || ""}
+                           onChange={event => setRecordTags(event.target.value)}
                            type="text"/>
                     <button type="button" onClick={handleTagKlick}>Add Tag</button>
                 </SidebarSection4Styled>
@@ -80,26 +81,13 @@ export default function RecordForm({onSave, record = initialState}) {
     }
 
     function handleTagKlick() {
-        setRecordData({...recordData, tagsList: [...recordData.tagsList, tag]});
-        setTag("");
+        setRecordData({...recordData, tagsList: [...recordData.tagsList, recordTags]});
+        setRecordTags("");
     }
 
     function handleSubmit(event) {
         event.preventDefault();
         onSave(recordData);
-    }
-
-    function TagList() {
-        return (
-            <ul>
-                {recordData.tagsList?.map((tag, i) => (
-                    <li key={i} className="tag">
-                        {tag}
-                    </li>
-                    )
-                )}
-            </ul>
-        )
     }
 }
 

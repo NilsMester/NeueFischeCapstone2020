@@ -28,6 +28,16 @@ public class RecordController {
     @PostMapping
     public Record addRecord(@RequestBody AddRecordDto addRecordDto, Principal principal){
         return this.recordService.addRecord(addRecordDto, principal.getName());
-
     }
+
+    @PutMapping
+    public Record updateRecord(@RequestBody Record record, Principal principal){
+        return this.recordService.updateRecord(record, principal.getName());
+    }
+
+    @DeleteMapping("{recordId}")
+    public void deleteRecord(@PathVariable String recordId, Principal principal){
+        recordService.deleteRecord(recordId, principal.getName());
+    }
+
 }

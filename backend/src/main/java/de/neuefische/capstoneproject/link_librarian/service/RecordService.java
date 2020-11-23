@@ -65,5 +65,23 @@ public class RecordService {
         return recordToBeAdded;
     }
 
+    public Record updateRecord(Record record, String name) {
 
+        Record recordToBeUpdated = Record.builder()
+                .id(record.getId())
+                .timestamp(record.getTimestamp())
+                .titel(record.getTitel())
+                .description(record.getDescription())
+                .recordLink(record.getRecordLink())
+                .publicStatus(true)
+                .tagsList(record.getTagsList())
+                .build();
+
+
+        return null;
+    }
+
+    public void deleteRecord(String recordId, String name) {
+
+    }
 }
