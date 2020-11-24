@@ -225,4 +225,92 @@ public class RecordControllerIntegrationTest {
         assertThat(response.getBody(), is(expectedRecord));
         assertThat(updatedLinkLibrarianUser, is(expectedLinkLibrarianUser));
     }
+
+
+    @Test
+    @DisplayName("The \"updateRecord\" method should find the fitting LinkLibrarianUser & Record, update teh Record and return the updated record object")
+    public void putEditedRecordIntegrationTest () {
+        //Given
+        String url = linkLibrarianUserAccessUrl();
+
+        Record editedRecord = new Record(
+                "1",
+                "Fancy Stuff",
+                "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
+                "tutorial box gradient borders with curves ",
+                Instant.parse("2020-11-18T18:35:24.00Z"),
+                true,
+                List.of("Css", "Styled-component")
+        );
+        when(mockedIdUtilities.generateId()).thenReturn("new generated id");
+        when(mockedTimeStampUtilities.generateTimestampEpochSeconds()).thenReturn(Instant.parse("2020-11-22T18:35:24.00Z"));
+
+        //When
+        HttpEntity<Record> entity = getValidAuthorizationEntity(editedRecord);
+        ResponseEntity<Record> response = restTemplate.exchange(url, HttpMethod.PUT, entity, Record.class);
+
+        Object updatedLinkLibrarianUser = linkLibrarianUserDao.findById("alex@web.de");
+        Object expectedLinkLibrarianUser =  Optional.of(new LinkLibrarianUser(
+                "alex@web.de",
+                new ArrayList<>(List.of(
+
+                        new Record("1",
+                                "Fancy Stuff",
+                                "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
+                                "tutorial box gradient borders with curves ",
+                                Instant.parse("2020-11-18T18:35:24.00Z"),
+                                true,
+                                new ArrayList<>(List.of("Css", "Styled-component"))),
+                        new Record("2",
+                                "someTitel",
+                                "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
+                                "nice sidebar",
+                                Instant.parse("2020-11-19T18:35:24.00Z"),
+                                true,
+                                new ArrayList<>(List.of("React", "Css", "Styled-component")))
+                ))));
+
+        Record expectedRecord = new Record("1",
+                "Fancy Stuff",
+                "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
+                "tutorial box gradient borders with curves ",
+                Instant.parse("2020-11-18T18:35:24.00Z"),
+                true,
+                List.of("Css", "Styled-component"));
+
+        //Then
+        assertThat(response.getStatusCode(), is(HttpStatus.OK));
+        assertThat(response.getBody(), is(expectedRecord));
+        assertThat(updatedLinkLibrarianUser, is(expectedLinkLibrarianUser));
+    }
+
+    @Test
+    @DisplayName("The \"deleteRecord\" method should delete the fitting Record byID")
+    public void deleteRecordByIdIntegrationTest () {
+        //Given
+        String url = linkLibrarianUserAccessUrl() + "/1";
+
+        //When
+        HttpEntity<Void> entity = getValidAuthorizationEntity(null);
+        ResponseEntity<Void> response = restTemplate.exchange(url, HttpMethod.DELETE, entity, Void.class);
+
+        Object updatedLinkLibrarianUser = linkLibrarianUserDao.findById("alex@web.de");
+        Object expectedLinkLibrarianUser =  Optional.of(new LinkLibrarianUser(
+                "alex@web.de",
+                new ArrayList<>(List.of(
+                        new Record("2",
+                                "someTitel",
+                                "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
+                                "nice sidebar",
+                                Instant.parse("2020-11-19T18:35:24.00Z"),
+                                true,
+                                new ArrayList<>(List.of("React", "Css", "Styled-component")))
+                ))));
+
+        //Then
+        assertThat(response.getStatusCode(), is(HttpStatus.OK));
+        assertThat(updatedLinkLibrarianUser, is(expectedLinkLibrarianUser));
+    }
 }
+
+

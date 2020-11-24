@@ -1,5 +1,6 @@
 package de.neuefische.capstoneproject.link_librarian.service;
 
+import com.mongodb.BasicDBObject;
 import de.neuefische.capstoneproject.link_librarian.dao.LinkLibrarianUserDao;
 import de.neuefische.capstoneproject.link_librarian.dto.AddRecordDto;
 import de.neuefische.capstoneproject.link_librarian.model.LinkLibrarianUser;
@@ -55,7 +56,6 @@ public class RecordServiceTest {
                         ))
                 );
 
-
                 //When
                 when(linkLibrarianUserDao.findById(principalName)).thenReturn(Optional.of(user));
                 List<Record> userRecordsList = recordService.getUserRecordsList(principalName);
@@ -104,7 +104,8 @@ public class RecordServiceTest {
                 //When
                 Record addedRecord = recordService.addRecord(recordToAdd, principalName);
 
-                Record expectedRecord = new Record("uniqueId",
+                Record expectedRecord = new Record(
+                        "uniqueId",
                         "someTitel",
                         "https://react.semantic-ui.com/modules/sidebar/#examples-transitions",
                         "nice sidebar",
@@ -115,6 +116,65 @@ public class RecordServiceTest {
                 //Then
                 assertThat(addedRecord, is(expectedRecord));
                 verify(mongoTemplate).updateFirst(query, update.addToSet("recordList", expectedRecord), LinkLibrarianUser.class);
+        }
+
+        @Test
+        @DisplayName("The \"editRecord\" method should return the added record object")
+        void editRecordTest() {
+                //Given
+                String principalName = "alex@web.de";
+                Query query = new Query(new Criteria().andOperator(
+                        Criteria.where("email").is("alex@web.de"),
+                        Criteria.where("recordList").elemMatch(Criteria.where("_id").is("1"))));
+                String expectedId = "uniqueId";
+                Instant expectedTime = Instant.parse("2020-10-26T10:00:00Z");
+                Update update = new Update();
+
+                Record editedRecord = new Record(
+                        "1",
+                        "Fancy Stuff",
+                        "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
+                        "tutorial box gradient borders with curves ",
+                        Instant.parse("2020-11-18T18:35:24.00Z"),
+                        true,
+                        List.of("Css", "Styled-component")
+                );
+
+                //When
+                Record addedRecord = recordService.updateRecord(editedRecord, principalName);
+
+                Record expectedRecord = new Record(
+                        "1",
+                        "Fancy Stuff",
+                        "https://dev.to/medhatdawoud/gradient-borders-with-curves-and-3d-movement-in-css-nextjs-ticket-clone-3cho",
+                        "tutorial box gradient borders with curves ",
+                        Instant.parse("2020-11-18T18:35:24.00Z"),
+                        true,
+                        List.of("Css", "Styled-component")
+                );
+
+                //Then
+                assertThat(addedRecord, is(expectedRecord));
+                verify(mongoTemplate).updateFirst(query, update.set("recordList.$", editedRecord), LinkLibrarianUser.class);
+        }
+
+        @Test
+        @DisplayName("The \"editRecord\" method should return the added record object")
+        void deleteRecordTest() {
+                //Given
+                String principalName = "alex@web.de";
+                String idToDelete = "1";
+                Query query = new Query(new Criteria().andOperator(
+                        Criteria.where("email").is("alex@web.de"),
+                        Criteria.where("recordList").elemMatch(Criteria.where("_id").is("1"))));
+
+                Update update = new Update();
+
+                //When
+                recordService.deleteRecord(idToDelete, principalName);
+
+                //Then
+                verify(mongoTemplate).updateFirst(query, update.pull("recordList", new BasicDBObject("_id", idToDelete)), LinkLibrarianUser.class);
         }
 
 }
