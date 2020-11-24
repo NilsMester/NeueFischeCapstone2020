@@ -228,7 +228,7 @@ public class RecordControllerIntegrationTest {
 
 
     @Test
-    @DisplayName("The \"updateRecord\" method should find the fitting LinkLibrarianUser & Record, update teh Record and return the updated record object")
+    @DisplayName("The \"updateRecord\" method should find the fitting LinkLibrarianUser & Record, update the Record and return the updated record object")
     public void putEditedRecordIntegrationTest () {
         //Given
         String url = linkLibrarianUserAccessUrl();
