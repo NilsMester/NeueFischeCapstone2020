@@ -69,6 +69,6 @@ const FormStyled = styled.form`
 
 const DivStyled = styled.div`
 display: grid;
-grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+grid-template-rows: min-content min-content min-content 1fr 0.75fr min-content min-content;
 `
 

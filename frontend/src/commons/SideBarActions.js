@@ -71,5 +71,5 @@ const SidebarSection4Styled = styled.label`
 display: grid;
 align-content: end;
 justify-content: end;
-grid-template-rows: 1fr 1fr 1fr;
+grid-template-rows: 0.5fr 1fr 1fr;
 `

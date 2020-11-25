@@ -26,11 +26,13 @@ export default function AddRecordPage() {
     return(
         <>
             <RecordFormDataContext.Provider value={{recordData, setRecordData}}>
+                <MainGrid>
                 <Header titel="New Record"/>
                 <DivStyled>
                     <RecordForm onSave={handleSave} onChange={handleChange} onAddTagKlick={handleTagKlick}/>
                     <SideBarActions/>
                 </DivStyled>
+                </MainGrid>
             </RecordFormDataContext.Provider>
         </>
     )
@@ -50,8 +52,14 @@ export default function AddRecordPage() {
     }
 
 }
+const MainGrid = styled.div`
+display: grid;
+grid-template-rows: min-content 1fr;
+height: 100vh;
+`
 
 const DivStyled = styled.div`
 display: grid;
 grid-template-columns: 1fr 0.5fr;
+
 `

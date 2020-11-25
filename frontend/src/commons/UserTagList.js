@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import RecordContext from "../contexts/RecordContext";
 import styled from 'styled-components/macro';
-import Tag from "./Tag";
+import TagDesign from "./TagDesign";
 
 export default function UserRecordsList () {
 
@@ -11,11 +11,9 @@ export default function UserRecordsList () {
         <StyledTagsList>
             {userTagsList?.map((userTag) => (
                 <StyledListItem key={userTag._id}>
-                    <Tag
-                        userTag={userTag}
-                        actions={[
-                        ]}
-                    />
+                    <TagDesign>
+                        {userTag._id}
+                    </TagDesign>
                 </StyledListItem>
             ))}
         </StyledTagsList>
