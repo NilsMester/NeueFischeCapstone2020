@@ -1,36 +1,51 @@
-import React, {useContext, useState} from 'react';
+import React, {createContext, useContext, useReducer, useState} from 'react';
 import RecordForm from "../../commons/RecordForm";
 import RecordContext from "../../contexts/RecordContext";
 import { useHistory } from 'react-router-dom';
 import Header from "../../commons/Header";
 
+export const RecordFormDataContext = createContext({});
+
+const initialState = {
+    titel:"",
+    recordLink: '',
+    tagsList: [],
+    description: '',
+    publicStatus: true,
+}
+
+function reducer(state, {field,value}){
+    return {...state, [field]:value}
+}
+
 export default function AddRecordPage() {
     const{createRecord} = useContext(RecordContext)
 
-    const [recordData, setRecordData] = useState();
-    const [recordTags, setRecordTags] = useState();
+    const [recordData, setRecordData] = useReducer(reducer, initialState);
 
     const history = useHistory();
 
     return(
         <>
-            <Header titel="New Record"/>
-            <RecordForm recordOnChange={recordData} onSave={handleSave} onChange={handleChange} onAddTagKlick={handleTagKlick}/>
+            <RecordFormDataContext.Provider value={{recordData, setRecordData}}>
+                <Header titel="New Record"/>
+                <RecordForm onSave={handleSave} onChange={handleChange} onAddTagKlick={handleTagKlick}/>
+            </RecordFormDataContext.Provider>
         </>
     )
 
-    function handleSave(record) {
-        const{titel, recordLink, description, publicStatus, tagsList} = record;
+    function handleSave(recordData) {
+        const{titel, recordLink, description, publicStatus, tagsList} = recordData;
         createRecord(titel, recordLink, description, publicStatus, tagsList);
         history.push('/');
     }
 
-    function handleChange(record) {
-        setRecordData(record);
+    function handleChange(recordData) {
+        setRecordData(recordData);
     }
 
-    function handleTagKlick(record) {
-        setRecordData(record);
+    function handleTagKlick(recordData) {
+        setRecordData(recordData);
     }
 
 }

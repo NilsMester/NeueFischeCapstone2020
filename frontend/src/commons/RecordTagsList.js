@@ -1,10 +1,12 @@
 import RecordTagsListItem from "./RecordTagsListItem";
-import React from "react";
+import React, {useContext} from "react";
+import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
 
-export default function RecordTagsList({tagsList}) {
+export default function RecordTagsList() {
+    const {recordData} = useContext(RecordFormDataContext)
     return (
         <ul>
-            {tagsList?.map((recordTagItem, index) => (
+            {recordData.tagsList?.map((recordTagItem, index) => (
                 <RecordTagsListItem key={index} recordTagItem={recordTagItem}/>
                 )
             )}

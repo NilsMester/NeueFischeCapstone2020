@@ -1,29 +1,17 @@
-import React, {useReducer, useState} from 'react';
+import React, {useContext, useReducer, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import styled from 'styled-components/macro';
 import UserTagList from "./UserTagList";
 import SideBarActionButton from "./SideBarActionButton";
 import RecordTagsList from "./RecordTagsList";
+import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
 
-const initialState = {
-    titel:"",
-    recordLink: '',
-    tagsList: [],
-    description: '',
-    publicStatus: true,
-}
+export default function RecordForm({onSave,onChange, onAddTagKlick}) {
 
-function reducer(state, {field,value}){
-    return {...state, [field]:value}
-}
-
-export default function RecordForm({onSave,onChange, onAddTagKlick, recordOnChange = initialState}) {
-    const [recordTagsListInProgress, setRecordTagsListInProgress] = useState(recordOnChange.tagsList)
+    const {recordData, setRecordData} = useContext(RecordFormDataContext)
+    const {titel, recordLink, tagsList, description} = recordData
+    const [recordTagsListInProgress, setRecordTagsListInProgress] = useState("")
     const history = useHistory();
-
-    const[state, dispatch] = useReducer(reducer, recordOnChange)
-
-    const {titel, recordLink, tagsList, description} = state
 
     return (
         <FormStyled onSubmit={handleSubmit}>
@@ -44,7 +32,7 @@ export default function RecordForm({onSave,onChange, onAddTagKlick, recordOnChan
                            type="text"/>
                 </label>
                 <p>Tags</p>
-                <RecordTagsList tagsList={tagsList}/>
+                <RecordTagsList/>
 
                 <label>
                     Description
@@ -77,9 +65,9 @@ export default function RecordForm({onSave,onChange, onAddTagKlick, recordOnChan
                 <SidebarSection4Styled>
                     <input name="recordTagsListInProgress"
                            value={recordTagsListInProgress || ""}
-                           onChange={event => setRecordTagsListInProgress([event.target.value])}
+                           onChange={event => setRecordTagsListInProgress(event.target.value)}
                            type="text"/>
-                    <button type="button" onClick={handleTagLickButton}>Add Tag</button>
+                    <button type="button" onClick={handleTagKlickButton}>Add Tag</button>
                 </SidebarSection4Styled>
 
             </SidebarStyled>
@@ -88,23 +76,24 @@ export default function RecordForm({onSave,onChange, onAddTagKlick, recordOnChan
     );
 
     function handleChange(event) {
-        dispatch({field: event.target.name, value: event.target.value});
-        onChange(state)
+        setRecordData({field: event.target.name, value: event.target.value});
+        onChange(recordData)
     }
 
     function onCancel() {
         history.goBack();
     }
 
-    function handleTagLickButton() {
-        dispatch({...state, tagsList: [...state.tagsList, recordTagsListInProgress]});
-        onAddTagKlick(state);
+    function handleTagKlickButton() {
+        setRecordData({...recordData, tagsList: [...recordData.tagsList, recordTagsListInProgress]});
+        onAddTagKlick(recordData)
         setRecordTagsListInProgress("");
+
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-        onSave(state);
+        onSave(recordData);
     }
 }
 
