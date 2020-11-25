@@ -20,18 +20,19 @@ export default function AddRecordPage() {
     const{createRecord} = useContext(RecordContext)
 
     const [recordData, setRecordData] = useState(initialState);
+    const [recordTagsList, setRecordTagsList] = useState("");
 
     const history = useHistory();
 
     return(
         <>
-            <RecordFormDataContext.Provider value={{recordData, setRecordData}}>
+            <RecordFormDataContext.Provider value={{recordData, setRecordData, recordTagsList, setRecordTagsList, handleTagKlickButton}}>
                 <MainGrid>
-                <Header titel="New Record"/>
-                <DivStyled>
-                    <RecordForm onSave={handleSave} onChange={handleChange} onAddTagKlick={handleTagKlick}/>
-                    <SideBarActions/>
-                </DivStyled>
+                    <Header titel="New Record"/>
+                    <DivStyled>
+                        <RecordForm onSave={handleSave} onChange={handleChange} onAddTagKlick={handleTagKlick}/>
+                        <SideBarActions/>
+                    </DivStyled>
                 </MainGrid>
             </RecordFormDataContext.Provider>
         </>
@@ -49,6 +50,11 @@ export default function AddRecordPage() {
 
     function handleTagKlick(recordData) {
         setRecordData(recordData);
+    }
+
+    function handleTagKlickButton() {
+        setRecordData({...recordData, tagsList: [...recordData.tagsList, recordTagsList]});
+        setRecordTagsList("");
     }
 
 }

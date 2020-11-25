@@ -3,7 +3,7 @@ import RecordContext from "../contexts/RecordContext";
 import styled from 'styled-components/macro';
 import TagDesign from "./TagDesign";
 
-export default function UserRecordsList () {
+export default function UserTagList () {
 
     const {userTagsList} = useContext(RecordContext);
 
