@@ -1,20 +1,14 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import {useHistory} from 'react-router-dom';
-import styled from 'styled-components/macro';
-import UserTagList from "./UserTagList";
-import SideBarActionButton from "./SideBarActionButton";
 import RecordTagsList from "./RecordTagsList";
+import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
+import styled from 'styled-components/macro';
 
-const initialState = {
-    recordLink: '',
-    tagsList: [],
-    description: '',
-    publicStatus: true,
-}
+export default function RecordForm({onSave,onChange}) {
 
-export default function RecordForm({onSave, record = initialState}) {
-    const [recordData, setRecordData] = useState(record);
-    const [recordTags, setRecordTags] = useState(record.tagsList);
+    const {recordData, setRecordData} = useContext(RecordFormDataContext)
+    const {titel, recordLink, description} = recordData
+
     const history = useHistory();
 
     return (
@@ -23,7 +17,7 @@ export default function RecordForm({onSave, record = initialState}) {
                 <label>
                     Titel
                     <input name="titel"
-                           value={recordData.titel || ""}
+                           value={titel || ""}
                            onChange={handleChange}
                            type="text"/>
                 </label>
@@ -31,17 +25,17 @@ export default function RecordForm({onSave, record = initialState}) {
                 <label>
                     RecordLink
                     <input name="recordLink"
-                           value={recordData.recordLink || ""}
+                           value={recordLink || ""}
                            onChange={handleChange}
                            type="text"/>
                 </label>
                 <p>Tags</p>
-                <RecordTagsList tagsList={recordData.tagsList}/>
+                <RecordTagsList/>
 
                 <label>
                     Description
                     <input name="description"
-                           value={recordData.description || ""}
+                           value={description || ""}
                            onChange={handleChange}
                            type="test"/>
                 </label>
@@ -49,40 +43,17 @@ export default function RecordForm({onSave, record = initialState}) {
                 <button type="button" onClick={onCancel}>Cancel</button>
                 <button>Save</button>
             </DivStyled>
-            <SidebarStyled>
-                <SidebarSection1Styled/>
-                <SidebarSection2Styled>
-                    <SideBarActionButton>Tags</SideBarActionButton>
-                </SidebarSection2Styled>
-                <SidebarSection3Styled>
-                    <UserTagList/>
-                </SidebarSection3Styled>
-                <SidebarSection2Styled>
-                    <SideBarActionButton>New Tag</SideBarActionButton>
-                </SidebarSection2Styled>
-                <SidebarSection4Styled>
-                    <input name="newTag"
-                           value={recordTags || ""}
-                           onChange={event => setRecordTags(event.target.value)}
-                           type="text"/>
-                    <button type="button" onClick={handleTagKlick}>Add Tag</button>
-                </SidebarSection4Styled>
-            </SidebarStyled>
 
         </FormStyled>
     );
 
     function handleChange(event) {
-        setRecordData({...recordData, [event.target.name]: event.target.value});
+        setRecordData({field: event.target.name, value: event.target.value});
+        onChange(recordData)
     }
 
     function onCancel() {
         history.goBack();
-    }
-
-    function handleTagKlick() {
-        setRecordData({...recordData, tagsList: [...recordData.tagsList, recordTags]});
-        setRecordTags("");
     }
 
     function handleSubmit(event) {
@@ -93,7 +64,7 @@ export default function RecordForm({onSave, record = initialState}) {
 
 const FormStyled = styled.form`
     display: grid;
-    grid-template-columns: 1fr 0.5fr;
+
 `;
 
 const DivStyled = styled.div`
@@ -101,32 +72,3 @@ display: grid;
 grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 `
 
-const SidebarStyled = styled.div`
-display: grid;
-align-content: end;
-justify-content: end;
-row-gap: 12px;
-`
-const SidebarSection1Styled = styled.section`
-height: 25px;
-`
-
-const SidebarSection2Styled = styled.section`
-display: grid;
-align-content: end;
-justify-content: end;
-`
-
-const SidebarSection3Styled = styled.section`
-display: grid;
-height: 50vh;
-justify-content: end;
-overflow-y: scroll;
-`
-
-const SidebarSection4Styled = styled.label`
-display: grid;
-align-content: end;
-justify-content: end;
-grid-template-rows: 1fr 1fr 1fr;
-`

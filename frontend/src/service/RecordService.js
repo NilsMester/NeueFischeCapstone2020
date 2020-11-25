@@ -12,16 +12,16 @@ export const getUserRecordsList = (token) =>
         .get('api/records', header(token))
         .then((response) => response.data);
 
-export const addRecord = (titel, recordLink, tagsList, description, publicStaus, token) =>
+export const addRecord = (titel, recordLink, description, publicStatus, tagsList, token) =>
     axios
-.post('/api/records', {titel, recordLink, description, publicStaus, tagsList}, header(token))
+.post('/api/records', {titel, recordLink, description, publicStatus, tagsList}, header(token))
 .then((response) => response.data);
 
 export const removeRecord = (id, token) =>
     axios
-    .delete('/api/records/' + id, header(token));
+        .delete('/api/records/' + id, header(token));
 
-export const updateRecord = (id, titel, recordLink, description, timestamp, publicStaus, tagsList, token) =>
+export const updateRecord = (id, titel, recordLink, description, timestamp, publicStatus, tagsList, token) =>
     axios
-        .put('/api/records', {id, titel, recordLink, description, timestamp, publicStaus, tagsList}, header(token))
+        .put('/api/records', {id, titel, recordLink, description, timestamp, publicStatus, tagsList}, header(token))
         .then((response) => response.data);
