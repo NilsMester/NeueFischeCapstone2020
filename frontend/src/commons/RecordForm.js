@@ -1,16 +1,14 @@
 import React, {useContext, useReducer, useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import styled from 'styled-components/macro';
-import UserTagList from "./UserTagList";
-import SideBarActionButton from "./SideBarActionButton";
 import RecordTagsList from "./RecordTagsList";
 import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
+import styled from 'styled-components/macro';
 
 export default function RecordForm({onSave,onChange, onAddTagKlick}) {
 
     const {recordData, setRecordData} = useContext(RecordFormDataContext)
-    const {titel, recordLink, tagsList, description} = recordData
-    const [recordTagsListInProgress, setRecordTagsListInProgress] = useState("")
+    const {titel, recordLink, description} = recordData
+
     const history = useHistory();
 
     return (
@@ -46,32 +44,6 @@ export default function RecordForm({onSave,onChange, onAddTagKlick}) {
                 <button>Save</button>
             </DivStyled>
 
-            <SidebarStyled>
-
-                <SidebarSection1Styled/>
-
-                <SidebarSection2Styled>
-                    <SideBarActionButton>Tags</SideBarActionButton>
-                </SidebarSection2Styled>
-
-                <SidebarSection3Styled>
-                    <UserTagList/>
-                </SidebarSection3Styled>
-
-                <SidebarSection2Styled>
-                    <SideBarActionButton>New Tag</SideBarActionButton>
-                </SidebarSection2Styled>
-
-                <SidebarSection4Styled>
-                    <input name="recordTagsListInProgress"
-                           value={recordTagsListInProgress || ""}
-                           onChange={event => setRecordTagsListInProgress(event.target.value)}
-                           type="text"/>
-                    <button type="button" onClick={handleTagKlickButton}>Add Tag</button>
-                </SidebarSection4Styled>
-
-            </SidebarStyled>
-
         </FormStyled>
     );
 
@@ -84,13 +56,6 @@ export default function RecordForm({onSave,onChange, onAddTagKlick}) {
         history.goBack();
     }
 
-    function handleTagKlickButton() {
-        setRecordData({...recordData, tagsList: [...recordData.tagsList, recordTagsListInProgress]});
-        onAddTagKlick(recordData)
-        setRecordTagsListInProgress("");
-
-    }
-
     function handleSubmit(event) {
         event.preventDefault();
         onSave(recordData);
@@ -99,7 +64,7 @@ export default function RecordForm({onSave,onChange, onAddTagKlick}) {
 
 const FormStyled = styled.form`
     display: grid;
-    grid-template-columns: 1fr 0.5fr;
+
 `;
 
 const DivStyled = styled.div`
@@ -107,32 +72,3 @@ display: grid;
 grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 `
 
-const SidebarStyled = styled.div`
-display: grid;
-align-content: end;
-justify-content: end;<
-row-gap: 12px;
-`
-const SidebarSection1Styled = styled.section`
-height: 25px;
-`
-
-const SidebarSection2Styled = styled.section`
-display: grid;
-align-content: end;
-justify-content: end;
-`
-
-const SidebarSection3Styled = styled.section`
-display: grid;
-height: 50vh;
-justify-content: end;
-overflow-y: scroll;
-`
-
-const SidebarSection4Styled = styled.label`
-display: grid;
-align-content: end;
-justify-content: end;
-grid-template-rows: 1fr 1fr 1fr;
-`

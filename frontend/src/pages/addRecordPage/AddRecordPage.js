@@ -3,6 +3,8 @@ import RecordForm from "../../commons/RecordForm";
 import RecordContext from "../../contexts/RecordContext";
 import { useHistory } from 'react-router-dom';
 import Header from "../../commons/Header";
+import SideBarActions from "../../commons/SideBarActions";
+import styled from 'styled-components/macro';
 
 export const RecordFormDataContext = createContext({});
 
@@ -21,7 +23,7 @@ function reducer(state, {field,value}){
 export default function AddRecordPage() {
     const{createRecord} = useContext(RecordContext)
 
-    const [recordData, setRecordData] = useReducer(reducer, initialState);
+    const [recordData, setRecordData] = useState(initialState);
 
     const history = useHistory();
 
@@ -29,7 +31,10 @@ export default function AddRecordPage() {
         <>
             <RecordFormDataContext.Provider value={{recordData, setRecordData}}>
                 <Header titel="New Record"/>
-                <RecordForm onSave={handleSave} onChange={handleChange} onAddTagKlick={handleTagKlick}/>
+                <DivStyled>
+                    <RecordForm onSave={handleSave} onChange={handleChange} onAddTagKlick={handleTagKlick}/>
+                    <SideBarActions/>
+                </DivStyled>
             </RecordFormDataContext.Provider>
         </>
     )
@@ -49,3 +54,8 @@ export default function AddRecordPage() {
     }
 
 }
+
+const DivStyled = styled.div`
+display: grid;
+grid-template-columns: 1fr 0.5fr;
+`
