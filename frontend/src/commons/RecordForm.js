@@ -75,7 +75,7 @@ export default function RecordForm({onSave,onChange, onAddTagKlick, recordOnChan
                 </SidebarSection2Styled>
 
                 <SidebarSection4Styled>
-                    <input name="newTag"
+                    <input name="recordTagsListInProgress"
                            value={recordTagsListInProgress || ""}
                            onChange={event => setRecordTagsListInProgress([event.target.value])}
                            type="text"/>

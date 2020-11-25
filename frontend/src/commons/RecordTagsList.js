@@ -4,8 +4,8 @@ import React from "react";
 export default function RecordTagsList({tagsList}) {
     return (
         <ul>
-            {tagsList?.map((recordTagItem, i) => (
-                <RecordTagsListItem key={i} recordTagItem={recordTagItem}/>
+            {tagsList?.map((recordTagItem, index) => (
+                <RecordTagsListItem key={index} recordTagItem={recordTagItem}/>
                 )
             )}
         </ul>
