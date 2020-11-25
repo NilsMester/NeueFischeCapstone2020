@@ -1,4 +1,4 @@
-import React, {useContext, useReducer, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
 import SideBarActionButton from "./SideBarActionButton";
 import UserTagList from "./UserTagList";

@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useReducer, useState} from 'react';
+import React, {createContext, useContext, useState} from 'react';
 import RecordForm from "../../commons/RecordForm";
 import RecordContext from "../../contexts/RecordContext";
 import { useHistory } from 'react-router-dom';
@@ -14,10 +14,6 @@ const initialState = {
     tagsList: [],
     description: '',
     publicStatus: true,
-}
-
-function reducer(state, {field,value}){
-    return {...state, [field]:value}
 }
 
 export default function AddRecordPage() {

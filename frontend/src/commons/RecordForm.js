@@ -1,10 +1,10 @@
-import React, {useContext, useReducer, useState} from 'react';
+import React, {useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 import RecordTagsList from "./RecordTagsList";
 import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
 import styled from 'styled-components/macro';
 
-export default function RecordForm({onSave,onChange, onAddTagKlick}) {
+export default function RecordForm({onSave,onChange}) {
 
     const {recordData, setRecordData} = useContext(RecordFormDataContext)
     const {titel, recordLink, description} = recordData
