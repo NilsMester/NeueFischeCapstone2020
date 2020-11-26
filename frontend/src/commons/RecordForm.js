@@ -4,6 +4,7 @@ import RecordTagsList from "./RecordTagsList";
 import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
 import styled from 'styled-components/macro';
 
+
 export default function RecordForm({onSave}) {
 
     const {recordData, setRecordData} = useContext(RecordFormDataContext)
@@ -58,6 +59,7 @@ export default function RecordForm({onSave}) {
         event.preventDefault();
         onSave(recordData);
     }
+
 }
 
 const FormStyled = styled.form`

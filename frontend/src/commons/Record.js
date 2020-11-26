@@ -5,13 +5,14 @@ import RecordTagsList from "./RecordTagsList";
 export default function Record({record, actions = [], className}) {
     return (
         <SingleRecordStyled className={className}>
-            <div>
+
             <TitelStyled>{record.titel}</TitelStyled>
             <TextStyled>{record.recordLink}</TextStyled>
+            <RecordTagsList recordTagsList={record.tagsList}/>
             <TextStyled>{record.description}</TextStyled>
             <div>{actions}</div>
-            </div>
-            <RecordTagsList recordTagsList={record.tagsList}/>
+
+
         </SingleRecordStyled>
 
     )
@@ -20,8 +21,8 @@ export default function Record({record, actions = [], className}) {
 
 const SingleRecordStyled = styled.section`
 display: grid;
-grid-template-columns: 0.75fr 0.25fr;
-grid-template-rows: 4 (1fr);
+
+grid-template-rows: 5 (1fr);
 row-gap: 6px;
 `;
 

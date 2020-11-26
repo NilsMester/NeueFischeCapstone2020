@@ -5,6 +5,9 @@ import { useHistory } from 'react-router-dom';
 import Header from "../../commons/Header";
 import SideBarActions from "../../commons/SideBarActions";
 import styled from 'styled-components/macro';
+import ActionBar from "../../commons/ActionBar";
+
+
 
 export const RecordFormDataContext = createContext({});
 
@@ -27,13 +30,12 @@ export default function AddRecordPage() {
     return(
         <>
             <RecordFormDataContext.Provider value={{recordData, setRecordData, recordTagsList, setRecordTagsList, handleTagKlickButton}}>
-                <BodyGrid>
-                    <Header titel="New Record"/>
-                    <MainGridStyled>
-                        <RecordForm onSave={handleSave}/>
-                        <SideBarActions/>
-                    </MainGridStyled>
-                </BodyGrid>
+                <Header titel="New Record"/>
+                <MainGridStyled>
+                    <RecordForm onSave={handleSave}/>
+                    <SideBarActions/>
+                </MainGridStyled>
+                <ActionBar/>
             </RecordFormDataContext.Provider>
         </>
     )
@@ -48,15 +50,9 @@ export default function AddRecordPage() {
         setRecordData({...recordData, tagsList: [...recordData.tagsList, recordTagsList]});
         setRecordTagsList("");
     }
-
 }
-const BodyGrid = styled.div`
-display: grid;
-grid-template-rows: min-content 1fr;
-height: 100vh;
-`
 
 const MainGridStyled = styled.div`
 display: grid;
-grid-template-columns: 1fr;
+grid-template-columns: 1fr 0.5fr;
 `
