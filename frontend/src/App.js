@@ -1,6 +1,7 @@
 import React from 'react';
 import UserContextProvider from "./contexts/UserContextProvider";
 import {Redirect, Route, Switch} from "react-router-dom";
+import styled from 'styled-components/macro';
 import LoginPage from "./pages/loginPage/LoginPage";
 import ProtectedRoute from "./routing/ProtectedRoute";
 import HomePage from "./pages/HomePage";
@@ -14,6 +15,7 @@ function App() {
     return (
         <UserContextProvider>
             <RecordContextProvider>
+                <PageLayout>
                 <Switch>
                     <Route path="/login" component={LoginPage}/>
                     <ProtectedRoute path="/home" component={HomePage}/>
@@ -26,9 +28,16 @@ function App() {
                         <Redirect to="/records"/>
                     </Route>
                 </Switch>
+                </PageLayout>
             </RecordContextProvider>
         </UserContextProvider>
     );
 }
 
 export default App;
+
+const PageLayout = styled.div`
+  display: grid;
+  grid-template-rows: 48px 1fr 48px;
+  height: 100vh;
+`;

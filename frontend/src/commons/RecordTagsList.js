@@ -1,13 +1,12 @@
 import RecordTagsListItem from "./RecordTagsListItem";
-import React, {useContext} from "react";
-import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
+import React from "react";
 import styled from 'styled-components/macro';
 
-export default function RecordTagsList() {
-    const {recordData} = useContext(RecordFormDataContext)
+export default function RecordTagsList({recordTagsList}) {
+
     return (
         <StyledTagsList>
-            {recordData.tagsList?.map((recordTagItem, index) => (
+            {recordTagsList?.map((recordTagItem, index) => (
                 <RecordTagsListItem key={index} recordTagItem={recordTagItem}/>
                 )
             )}
@@ -16,9 +15,11 @@ export default function RecordTagsList() {
 }
 
 const StyledTagsList = styled.ul `
+overflow: scroll;
 list-style: none;
-display: inline;
 float: left;
 padding: 0;
 margin: 0;
-    `;
+row-gap: 12px;
+grid-auto-rows: min-content
+`;
