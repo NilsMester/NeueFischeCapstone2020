@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { RiAddCircleFill, TiArrowBack } from 'react-icons/all';
 import {useHistory} from "react-router-dom";
+import {TiArrowBack} from "react-icons/ti";
+import {RiAddCircleFill} from "react-icons/ri";
 
 
 
@@ -15,7 +16,6 @@ export default function Header({titel}){
             <NewRecordButtonStyled onClick={() => history.push(`/newRecord`)}/>
         </HeaderStyled>
     )
-
 }
 
 const HeaderStyled = styled.header`
@@ -24,7 +24,6 @@ const HeaderStyled = styled.header`
 
   background: var(--grey-main);
   padding: var(--size-s);
- 
 `;
 
 const HeadingStyled = styled.h1`
@@ -32,7 +31,6 @@ align-self: center;
 justify-self: center;
 margin: 0;
 color: var(--white2);
-
 `
 
 const HistoryGoBackButtonStyled = styled(TiArrowBack)`
