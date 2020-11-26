@@ -17,8 +17,7 @@ export default function UserRecordsList () {
                     <Record
                         record={record}
                         actions={[
-                            <RecordActionButton key="details"
-                                                onClick={() => history.push(`/record/${record.id}`)}>
+                            <RecordActionButton key="details" onClick={() => history.push(`/record/${record.id}`)}>
                                 Details
                             </RecordActionButton>
                         ]}
