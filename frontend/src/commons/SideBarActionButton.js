@@ -7,26 +7,21 @@ export default function SideBarActionButton({ children, ...rest }) {
 }
 
 const SidebarButtonStyled = styled.button`
-  display: grid;
-  align-content: center;
-  position: absolute;
+ 
   color: var(--white1);
   border: var(--gray-50);
   border-radius: var(--size-xs);
   background: var(--grey-main);
-  width: 90px;
-  height: 30px;
+
   
   ${(props) =>
     props.first
         ? css`
-          top:10%;
+          top: 15%;
           right: 0;
         `
         : css`
-          top:73%;
+           top: 65%;
           right: 0;
         `}
-  
 `;
-

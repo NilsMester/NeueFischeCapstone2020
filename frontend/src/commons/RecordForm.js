@@ -4,10 +4,9 @@ import RecordTagsList from "./RecordTagsList";
 import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
 import styled from 'styled-components/macro';
 
-export default function RecordForm({onSave,onChange}) {
+export default function RecordForm({onSave}) {
 
     const {recordData, setRecordData} = useContext(RecordFormDataContext)
-    const {titel, recordLink, description} = recordData
 
     const history = useHistory();
 
@@ -17,7 +16,7 @@ export default function RecordForm({onSave,onChange}) {
                 <label>
                     Titel
                     <input name="titel"
-                           value={titel || ""}
+                           value={recordData.titel || ""}
                            onChange={handleChange}
                            type="text"/>
                 </label>
@@ -25,17 +24,17 @@ export default function RecordForm({onSave,onChange}) {
                 <label>
                     RecordLink
                     <input name="recordLink"
-                           value={recordLink || ""}
+                           value={recordData.recordLink || ""}
                            onChange={handleChange}
                            type="text"/>
                 </label>
                 <p>Tags</p>
-                <RecordTagsList/>
+                <RecordTagsList recordTagsList={recordData.tagsList}/>
 
                 <label>
                     Description
                     <input name="description"
-                           value={description || ""}
+                           value={recordData.description || ""}
                            onChange={handleChange}
                            type="test"/>
                 </label>
@@ -48,8 +47,7 @@ export default function RecordForm({onSave,onChange}) {
     );
 
     function handleChange(event) {
-        setRecordData({field: event.target.name, value: event.target.value});
-        onChange(recordData)
+        setRecordData({...recordData, [event.target.name]: event.target.value});
     }
 
     function onCancel() {

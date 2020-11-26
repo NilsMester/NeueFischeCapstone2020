@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import Header from "../../commons/Header";
 import SideBarActions from "../../commons/SideBarActions";
 import styled from 'styled-components/macro';
-import SideBarActionButton from "../../commons/SideBarActionButton";
 
 export const RecordFormDataContext = createContext({});
 
@@ -28,15 +27,13 @@ export default function AddRecordPage() {
     return(
         <>
             <RecordFormDataContext.Provider value={{recordData, setRecordData, recordTagsList, setRecordTagsList, handleTagKlickButton}}>
-                <MainGrid>
-                    <SideBarActionButton first>Tags</SideBarActionButton>
-                    <SideBarActionButton>New Tag</SideBarActionButton>
+                <BodyGrid>
                     <Header titel="New Record"/>
-                    <DivStyled>
-                        <RecordForm onSave={handleSave} onChange={handleChange} onAddTagKlick={handleTagKlick}/>
+                    <MainGridStyled>
+                        <RecordForm onSave={handleSave} onAddTagKlick={handleTagKlick}/>
                         <SideBarActions/>
-                    </DivStyled>
-                </MainGrid>
+                    </MainGridStyled>
+                </BodyGrid>
             </RecordFormDataContext.Provider>
         </>
     )
@@ -45,10 +42,6 @@ export default function AddRecordPage() {
         const{titel, recordLink, description, publicStatus, tagsList} = recordData;
         createRecord(titel, recordLink, description, publicStatus, tagsList);
         history.push('/');
-    }
-
-    function handleChange(recordData) {
-        setRecordData(recordData);
     }
 
     function handleTagKlick(recordData) {
@@ -61,14 +54,13 @@ export default function AddRecordPage() {
     }
 
 }
-const MainGrid = styled.div`
+const BodyGrid = styled.div`
 display: grid;
 grid-template-rows: min-content 1fr;
 height: 100vh;
 `
 
-const DivStyled = styled.div`
+const MainGridStyled = styled.div`
 display: grid;
-grid-template-columns: 1fr 0.5fr;
-
+grid-template-columns: 1fr;
 `
