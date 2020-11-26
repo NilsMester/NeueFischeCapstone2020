@@ -30,9 +30,13 @@ export default function UserRecordsList () {
 }
 
 const StyledRecordsList = styled.ul `
-    li:last-child:after {
-    content: '';
-    display: block;
-    height: 56px;
-  }
-    `;
+    overflow: scroll;
+    list-style: none;
+    
+    display:grid;
+    row-gap: 12px;
+    grid-auto-rows: min-content;
+    margin:0;
+    padding: 16px;
+    
+`;

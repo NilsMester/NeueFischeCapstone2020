@@ -14,10 +14,11 @@ export default function Header({titel}){
 
 const HeaderStyled = styled.header`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   background: var(--grey-main);
   padding: var(--size-s);
+  border-radius: 0 0 50% 50%;
 `;
 
 const HeadingStyled = styled.h1`
