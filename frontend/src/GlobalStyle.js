@@ -32,10 +32,12 @@ export default createGlobalStyle`
   html, body {
     margin: 0;
     font-family: 'Nunito', sans-serif;
+   
   }
   
   body{
     background-color: var(--white1);
+     display: grid;
   }
    
   input, textarea {

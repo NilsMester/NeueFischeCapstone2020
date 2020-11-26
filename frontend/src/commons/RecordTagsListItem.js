@@ -1,9 +1,20 @@
 import React from 'react';
+import styled from 'styled-components/macro';
+import TagDesign from "./TagDesign";
 
-export default function RecordTagsListItem({recordTagItem}){
+export default function RecordTagsListItem({recordTagItem, className}){
 
-    return (<li className="tag">
-            {recordTagItem}
-    </li>
+    return (
+        <StyledListItem className={className}>
+            <TagDesign>
+                {recordTagItem}
+            </TagDesign>
+        </StyledListItem>
     )
 }
+
+const StyledListItem = styled.li`
+display: inline;
+float: left;
+padding: 10px;
+`
