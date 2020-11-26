@@ -15,7 +15,7 @@ export default function SingleRecordPage(){
     const record = records.find((record) => record.id === id);
     return !record ? null : (
         <>
-            <Header titel={record.titel}/>
+            <Header titel="Your Record"/>
             <Record record={record} actions={getActions()}/>
         </>
 );

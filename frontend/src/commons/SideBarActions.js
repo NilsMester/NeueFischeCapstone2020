@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
 import UserTagList from "./UserTagList";
 import styled from 'styled-components/macro';

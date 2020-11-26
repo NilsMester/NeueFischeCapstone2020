@@ -16,9 +16,10 @@ export default function EditIdeaPage() {
 
     return !record ? null : (
 
-        <RecordFormDataContext.Provider value={{recordData, setRecordData, recordTagsList, setRecordTagsList}}>
+        <RecordFormDataContext.Provider value={{recordData, setRecordData, recordTagsList, setRecordTagsList, handleTagKlickButton}}>
             <Header titel="Edit Record"/>
             <RecordForm onSave={handleSave}/>
+
         </RecordFormDataContext.Provider>
 
     );
