@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
-import SideBarActionButton from "./SideBarActionButton";
 import UserTagList from "./UserTagList";
 import styled from 'styled-components/macro';
 
