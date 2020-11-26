@@ -30,7 +30,7 @@ export default function AddRecordPage() {
                 <BodyGrid>
                     <Header titel="New Record"/>
                     <MainGridStyled>
-                        <RecordForm onSave={handleSave} onAddTagKlick={handleTagKlick}/>
+                        <RecordForm onSave={handleSave}/>
                         <SideBarActions/>
                     </MainGridStyled>
                 </BodyGrid>
@@ -42,10 +42,6 @@ export default function AddRecordPage() {
         const{titel, recordLink, description, publicStatus, tagsList} = recordData;
         createRecord(titel, recordLink, description, publicStatus, tagsList);
         history.push('/');
-    }
-
-    function handleTagKlick(recordData) {
-        setRecordData(recordData);
     }
 
     function handleTagKlickButton() {

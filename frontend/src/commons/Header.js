@@ -7,7 +7,6 @@ export default function Header({titel}){
         <HeaderStyled>
             <HeadingStyled>{titel}</HeadingStyled>
         </HeaderStyled>
-
     )
 
 }
@@ -18,7 +17,7 @@ const HeaderStyled = styled.header`
   justify-content: center;
   background: var(--grey-main);
   padding: var(--size-s);
-  border-radius: 0 0 50% 50%;
+  
 `;
 
 const HeadingStyled = styled.h1`
