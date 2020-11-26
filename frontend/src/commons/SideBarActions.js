@@ -11,17 +11,9 @@ export default function RecordForm(){
     return (
         <SidebarStyled>
 
-            <SidebarSection2Styled>
-                <SideBarActionButton>Tags</SideBarActionButton>
-            </SidebarSection2Styled>
-
             <SidebarSection3Styled>
                 <UserTagList/>
             </SidebarSection3Styled>
-
-            <SidebarSection2Styled>
-                <SideBarActionButton>New Tag</SideBarActionButton>
-            </SidebarSection2Styled>
 
             <SidebarSection4Styled>
                 <input name="recordTagsList"
@@ -38,15 +30,10 @@ export default function RecordForm(){
 
 const SidebarStyled = styled.div`
 display: grid;
-
+position: relative;
+align-self: center;
 justify-content: end;
-row-gap: 12px;
-`
-
-const SidebarSection2Styled = styled.section`
-display: grid;
-align-content: end;
-justify-content: end;
+row-gap: 50px;
 `
 
 const SidebarSection3Styled = styled.section`

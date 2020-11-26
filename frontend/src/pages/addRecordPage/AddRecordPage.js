@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import Header from "../../commons/Header";
 import SideBarActions from "../../commons/SideBarActions";
 import styled from 'styled-components/macro';
+import SideBarActionButton from "../../commons/SideBarActionButton";
 
 export const RecordFormDataContext = createContext({});
 
@@ -28,6 +29,8 @@ export default function AddRecordPage() {
         <>
             <RecordFormDataContext.Provider value={{recordData, setRecordData, recordTagsList, setRecordTagsList, handleTagKlickButton}}>
                 <MainGrid>
+                    <SideBarActionButton first>Tags</SideBarActionButton>
+                    <SideBarActionButton>New Tag</SideBarActionButton>
                     <Header titel="New Record"/>
                     <DivStyled>
                         <RecordForm onSave={handleSave} onChange={handleChange} onAddTagKlick={handleTagKlick}/>
