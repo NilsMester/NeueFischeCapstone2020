@@ -8,7 +8,7 @@ export default function SideBarActionButton({ children, ...rest }) {
 
 const SidebarButtonStyled = styled.button`
  
-  color: var(--white1);
+  color: var(--secondary1);
   border: var(--gray-50);
   border-radius: var(--size-xs);
   background: var(--grey-main);
