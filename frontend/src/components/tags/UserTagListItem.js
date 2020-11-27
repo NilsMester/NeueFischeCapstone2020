@@ -12,7 +12,7 @@ export default function RecordTagsListItem({userTag, recordData, setRecordData})
 
     return (
         <StyledListItem>
-            <TagStyled chosen={chosenTag} onClick={handleToggle} userTag={userTag}>
+            <TagStyled chosen={chosenTag} onClick={handleToggle}>
                 {userTag}
             </TagStyled>
         </StyledListItem>
@@ -25,4 +25,3 @@ display: grid;
 align-content: center;
 padding: 2px 0;
 `
-

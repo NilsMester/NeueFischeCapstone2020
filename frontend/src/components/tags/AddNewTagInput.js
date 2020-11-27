@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import UserTagList from "./UserTagList";
 import styled from 'styled-components/macro';
 
-export default function RecordForm({recordData, setRecordData}){
+export default function AddNewTagInput({recordData, setRecordData}){
 
     const [addTags, setAddTags] = useState("");
 

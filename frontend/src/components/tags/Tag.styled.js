@@ -4,7 +4,7 @@ import styled from 'styled-components/macro';
 export default function TagStyled({chosen,onClick, children}){
 
     return (
-        <VisualBorder  chosen={chosen} onClick={onClick}>
+        <VisualBorder chosen={chosen} onClick={onClick}>
             <RightHide/>
             <LeftHide/>
             <BorderVisualWrapper>
