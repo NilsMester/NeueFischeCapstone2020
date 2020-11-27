@@ -1,13 +1,9 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {useHistory} from 'react-router-dom';
 import RecordTagsList from "./RecordTagsList";
-import {RecordFormDataContext} from "../pages/addRecordPage/AddRecordPage";
 import styled from 'styled-components/macro';
 
-
-export default function RecordForm({onSave}) {
-
-    const {recordData, setRecordData} = useContext(RecordFormDataContext)
+export default function RecordForm({onSave, recordData, setRecordData}) {
 
     const history = useHistory();
 
@@ -43,7 +39,6 @@ export default function RecordForm({onSave}) {
                 <button type="button" onClick={onCancel}>Cancel</button>
                 <button>Save</button>
             </DivStyled>
-
         </FormStyled>
     );
 

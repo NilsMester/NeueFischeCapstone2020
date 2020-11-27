@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 
 export default function TagDesign({children}){
     return (
-        <VisualBorder id="ticket">
+        <VisualBorder id="tag">
             <RightHide/>
             <LeftHide/>
             <BorderVisualWrapper>

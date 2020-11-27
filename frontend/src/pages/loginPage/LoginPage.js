@@ -18,7 +18,7 @@ export default function LoginPage(){
             <main>
                 <form onSubmit={handleSubmit}>
                     <label>
-                        Username
+                        E-Mail
                         <input
                             name="email"
                             value={credentials.email || ""}

@@ -5,9 +5,7 @@ import RecordContext from "./RecordContext";
 
 
 export default function RecordContextProvider({children}) {
-
     const [records,setRecords] = useState([]);
-
     const {token, tokenIsValid} = useContext(UserContext);
 
     useEffect(() => {
