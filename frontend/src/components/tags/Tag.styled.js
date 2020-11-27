@@ -1,9 +1,16 @@
-import React, {} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
 
-export default function TagStyling({children}){
+export default function TagStyled({children}){
+
+    const [chosenTag, setChosenTag] = useState(false);
+
+    function handleToggle(){
+        setChosenTag(!chosenTag)
+    }
+
     return (
-        <VisualBorder>
+        <VisualBorder  chosen={chosenTag} onClick={handleToggle}>
             <RightHide/>
             <LeftHide/>
             <BorderVisualWrapper>
@@ -14,6 +21,7 @@ export default function TagStyling({children}){
 }
 
 const VisualBorder = styled.div`
+    background: ${props => props.chosen ? "linear-gradient(to right,var(--secondary1),var(--secondary1),var(--secondary1),var(--secondary1))":"linear-gradient(to right,var(--orange-75),var(--orange-75),var(--orange-75),var(--orange-75))"};
     width: 100px;
     height: 30px;
     position: relative;
@@ -21,15 +29,17 @@ const VisualBorder = styled.div`
     margin-right: 4px;
     border-radius: 4px;
     z-index: 1;
-    background: linear-gradient(
+    
+  /*  background: linear-gradient(
         to right,
-    #FFC491,
-    #FFC491,
-    #FFC491,
-    #FFC491
-);
+    var(--orange-75),
+    var(--orange-75),
+    var(--orange-75),
+    var(--orange-75)
+)*/;
  
  &::before{
+    background: ${props => props.chosen ? "linear-gradient(to right,var(--secondary1),var(--secondary1),var(--secondary1),var(--secondary1))":"linear-gradient(to right,var(--orange-75),var(--orange-75),var(--orange-75),var(--orange-75))"};
     content: "";
     display: block;
     position: absolute;
@@ -38,12 +48,12 @@ const VisualBorder = styled.div`
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #FFC491;
     z-index: 8;
  }
  
 &::after{
-content: "";
+    background: ${props => props.chosen ? "linear-gradient(to right,var(--secondary1),var(--secondary1),var(--secondary1),var(--secondary1))":"linear-gradient(to right,var(--orange-75),var(--orange-75),var(--orange-75),var(--orange-75))"};
+    content: "";
     display: block;
     position: absolute;
     top: 7px;
@@ -51,7 +61,6 @@ content: "";
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #FFC491;
     z-index: 2;
 }
 `
@@ -61,6 +70,7 @@ const BorderVisualWrapper = styled.div`
     justify-content: center;    
     font-size: 0.5em;
     color: var(--orange-75);
+    cursor: pointer;
     width: 100%;
     height: 100%;
     background: var(--grey-50);

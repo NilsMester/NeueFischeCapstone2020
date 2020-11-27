@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import TagStyling from "./Tag.styling";
+import TagStyled from "./Tag.styled";
 
 export default function RecordTagsListItem({recordTagItem}){
 
     return (
         <StyledListItem>
-            <TagStyling>
+            <TagStyled>
                 {recordTagItem}
-            </TagStyling>
+            </TagStyled>
         </StyledListItem>
     )
 }
