@@ -10,11 +10,13 @@ import RecordContextProvider from "./contexts/RecordContextProvider";
 import UserRecordsListPage from "./pages/userRecordsListPage/UserRecordsListPage";
 import SingleRecordPage from "./pages/singleRecordPage/SingleRecordPage";
 import EditRecordPage from "./pages/editRecordPage/EditRecordPage";
+import TagsContextProvider from "./contexts/TagsContextProvider";
 
 function App() {
     return (
         <UserContextProvider>
             <RecordContextProvider>
+                <TagsContextProvider>
                 <PageLayout>
                 <Switch>
                     <Route path="/login" component={LoginPage}/>
@@ -29,6 +31,7 @@ function App() {
                     </Route>
                 </Switch>
                 </PageLayout>
+            </TagsContextProvider>
             </RecordContextProvider>
         </UserContextProvider>
     );
