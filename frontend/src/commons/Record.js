@@ -47,7 +47,7 @@ export default function Record({record, actions = [], className}) {
 const SingleRecordStyled = styled.section`
 display: grid;
 grid-template-rows: 5 (1fr);
-row-gap: 6px;
+row-gap: 8px;
 `;
 
 const ActionSection = styled.section`

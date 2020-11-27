@@ -20,6 +20,6 @@ list-style: none;
 float: left;
 padding: 0;
 margin: 0;
-row-gap: 12px;
+row-gap: 6px;
 grid-auto-rows: min-content
 `;
