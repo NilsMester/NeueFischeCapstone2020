@@ -2,12 +2,10 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import RecordTagsList from "../tags/RecordTagsList";
 import styled from 'styled-components/macro';
-import addUserTagToRecordTagsList from "../services/TagsToggler";
 
 export default function RecordForm({onSave, recordData, setRecordData}) {
 
     const history = useHistory();
-    const Klaus = addUserTagToRecordTagsList(recordData.tagsList)
     return (
         <FormStyled onSubmit={handleSubmit}>
             <DivStyled>
