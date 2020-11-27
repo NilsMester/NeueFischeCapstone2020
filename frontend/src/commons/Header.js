@@ -4,9 +4,6 @@ import {useHistory} from "react-router-dom";
 import {TiArrowBack} from "react-icons/ti";
 import {RiAddCircleFill} from "react-icons/ri";
 
-
-
-
 export default function Header({titel}){
     const history = useHistory();
     return(

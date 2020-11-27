@@ -17,8 +17,7 @@ export default function UserRecordsList () {
                     <Record
                         record={record}
                         actions={[
-                            <RecordActionButton key="details"
-                                                onClick={() => history.push(`/record/${record.id}`)}>
+                            <RecordActionButton key="details" onClick={() => history.push(`/record/${record.id}`)}>
                                 Details
                             </RecordActionButton>
                         ]}
@@ -34,7 +33,7 @@ const StyledRecordsList = styled.ul `
     list-style: none;
     
     display:grid;
-    row-gap: 12px;
+    row-gap: 16px;
     grid-auto-rows: min-content;
     margin:0;
     padding: 16px;
