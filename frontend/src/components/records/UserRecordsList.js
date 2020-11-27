@@ -2,8 +2,8 @@ import React, {useContext} from 'react';
 import RecordContext from "../../contexts/RecordContext";
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
-import Record from "../../commons/Record";
-import RecordActionButton from "../../commons/RecordActionButton";
+import UserRecordItem from "./UserRecordItem";
+import RecordActionButton from "../UI/RecordActionButton";
 
 export default function UserRecordsList () {
 
@@ -14,7 +14,7 @@ export default function UserRecordsList () {
         <StyledRecordsList>
             {records?.map((record) => (
                 <li key={record.id}>
-                    <Record
+                    <UserRecordItem
                         record={record}
                         actions={[
                             <RecordActionButton key="details" onClick={() => history.push(`/record/${record.id}`)}>

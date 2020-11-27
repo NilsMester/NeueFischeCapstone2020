@@ -1,14 +1,14 @@
 import React from 'react'
-import UserRecordsList from "./UserRecordsList";
-import Header from "../../commons/Header";
-import ActionBar from "../../commons/ActionBar";
+import UserRecordsList from "../../components/records/UserRecordsList";
+import Header from "../../components/Header";
+import TabBar from "../../components/UI/TabBar";
 
 export default function UserRecordsListPage () {
     return(
    <>
         <Header titel="Your Records"/>
         <UserRecordsList/>
-        <ActionBar/>
+        <TabBar/>
      </>
     )
 

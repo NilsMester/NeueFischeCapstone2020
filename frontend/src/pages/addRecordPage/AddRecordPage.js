@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
-import RecordForm from "../../commons/RecordForm";
+import RecordForm from "../../components/recordForm/RecordForm";
 import RecordContext from "../../contexts/RecordContext";
 import { useHistory } from 'react-router-dom';
-import Header from "../../commons/Header";
-import SideBarActions from "../../commons/SideBarActions";
+import Header from "../../components/Header";
+import SideBarActions from "../../components/tags/AddNewTagInput";
 import styled from 'styled-components/macro';
-import ActionBar from "../../commons/ActionBar";
+import TabBar from "../../components/UI/TabBar";
 
 const initialState = {
     titel:"",
@@ -22,12 +22,12 @@ export default function AddRecordPage() {
 
     return(
         <>
-            <Header titel="New Record"/>
+            <Header titel="New UserRecordItem"/>
             <MainGridStyled>
                 <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
                 <SideBarActions recordData={recordData} setRecordData={setRecordData}/>
             </MainGridStyled>
-            <ActionBar/>
+            <TabBar/>
         </>
     );
 

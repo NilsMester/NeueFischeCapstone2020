@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components/macro';
 
-import TagsContext from "../contexts/TagsContext";
+import TagsContext from "../../contexts/TagsContext";
 import UserTagListItem from "./UserTagListItem";
 
 export default function UserTagList () {
