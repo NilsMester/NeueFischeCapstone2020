@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 
 export default function TagDesign({children}){
     return (
-        <VisualBorder id="tag">
+        <VisualBorder>
             <RightHide/>
             <LeftHide/>
             <BorderVisualWrapper>
@@ -20,6 +20,7 @@ const VisualBorder = styled.div`
     padding: 2px;
     margin-right: 4px;
     border-radius: 4px;
+    z-index: 1;
     background: linear-gradient(
         to right,
     #FFC491,
@@ -38,7 +39,7 @@ const VisualBorder = styled.div`
     height: 16px;
     border-radius: 50%;
     background: #FFC491;
-    z-index: 2;
+    z-index: 8;
  }
  
 &::after{
@@ -76,7 +77,7 @@ const BorderVisualWrapper = styled.div`
     height: 12px;
     border-radius: 50%;
     background: var(--grey-50);
-    z-index: 3;
+    z-index: 9;
     };
     
     &::after{
@@ -99,7 +100,7 @@ const LeftHide = styled.div`
     width: 10px;
     height: 18px;
     background: var(--grey-50);
-    z-index: 4;
+    z-index: 8;
 `
 const RightHide = styled.div`
    position: absolute;

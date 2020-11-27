@@ -28,12 +28,12 @@ export default function UserRecordsList () {
     );
 }
 
-const StyledRecordsList = styled.ul `
+const StyledRecordsList = styled.ul`
     overflow: scroll;
     list-style: none;
     
     display:grid;
-    row-gap: 16px;
+    row-gap: 32px;
     grid-auto-rows: min-content;
     margin:0;
     padding: 12px;

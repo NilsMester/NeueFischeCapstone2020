@@ -2,19 +2,21 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import TagDesign from "./TagDesign";
 
-export default function RecordTagsListItem({recordTagItem}){
+export default function RecordTagsListItem({userTag}){
 
     return (
         <StyledListItem>
             <TagDesign>
-                {recordTagItem}
+                {userTag}
             </TagDesign>
         </StyledListItem>
     )
 }
 
 const StyledListItem = styled.li`
-display: inline-block;
-padding: 6px 0 0 0;
+max-height: 40px;
+display: grid;
+align-content: center;
+padding: 2px 0;
 `
 

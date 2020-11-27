@@ -17,9 +17,7 @@ export default function RecordTagsList({recordTagsList}) {
 const StyledTagsList = styled.ul `
 overflow: scroll;
 list-style: none;
-float: left;
+text-align: center;
 padding: 0;
 margin: 0;
-row-gap: 6px;
-grid-auto-rows: min-content
 `;

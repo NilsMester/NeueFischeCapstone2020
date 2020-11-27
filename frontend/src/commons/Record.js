@@ -53,8 +53,9 @@ row-gap: 8px;
 const ActionSection = styled.section`
 display: grid;
 grid-template-columns: 0.5fr 0.5fr;
+height: 35px;
 justify-items: center;
-align-items: center;
+align-items: start;
 `
 
 const CopyLinkStyled = styled.div` 
@@ -69,15 +70,15 @@ color: var(--grey-50);
 const TitelStyled = styled.h2`
 margin: 0;
 color: var(--grey-main);
+text-align: center;
 `
+
 const TextStyled = styled.p`
 margin: 0;
 color: var(--grey-50);
-
 `
 const CopyLinkIconStyled = styled(FaLink)`
 color: var(--secondary1);
 height: 30px;
 width: 30px;
-
 `

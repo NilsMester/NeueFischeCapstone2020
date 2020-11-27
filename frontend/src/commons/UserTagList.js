@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components/macro';
-import TagDesign from "./TagDesign";
+
 import TagsContext from "../contexts/TagsContext";
+import UserTagListItem from "./UserTagListItem";
 
 export default function UserTagList () {
 
@@ -10,11 +11,7 @@ export default function UserTagList () {
     return (
         <StyledTagsList>
             {userTagsList?.map((userTag) => (
-                <StyledListItem key={userTag._id}>
-                    <TagDesign>
-                        {userTag._id}
-                    </TagDesign>
-                </StyledListItem>
+                <UserTagListItem key={userTag._id} userTag={userTag._id}/>
             ))}
         </StyledTagsList>
     );
@@ -26,9 +23,3 @@ padding: 0;
 margin: 0;
     `;
 
-const StyledListItem = styled.li`
-max-height: 40px;
-display: grid;
-align-content: center;
-padding: 2px 0;
-`
