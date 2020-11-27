@@ -36,6 +36,6 @@ const StyledRecordsList = styled.ul `
     row-gap: 16px;
     grid-auto-rows: min-content;
     margin:0;
-    padding: 16px;
+    padding: 12px;
     
 `;

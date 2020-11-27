@@ -16,6 +16,6 @@ export default function RecordTagsListItem({recordTagItem, className}){
 const StyledListItem = styled.li`
 display: inline;
 float: left;
-padding: 8px;
+padding: 8px 6px 0 6px;
 `
 

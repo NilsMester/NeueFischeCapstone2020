@@ -2,24 +2,17 @@ import React, {useContext, useEffect, useState} from "react";
 import UserContext from "./UserContext";
 import {addRecord, getUserRecordsList, removeRecord, updateRecord} from "../service/RecordService";
 import RecordContext from "./RecordContext";
-import {getUserTags} from "../service/TagsAggregationService";
 
 
 export default function RecordContextProvider({children}) {
 
     const [records,setRecords] = useState([]);
-    const [userTagsList,setUserTagsList] = useState([]);
+
     const {token, tokenIsValid} = useContext(UserContext);
 
     useEffect(() => {
         tokenIsValid() && getUserRecordsList(token)
             .then(setRecords)
-            .catch(console.log);
-    }, [token, tokenIsValid]);
-
-    useEffect(() => {
-        tokenIsValid() && getUserTags(token)
-            .then(setUserTagsList)
             .catch(console.log);
     }, [token, tokenIsValid]);
 
@@ -40,7 +33,7 @@ export default function RecordContextProvider({children}) {
     }
 
     return (
-        <RecordContext.Provider value={{records, userTagsList, createRecord, deleteRecord, editRecord}}>
+        <RecordContext.Provider value={{records, createRecord, deleteRecord, editRecord}}>
             {children}
         </RecordContext.Provider>
     )

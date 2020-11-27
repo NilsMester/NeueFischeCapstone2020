@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
-import RecordContext from "../contexts/RecordContext";
 import styled from 'styled-components/macro';
 import TagDesign from "./TagDesign";
+import TagsContext from "../contexts/TagsContext";
 
 export default function UserTagList () {
 
-    const {userTagsList} = useContext(RecordContext);
+    const {userTagsList} = useContext(TagsContext);
 
     return (
         <StyledTagsList>

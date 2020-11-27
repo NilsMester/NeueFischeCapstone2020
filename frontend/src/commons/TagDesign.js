@@ -14,8 +14,8 @@ export default function TagDesign({children}){
 }
 
 const VisualBorder = styled.div`
-    width: 80px;
-    height: 35.5px;
+    width: 100px;
+    height: 30px;
     position: relative;
     padding: 2px;
     margin-right: 4px;
@@ -32,10 +32,10 @@ const VisualBorder = styled.div`
     content: "";
     display: block;
     position: absolute;
-    top: 8px;
-    left: -6px;
-    width: 18px;
-    height: 18px;
+    top: 7px;
+    left: -5px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: #FFC491;
     z-index: 2;
@@ -45,10 +45,10 @@ const VisualBorder = styled.div`
 content: "";
     display: block;
     position: absolute;
-    top: 8px;
-    right: -12px;
-    width: 18px;
-    height: 18px;
+    top: 7px;
+    right: -10px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: #FFC491;
     z-index: 2;
@@ -70,12 +70,12 @@ const BorderVisualWrapper = styled.div`
     content: "";
     display: block;
     position: absolute;
-    top: 8px;
-    left: -6px;
-    width: 14px;
-    height: 14px;
+    top: 7px;
+    left: -5px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: #414141;
+    background: var(--grey-50);
     z-index: 3;
     };
     
@@ -83,10 +83,10 @@ const BorderVisualWrapper = styled.div`
     content: "";
     display: block;
     position: absolute;
-    top: 8px;
-    right: -12px;
-    width: 14px;
-    height: 14px;
+    top: 7px;
+    right: -10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: var(--white1);
     z-index: 3;
@@ -94,19 +94,19 @@ const BorderVisualWrapper = styled.div`
 `
 const LeftHide = styled.div`
     position: absolute;
-    top: 5px;
+    top:6px;
     left: 2px;
     width: 10px;
-    height: 25px;
-    background: #414141;
+    height: 18px;
+    background: var(--grey-50);
     z-index: 4;
 `
 const RightHide = styled.div`
    position: absolute;
     top: 6px;
-    right: -12px;
-    width: 12px;
-    height: 20px;
+    right: -10px;
+    width: 10px;
+    height: 18px;
     background: var(--white1);
     z-index: 4;
 `
