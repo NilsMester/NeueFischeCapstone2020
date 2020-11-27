@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import RecordContext from "../../contexts/RecordContext";
-import RecordForm from "../../commons/RecordForm";
-import Header from "../../commons/Header";
-import ActionBar from "../../commons/ActionBar";
+import RecordForm from "../../components/recordForm/RecordForm";
+import Header from "../../components/Header";
+import TabBar from "../../components/UI/TabBar";
 import styled from 'styled-components/macro';
-import SideBarActions from "../../commons/SideBarActions";
+import SideBarActions from "../../components/tags/AddNewTagInput";
 
 export default function EditIdeaPage() {
     const {editRecord, records} = useContext(RecordContext);
@@ -17,12 +17,12 @@ export default function EditIdeaPage() {
 
     return !record ? null : (
 <>
-    <Header titel="Edit Record"/>
+    <Header titel="Edit UserRecordItem"/>
     <MainGridStyled>
         <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
         <SideBarActions recordData={recordData} setRecordData={setRecordData}/>
     </MainGridStyled>
-    <ActionBar/>
+    <TabBar/>
 </>
     );
 

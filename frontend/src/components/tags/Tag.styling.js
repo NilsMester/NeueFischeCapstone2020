@@ -1,7 +1,7 @@
 import React, {} from 'react';
 import styled from 'styled-components/macro';
 
-export default function TagDesign({children}){
+export default function TagStyling({children}){
     return (
         <VisualBorder>
             <RightHide/>

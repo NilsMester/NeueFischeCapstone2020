@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import SideBarActionButton from "./RecordActionButton";
 
-export default function ActionBar({left, right}){
+export default function TabBar({left, right}){
 
 return(
         <ActionBarStyled>

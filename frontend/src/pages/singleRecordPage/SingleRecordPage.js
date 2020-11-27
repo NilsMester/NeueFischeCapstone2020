@@ -2,9 +2,9 @@ import React, {useContext} from 'react';
 
 import RecordContext from "../../contexts/RecordContext";
 import {useParams, useHistory } from 'react-router-dom';
-import Header from "../../commons/Header";
-import Record from "../../commons/Record";
-import RecordActionButton from "../../commons/RecordActionButton";
+import Header from "../../components/Header";
+import UserRecordItem from "../../components/records/UserRecordItem";
+import RecordActionButton from "../../components/UI/RecordActionButton";
 
 export default function SingleRecordPage(){
     const{records, deleteRecord} = useContext(RecordContext);
@@ -15,8 +15,8 @@ export default function SingleRecordPage(){
     const record = records.find((record) => record.id === id);
     return !record ? null : (
         <>
-            <Header titel="Your Record"/>
-            <Record record={record} actions={getActions()}/>
+            <Header titel="Your UserRecordItem"/>
+            <UserRecordItem record={record} actions={getActions()}/>
         </>
 );
 

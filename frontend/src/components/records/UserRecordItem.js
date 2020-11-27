@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
 import styled from 'styled-components/macro';
-import RecordTagsList from "./RecordTagsList";
+import RecordTagsList from "../tags/RecordTagsList";
 import {FaLink} from "react-icons/fa";
 
-export default function Record({record, actions = [], className}) {
+export default function UserRecordItem({record, actions = [], className}) {
     const [copySuccess, setCopySuccess] = useState('');
+
     return (
         <SingleRecordStyled className={className}>
 
             <TitelStyled>{record.titel}</TitelStyled>
             <RecordTagsList recordTagsList={record.tagsList}/>
-            <TextStyled>{record.description}</TextStyled>
             <ActionSection>
                 <div>{actions}</div>
                 <CopyLinkStyled>
@@ -73,10 +73,6 @@ color: var(--grey-main);
 text-align: center;
 `
 
-const TextStyled = styled.p`
-margin: 0;
-color: var(--grey-50);
-`
 const CopyLinkIconStyled = styled(FaLink)`
 color: var(--secondary1);
 height: 30px;

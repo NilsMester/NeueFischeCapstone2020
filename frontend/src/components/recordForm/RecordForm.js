@@ -1,12 +1,11 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import RecordTagsList from "./RecordTagsList";
+import RecordTagsList from "../tags/RecordTagsList";
 import styled from 'styled-components/macro';
 
 export default function RecordForm({onSave, recordData, setRecordData}) {
 
     const history = useHistory();
-
     return (
         <FormStyled onSubmit={handleSubmit}>
             <DivStyled>
