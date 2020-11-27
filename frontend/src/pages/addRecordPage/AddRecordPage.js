@@ -3,9 +3,9 @@ import RecordForm from "../../components/recordForm/RecordForm";
 import RecordContext from "../../contexts/RecordContext";
 import { useHistory } from 'react-router-dom';
 import Header from "../../components/Header";
-import SideBarActions from "../../components/tags/AddNewTagInput";
 import styled from 'styled-components/macro';
 import TabBar from "../../components/UI/TabBar";
+import AddNewTagInput from "../../components/tags/AddNewTagInput";
 
 const initialState = {
     titel:"",
@@ -25,7 +25,7 @@ export default function AddRecordPage() {
             <Header titel="New UserRecordItem"/>
             <MainGridStyled>
                 <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
-                <SideBarActions recordData={recordData} setRecordData={setRecordData}/>
+                <AddNewTagInput recordData={recordData} setRecordData={setRecordData}/>
             </MainGridStyled>
             <TabBar/>
         </>

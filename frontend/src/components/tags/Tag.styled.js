@@ -1,16 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
 
-export default function TagStyled({children}){
-
-    const [chosenTag, setChosenTag] = useState(false);
-
-    function handleToggle(){
-        setChosenTag(!chosenTag)
-    }
+export default function TagStyled({chosen,onClick, children}){
 
     return (
-        <VisualBorder  chosen={chosenTag} onClick={handleToggle}>
+        <VisualBorder  chosen={chosen} onClick={onClick}>
             <RightHide/>
             <LeftHide/>
             <BorderVisualWrapper>

@@ -10,7 +10,7 @@ export default function RecordForm({recordData, setRecordData}){
         <SidebarStyled>
 
             <SidebarSection3Styled>
-                <UserTagList/>
+                <UserTagList recordData={recordData} setRecordData={setRecordData}/>
             </SidebarSection3Styled>
 
             <SidebarSection4Styled>
