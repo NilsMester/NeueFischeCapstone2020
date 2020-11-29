@@ -8,6 +8,7 @@ export default function RecordTagsListItem({userTag, recordData, setRecordData})
 
     function handleToggle(){
         setChosenTag(!chosenTag)
+
     }
 
     return (
