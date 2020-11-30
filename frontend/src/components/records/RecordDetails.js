@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styled from 'styled-components/macro';
-import RecordTagsList from "../tags/RecordTagsList";
 import {FaLink} from "react-icons/fa";
+import UserTagList from "../tags/UserTagList";
 
 export default function Record({record, actions = [], className}) {
     const [copySuccess, setCopySuccess] = useState('');
@@ -10,7 +10,7 @@ export default function Record({record, actions = [], className}) {
         <SingleRecordStyled className={className}>
 
             <TitelStyled>{record.titel}</TitelStyled>
-            <RecordTagsList recordTagList={record.tagList}/>
+            <UserTagList tags={record.tagList}/>
             <TextStyled>{record.description}</TextStyled>
             <ActionSection>
                 <div>{actions}</div>
