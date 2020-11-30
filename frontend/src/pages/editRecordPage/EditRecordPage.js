@@ -16,10 +16,8 @@ export default function EditIdeaPage() {
     const {id} = useParams();
     const record = records.find((record) => record.id === id);
     const [recordData, setRecordData] = useState(record);
-    console.log(recordData)
 
     const filteredUserTagList = userTagList.filter(tag=>!recordData.tagList.includes(tag._id)).map(tagItem=>tagItem._id)
-
 
     return !record ? null : (
 <>
