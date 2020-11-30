@@ -1,6 +1,5 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import RecordTagsList from "../tags/RecordTagsList";
 import styled from 'styled-components/macro';
 import UserTagList from "../tags/UserTagList";
 
