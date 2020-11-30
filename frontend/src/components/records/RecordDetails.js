@@ -10,7 +10,7 @@ export default function Record({record, actions = [], className}) {
         <SingleRecordStyled className={className}>
 
             <TitelStyled>{record.titel}</TitelStyled>
-            <RecordTagsList recordTagsList={record.tagsList}/>
+            <RecordTagsList recordTagList={record.tagList}/>
             <TextStyled>{record.description}</TextStyled>
             <ActionSection>
                 <div>{actions}</div>

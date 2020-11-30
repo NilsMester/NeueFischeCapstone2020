@@ -6,16 +6,16 @@ import {getUserTags} from "../service/TagsAggregationService";
 
 export default function TagsContextProvider({children}) {
     const {token, tokenIsValid} = useContext(UserContext);
-    const [userTagsList, setUserTagsList] = useState([]);
+    const [userTagList, setUserTagList] = useState([]);
 
     useEffect(() => {
         tokenIsValid() && getUserTags(token)
-            .then(setUserTagsList)
+            .then(setUserTagList)
             .catch(console.log);
     }, [token, tokenIsValid]);
 
     return (
-        <TagsContext.Provider value={{userTagsList, setUserTagsList}}>
+        <TagsContext.Provider value={{userTagList, setUserTagList}}>
             {children}
         </TagsContext.Provider>
     )

@@ -5,7 +5,7 @@ import styled from 'styled-components/macro';
 import UserRecordItem from "./UserRecordItem";
 import RecordActionButton from "../UI/RecordActionButton";
 
-export default function UserRecordsList () {
+export default function UserRecordList () {
 
     const {records} = useContext(RecordContext);
     const history = useHistory();

@@ -2,11 +2,11 @@ import RecordTagsListItem from "./RecordTagsListItem";
 import React from "react";
 import styled from 'styled-components/macro';
 
-export default function RecordTagsList({recordTagsList}) {
+export default function RecordTagsList({recordTagList}) {
 
     return (
         <StyledTagsList>
-            {recordTagsList?.map((recordTagItem, index) => (
+            {recordTagList?.map((recordTagItem, index) => (
                 <RecordTagsListItem key={index} recordTagItem={recordTagItem}/>
                 )
             )}

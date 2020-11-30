@@ -52,7 +52,7 @@ public class RecordService {
                 .description(addRecordDto.getDescription())
                 .recordLink(addRecordDto.getRecordLink())
                 .publicStatus(true)
-                .tagsList(addRecordDto.getTagsList())
+                .tagList(addRecordDto.getTagList())
                 .build();
 
         Query query = new Query();
@@ -75,7 +75,7 @@ public class RecordService {
                 .description(record.getDescription())
                 .recordLink(record.getRecordLink())
                 .publicStatus(true)
-                .tagsList(record.getTagsList())
+                .tagList(record.getTagList())
                 .build();
 
         Query query = new Query(new Criteria().andOperator(

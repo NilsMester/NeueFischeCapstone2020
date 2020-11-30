@@ -15,5 +15,5 @@ private String titel;
 private String recordLink;
 private String description;
 private boolean publicStatus;
-private List<String> tagsList;
+private List<String> tagList;
 }

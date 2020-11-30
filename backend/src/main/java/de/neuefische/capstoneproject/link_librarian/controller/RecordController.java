@@ -21,7 +21,7 @@ public class RecordController {
     }
 
     @GetMapping
-    public List<Record> getUserRecordsList(Principal principal){
+    public List<Record> getUserRecordList(Principal principal){
         return this.recordService.getUserRecordsList(principal.getName());
     }
 

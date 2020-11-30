@@ -10,7 +10,7 @@ export default function UserRecordItem({record, actions = [], className}) {
         <SingleRecordStyled className={className}>
 
             <TitelStyled>{record.titel}</TitelStyled>
-            <RecordTagsList recordTagsList={record.tagsList}/>
+            <RecordTagsList recordTagList={record.tagList}/>
             <ActionSection>
                 <div>{actions}</div>
                 <CopyLinkStyled>

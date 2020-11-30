@@ -24,7 +24,7 @@ public class TagsAggregationController {
     }
 
     @GetMapping
-    public List<Tags> userTagsLists(Principal principal){
-        return this.tagsAggregationService.userTagsLists(principal.getName());
+    public List<Tags> userTagList(Principal principal){
+        return this.tagsAggregationService.userTagList(principal.getName());
     }
 }

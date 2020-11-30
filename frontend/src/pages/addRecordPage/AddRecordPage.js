@@ -21,9 +21,9 @@ export default function AddRecordPage() {
     const {createRecord} = useContext(RecordContext)
     const [recordData, setRecordData] = useState(initialState);
     const history = useHistory();
-    const {userTagsList} = useContext(TagsContext);
+    const {userTagList} = useContext(TagsContext);
 
-    const filteredUserTagList = userTagsList.filter(tag=>!recordData.tagList.includes(tag._id)).map(tagItem=>tagItem._id)
+    const filteredUserTagList = userTagList.filter(tag=>!recordData.tagList.includes(tag._id)).map(tagItem=>tagItem._id)
 
     return(
         <>
@@ -42,8 +42,8 @@ export default function AddRecordPage() {
     );
 
     function handleSave(recordData) {
-        const{titel, recordLink, description, publicStatus, tagsList} = recordData;
-        createRecord(titel, recordLink, description, publicStatus, tagsList);
+        const{titel, recordLink, description, publicStatus, tagList} = recordData;
+        createRecord(titel, recordLink, description, publicStatus, tagList);
         history.push('/');
     }
 
