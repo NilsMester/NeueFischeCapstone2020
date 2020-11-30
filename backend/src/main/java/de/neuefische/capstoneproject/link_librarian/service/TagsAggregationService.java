@@ -1,13 +1,5 @@
 package de.neuefische.capstoneproject.link_librarian.service;
-
-import com.mongodb.client.AggregateIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.Accumulators;
-
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Projections;
 import de.neuefische.capstoneproject.link_librarian.dao.LinkLibrarianUserDao;
-
 import de.neuefische.capstoneproject.link_librarian.model.LinkLibrarianUser;
 import de.neuefische.capstoneproject.link_librarian.model.Tags;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -15,8 +7,6 @@ import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
@@ -25,12 +15,10 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 @Service
 public class TagsAggregationService {
 
-    private LinkLibrarianUserDao linkLibrarianUserDao;
     private MongoTemplate mongoTemplate;
 
 
-    public TagsAggregationService(LinkLibrarianUserDao linkLibrarianUserDao, MongoTemplate mongoTemplate) {
-        this.linkLibrarianUserDao = linkLibrarianUserDao;
+    public TagsAggregationService(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
     }
 
@@ -41,20 +29,20 @@ public class TagsAggregationService {
     {"$unwind":"$_id"},
     {$group:{_id:"$_id", count:{$sum:1}}},*/
 
-    public List<Tags> userTagsLists(String principalName) {
+    public List<Tags> userTagList(String principalName) {
 
         Aggregation aggregation = newAggregation(
                 match(new Criteria("email").is(principalName)),
-                group("recordList.tagsList"),
-                project("_id", "tagsList"),
+                group("recordList.tagList"),
+                project("_id", "tagList"),
                 unwind("_id"),
                 unwind("_id"),
                 group("_id").count().as("count")
         );
 
         AggregationResults<Tags> userResults = mongoTemplate.aggregate(aggregation, LinkLibrarianUser.class, Tags.class);
-        List<Tags> userTagsList = userResults.getMappedResults();
-        return userTagsList;
+        List<Tags> userTagList = userResults.getMappedResults();
+        return userTagList;
     }
 
 }

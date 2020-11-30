@@ -21,6 +21,6 @@ private String recordLink;
 private String description;
 private Instant timestamp;
 private boolean publicStatus;
-private List<String> tagsList;
+private List<String> tagList;
 
 }

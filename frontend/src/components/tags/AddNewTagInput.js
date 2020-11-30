@@ -3,21 +3,21 @@ import styled from 'styled-components/macro';
 
 export default function AddNewTagInput({recordData, setRecordData}){
 
-    const [addTags, setAddTags] = useState("");
+    const [addNewTag, setAddNewTag] = useState("");
 
     return (
         <SidebarSection4Styled>
-            <input name="addTags"
-                   value={addTags || ""}
-                   onChange={event => setAddTags(event.target.value)}
+            <input name="addNewTag"
+                   value={addNewTag || ""}
+                   onChange={event => setAddNewTag(event.target.value)}
                    type="text"/>
             <button type="button" onClick={handleTagKlickButton}>Add Tag</button>
         </SidebarSection4Styled>
     )
 
     function handleTagKlickButton() {
-        setRecordData({...recordData, tagList: [...recordData.tagList, addTags]});
-        setAddTags("");
+        setRecordData({...recordData, tagList: [...recordData.tagList, addNewTag]});
+        setAddNewTag("");
     }
 }
 
