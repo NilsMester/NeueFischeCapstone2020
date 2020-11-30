@@ -2,19 +2,12 @@ import React, {useState} from 'react';
 import styled from 'styled-components/macro';
 import TagStyled from "./Tag.styled";
 
-export default function RecordTagsListItem({userTag, recordData, setRecordData}){
-
-    const [chosenTag, setChosenTag] = useState(false);
-
-    function handleToggle(){
-        setChosenTag(!chosenTag)
-
-    }
+export default function RecordTagsListItem({tag, onClick}){
 
     return (
         <StyledListItem>
-            <TagStyled chosen={chosenTag} onClick={handleToggle}>
-                {userTag}
+            <TagStyled onClick={onClick}>
+                {tag}
             </TagStyled>
         </StyledListItem>
     )

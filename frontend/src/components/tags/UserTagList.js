@@ -1,17 +1,13 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
-
-import TagsContext from "../../contexts/TagsContext";
 import UserTagListItem from "./UserTagListItem";
 
-export default function UserTagList ({recordData, setRecordData}) {
-
-    const {userTagsList} = useContext(TagsContext);
+export default function UserTagList ({tags, onTagClick}) {
 
     return (
         <StyledTagsList>
-            {userTagsList?.map((userTag) => (
-                <UserTagListItem key={userTag._id} userTag={userTag._id} recordData={recordData} setRecordData={setRecordData}/>
+            {tags?.map((tag) => (
+                <UserTagListItem key={tag} tag={tag} onClick={() => onTagClick(tag)}/>
             ))}
         </StyledTagsList>
     );

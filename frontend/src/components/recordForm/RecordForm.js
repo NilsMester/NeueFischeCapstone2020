@@ -2,6 +2,7 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import RecordTagsList from "../tags/RecordTagsList";
 import styled from 'styled-components/macro';
+import UserTagList from "../tags/UserTagList";
 
 export default function RecordForm({onSave, recordData, setRecordData}) {
 
@@ -25,7 +26,7 @@ export default function RecordForm({onSave, recordData, setRecordData}) {
                            type="text"/>
                 </label>
                 <p>Tags</p>
-                <RecordTagsList recordTagsList={recordData.tagsList}/>
+                <UserTagList tags={recordData.tagList} onTagClick={tag=>setRecordData({...recordData, tagList: recordData.tagList.filter(existingTag=> existingTag!==tag)})}/>
 
                 <label>
                     Description
