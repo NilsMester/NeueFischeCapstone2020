@@ -12,7 +12,6 @@ export default function EditIdeaPage() {
     const history = useHistory();
     const {id} = useParams();
     const record = records.find((record) => record.id === id);
-
     const [recordData, setRecordData] = useState(record);
 
     return !record ? null : (
