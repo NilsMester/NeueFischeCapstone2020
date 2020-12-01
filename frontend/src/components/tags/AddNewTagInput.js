@@ -7,7 +7,7 @@ export default function AddNewTagInput({recordData, setRecordData}){
 
     return (
         <SidebarSection4Styled>
-            <input name="addNewTag"
+            <InputStyled name="addNewTag"
                    value={addNewTag || ""}
                    onChange={event => setAddNewTag(event.target.value)}
                    type="text"/>
@@ -26,4 +26,8 @@ display: grid;
 align-content: end;
 justify-content: end;
 
+`
+
+const InputStyled = styled.input`
+width: 120px;
 `
