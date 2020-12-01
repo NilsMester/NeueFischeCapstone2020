@@ -29,7 +29,7 @@ export default function AddRecordScreen() {
 
     return(
         <>
-            <Header titel="New UserRecordItem"/>
+            <Header titel="New Record"/>
             <MainGridStyled>
                 <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData} />
                 <SideBar sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>

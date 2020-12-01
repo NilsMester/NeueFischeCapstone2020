@@ -14,7 +14,7 @@ export default function DetailsRecordScreen(){
     const record = records.find((record) => record.id === id);
     return !record ? null : (
         <>
-            <Header titel="Your UserRecordItem"/>
+            <Header titel="Your Record"/>
             <RecordDetails record={record} actions={getActions()}/>
         </>
 );

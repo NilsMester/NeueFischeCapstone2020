@@ -22,7 +22,7 @@ export default function EditIdeaPage() {
 
     return !record ? null : (
 <>
-    <Header titel="Edit UserRecordItem"/>
+    <Header titel="Edit your Record"/>
     <MainGridStyled>
         <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
         <SideBar sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>
