@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro';
 import UserTagList from "../tags/UserTagList";
 import CopyLinkToClipboard from "../CopyLinkToClipboard";
+import OpenLink from "../OpenLink";
 
 export default function Record({record, actions = [], className}) {
 
@@ -12,6 +13,7 @@ export default function Record({record, actions = [], className}) {
             <UserTagList tags={record.tagList}/>
             <TextStyled>{record.description}</TextStyled>
             <ActionSection>
+                <OpenLink recordLink={record.recordLink}/>
                 <div>{actions}</div>
                 <CopyLinkToClipboard recordLink={record.recordLink} />
             </ActionSection>
@@ -28,10 +30,10 @@ row-gap: 8px;
 
 const ActionSection = styled.section`
 display: grid;
-grid-template-columns: 0.5fr 0.5fr;
+grid-template-columns: 0.5fr 0.5fr 0.5fr;
 height: 35px;
-justify-items: center;
-align-items: start;
+justify-content: center;
+align-items: center;
 `
 
 const TitelStyled = styled.h2`

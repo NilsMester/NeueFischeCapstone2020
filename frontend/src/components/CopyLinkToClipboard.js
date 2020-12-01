@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import styled from 'styled-components/macro';
-import {FaLink} from "react-icons/fa";
+import {HiOutlineClipboardCopy} from "react-icons/hi";
 
 
 export default function CopyLinkToClipboard(record) {
-    const [copySuccess, setCopySuccess] = useState('');
+    const [copySuccess, setCopySuccess] = useState('Copy Link');
 
     function copyToClipBoard(event) {
         const textArea = document.createElement("textarea")
@@ -17,7 +17,7 @@ export default function CopyLinkToClipboard(record) {
 
         try {
             const successful = document.execCommand('copy');
-            const msg = successful ? 'successful!' : 'unsuccessful!';
+            const msg = successful ? 'Successful!' : 'Unsuccessful!';
             setCopySuccess(msg);
         } catch (err) {
             setCopySuccess('Opps, unable to copy');
@@ -29,8 +29,8 @@ export default function CopyLinkToClipboard(record) {
 
     return (<CopyLinkStyled>
             <CopyLinkIconStyled onClick={copyToClipBoard}/>
-            {copySuccess}
-            </CopyLinkStyled>
+            <DescriptionStyled>{copySuccess}</DescriptionStyled>
+        </CopyLinkStyled>
     )
 
 }
@@ -44,8 +44,11 @@ text-align: center;
 color: var(--grey-50);
 `
 
-    const CopyLinkIconStyled = styled(FaLink)`
+    const CopyLinkIconStyled = styled(HiOutlineClipboardCopy)`
 color: var(--secondary1);
 height: 30px;
 width: 30px;
+`
+const DescriptionStyled = styled.p`
+font-size: 0.6em;
 `
