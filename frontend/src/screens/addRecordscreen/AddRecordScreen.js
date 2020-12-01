@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useMemo, useState} from 'react';
 import RecordForm from "../../components/recordForm/RecordForm";
 import RecordContext from "../../contexts/RecordContext";
 import { useHistory } from 'react-router-dom';
@@ -23,7 +23,18 @@ export default function AddRecordScreen() {
     const history = useHistory();
     const {userTagList} = useContext(TagsContext);
 
-    const filteredUserTagList = userTagList.filter(tag=>!recordData.tagList.includes(tag._id)).map(tagItem=>tagItem._id)
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const filteredUserTagList = useMemo(() => {
+        if (!searchTerm) return userTagList.filter(tag => !recordData.tagList.includes(tag._id)).map(tagItem => tagItem._id);
+
+        return userTagList.filter(tag=>!recordData.tagList.includes(tag._id)).map(tagItem=>tagItem._id).filter((tag) => {
+            return (
+                tag.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        });
+    }, [searchTerm, userTagList, recordData.tagList]);
+
 
     return(
         <>
@@ -32,7 +43,13 @@ export default function AddRecordScreen() {
                 <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
 
                 <SidebarStyled>
-                    <UserTagList tags={filteredUserTagList} onTagClick={(tag)=> setRecordData({...recordData, tagList: [...recordData.tagList, tag]})}/>
+                    <UserTagList tags={filteredUserTagList} onTagClick={onTagClick}/>
+                    <SidebarSection4Styled>
+                        <input name="search"
+                               value={searchTerm || ""}
+                               onChange={(event) => setSearchTerm(event.target.value)}
+                               type="text"/>
+                    </SidebarSection4Styled>
                     <AddNewTagInput recordData={recordData} setRecordData={setRecordData}/>
                 </SidebarStyled>
 
@@ -41,11 +58,18 @@ export default function AddRecordScreen() {
         </>
     );
 
+    function onTagClick(tag) {
+        setRecordData({...recordData, tagList: [...recordData.tagList, tag]});
+        setSearchTerm("")
+    }
+
     function handleSave(recordData) {
         const{titel, recordLink, description, publicStatus, tagList} = recordData;
         createRecord(titel, recordLink, description, publicStatus, tagList);
         history.push('/');
     }
+
+
 
 }
 
@@ -54,10 +78,16 @@ display: grid;
 position: relative;
 align-self: center;
 justify-content: end;
-row-gap: 50px;
+row-gap: 25px;
 `
 
 const MainGridStyled = styled.div`
 display: grid;
 grid-template-columns: 1fr 0.5fr;
+`
+const SidebarSection4Styled = styled.label`
+display: grid;
+align-content: end;
+justify-content: end;
+
 `
