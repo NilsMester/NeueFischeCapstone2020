@@ -5,9 +5,8 @@ import { useHistory } from 'react-router-dom';
 import Header from "../../components/Header";
 import styled from 'styled-components/macro';
 import TabBar from "../../components/UI/TabBar";
-import AddNewTagInput from "../../components/tags/AddNewTagInput";
-import UserTagList from "../../components/tags/UserTagList";
 import TagsContext from "../../contexts/TagsContext";
+import SideBar from "../../components/SideBar";
 
 const initialState = {
     titel:"",
@@ -40,19 +39,8 @@ export default function AddRecordScreen() {
         <>
             <Header titel="New UserRecordItem"/>
             <MainGridStyled>
-                <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
-
-                <SidebarStyled>
-                    <UserTagList sidebar tags={filteredUserTagList} onTagClick={onTagClick}/>
-                    <SidebarSection4Styled>
-                        <InputStyled name="search"
-                               value={searchTerm || ""}
-                               onChange={(event) => setSearchTerm(event.target.value)}
-                               type="text"/>
-                    </SidebarSection4Styled>
-                    <AddNewTagInput recordData={recordData} setRecordData={setRecordData}/>
-                </SidebarStyled>
-
+                <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData} />
+                <SideBar sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>
             </MainGridStyled>
             <TabBar/>
         </>
@@ -73,24 +61,11 @@ export default function AddRecordScreen() {
 
 }
 
-const SidebarStyled = styled.div`
-display: grid;
-position: relative;
-align-self: center;
-justify-content: end;
-row-gap: 25px;
-`
+
 
 const MainGridStyled = styled.div`
 display: grid;
 grid-template-columns: 1fr 0.5fr;
 `
-const SidebarSection4Styled = styled.label`
-display: grid;
-align-content: end;
-justify-content: end;
 
-`
-const InputStyled = styled.input`
-width: 120px;
-`
+

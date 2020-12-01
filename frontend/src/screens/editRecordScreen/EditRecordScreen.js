@@ -6,8 +6,7 @@ import Header from "../../components/Header";
 import TabBar from "../../components/UI/TabBar";
 import styled from 'styled-components/macro';
 import TagsContext from "../../contexts/TagsContext";
-import UserTagList from "../../components/tags/UserTagList";
-import AddNewTagInput from "../../components/tags/AddNewTagInput";
+import SideBar from "../../components/SideBar";
 
 export default function EditIdeaPage() {
     const {editRecord, records} = useContext(RecordContext);
@@ -34,18 +33,7 @@ export default function EditIdeaPage() {
     <Header titel="Edit UserRecordItem"/>
     <MainGridStyled>
         <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
-
-        <SidebarStyled>
-            <UserTagList sidebar tags={filteredUserTagList} onTagClick={onTagClick}/>
-            <SidebarSection4Styled>
-                <InputStyled name="search"
-                       value={searchTerm || ""}
-                       onChange={(event) => setSearchTerm(event.target.value)}
-                       type="text"/>
-            </SidebarSection4Styled>
-            <AddNewTagInput recordData={recordData} setRecordData={setRecordData}/>
-        </SidebarStyled>
-
+        <SideBar sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>
     </MainGridStyled>
     <TabBar/>
 </>
@@ -66,20 +54,4 @@ export default function EditIdeaPage() {
 const MainGridStyled = styled.div`
 display: grid;
 grid-template-columns: 1fr 0.5fr;
-`
-const SidebarStyled = styled.div`
-display: grid;
-position: relative;
-align-self: center;
-justify-content: end;
-row-gap: 50px;
-`
-const SidebarSection4Styled = styled.label`
-display: grid;
-align-content: end;
-justify-content: end;
-
-`
-const InputStyled = styled.input`
-width: 120px;
 `
