@@ -7,7 +7,7 @@ const emptyCredentials = {
     password: '',
 };
 
-export default function LoginPage(){
+export default function LoginScreen(){
     const {loginWithUserCredentials} = useContext(UserContext);
     const [credentials, setCredentials] = useState(emptyCredentials);
     const [error, setError] = useState('');
