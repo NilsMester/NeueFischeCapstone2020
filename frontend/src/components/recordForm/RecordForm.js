@@ -2,6 +2,7 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import styled from 'styled-components/macro';
 import UserTagList from "../tags/UserTagList";
+import PasteLinkFromClipboard from "../PasteLinkFromClipboard";
 
 export default function RecordForm({onSave, recordData, setRecordData}) {
 
@@ -24,6 +25,7 @@ export default function RecordForm({onSave, recordData, setRecordData}) {
                            onChange={handleChange}
                            type="text"/>
                 </label>
+                <PasteLinkFromClipboard recordData={recordData} setRecordData={setRecordData} />
                 <p>Tags</p>
                 <UserTagList recordForm tags={recordData.tagList} onTagClick={tag=>setRecordData({...recordData, tagList: recordData.tagList.filter(existingTag=> existingTag!==tag)})}/>
 
