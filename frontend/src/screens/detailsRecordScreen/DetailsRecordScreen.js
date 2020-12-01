@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import RecordActionButton from "../../components/UI/RecordActionButton";
 import RecordDetails from "../../components/records/RecordDetails";
 
-export default function SingleRecordScreen(){
+export default function DetailsRecordScreen(){
     const{records, deleteRecord} = useContext(RecordContext);
 
     const {id} = useParams();

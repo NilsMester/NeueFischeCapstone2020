@@ -7,7 +7,7 @@ import ProtectedRoute from "./routing/ProtectedRoute";
 import HomePage from "./screens/HomeScreen";
 import AddRecordScreen from "./screens/addRecordscreen/AddRecordScreen"
 import RecordContextProvider from "./contexts/RecordContextProvider";
-import SingleRecordScreen from "./screens/singleRecordScreen/SingleRecordScreen";
+import DetailsRecordScreen from "./screens/detailsRecordScreen/DetailsRecordScreen";
 import EditRecordPage from "./screens/editRecordScreen/EditRecordScreen";
 import TagsContextProvider from "./contexts/TagsContextProvider";
 import UserRecordListScreen from "./screens/userRecordListScreen/UserRecordListScreen";
@@ -23,7 +23,7 @@ function App() {
                             <ProtectedRoute path="/home" component={HomePage}/>
                             <ProtectedRoute path="/records" component={UserRecordListScreen}/>
                             <ProtectedRoute path="/newRecord" component={AddRecordScreen}/>
-                            <ProtectedRoute path="/record/:id" component={SingleRecordScreen}/>
+                            <ProtectedRoute path="/record/:id" component={DetailsRecordScreen}/>
                             <ProtectedRoute path="/edit/:id" component={EditRecordPage}/>
 
                             <Route path="/">
