@@ -49,11 +49,7 @@ export default function AddRecordScreen() {
         history.push('/');
     }
 
-
-
 }
-
-
 
 const MainGridStyled = styled.div`
 display: grid;
