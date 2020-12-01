@@ -1,4 +1,4 @@
-import React, {useContext, useMemo, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import RecordForm from "../../components/recordForm/RecordForm";
 import RecordContext from "../../contexts/RecordContext";
 import { useHistory } from 'react-router-dom';
@@ -7,6 +7,7 @@ import styled from 'styled-components/macro';
 import TabBar from "../../components/UI/TabBar";
 import TagsContext from "../../contexts/TagsContext";
 import SideBar from "../../components/SideBar";
+import {SearchFilterTagList} from "../../components/services/SearchFilterTagList";
 
 const initialState = {
     titel:"",
@@ -24,16 +25,7 @@ export default function AddRecordScreen() {
 
     const [searchTerm, setSearchTerm] = useState("");
 
-    const filteredUserTagList = useMemo(() => {
-        if (!searchTerm) return userTagList.filter(tag => !recordData.tagList.includes(tag._id)).map(tagItem => tagItem._id);
-
-        return userTagList.filter(tag=>!recordData.tagList.includes(tag._id)).map(tagItem=>tagItem._id).filter((tag) => {
-            return (
-                tag.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-        });
-    }, [searchTerm, userTagList, recordData.tagList]);
-
+    const filteredUserTagList = SearchFilterTagList({searchTerm, userTagList, recordData});
 
     return(
         <>

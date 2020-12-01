@@ -1,5 +1,5 @@
-import React, {useContext, useMemo, useState} from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import React, {useContext, useState} from 'react';
+import {useHistory,useParams} from 'react-router-dom';
 import RecordContext from "../../contexts/RecordContext";
 import RecordForm from "../../components/recordForm/RecordForm";
 import Header from "../../components/Header";
@@ -7,6 +7,7 @@ import TabBar from "../../components/UI/TabBar";
 import styled from 'styled-components/macro';
 import TagsContext from "../../contexts/TagsContext";
 import SideBar from "../../components/SideBar";
+import {SearchFilterTagList} from "../../components/services/SearchFilterTagList";
 
 export default function EditIdeaPage() {
     const {editRecord, records} = useContext(RecordContext);
@@ -15,18 +16,9 @@ export default function EditIdeaPage() {
     const {id} = useParams();
     const record = records.find((record) => record.id === id);
     const [recordData, setRecordData] = useState(record);
-
     const [searchTerm, setSearchTerm] = useState("");
 
-    const filteredUserTagList = useMemo(() => {
-        if (!searchTerm) return userTagList.filter(tag => !recordData.tagList.includes(tag._id)).map(tagItem => tagItem._id);
-
-        return userTagList.filter(tag=>!recordData.tagList.includes(tag._id)).map(tagItem=>tagItem._id).filter((tag) => {
-            return (
-                tag.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-        });
-    }, [searchTerm, userTagList, recordData.tagList]);
+    const filteredUserTagList = SearchFilterTagList({searchTerm, userTagList, recordData});
 
     return !record ? null : (
 <>
