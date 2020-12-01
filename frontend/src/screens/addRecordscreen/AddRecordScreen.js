@@ -43,9 +43,9 @@ export default function AddRecordScreen() {
                 <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
 
                 <SidebarStyled>
-                    <UserTagList tags={filteredUserTagList} onTagClick={onTagClick}/>
+                    <UserTagList sidebar tags={filteredUserTagList} onTagClick={onTagClick}/>
                     <SidebarSection4Styled>
-                        <input name="search"
+                        <InputStyled name="search"
                                value={searchTerm || ""}
                                onChange={(event) => setSearchTerm(event.target.value)}
                                type="text"/>
@@ -90,4 +90,7 @@ display: grid;
 align-content: end;
 justify-content: end;
 
+`
+const InputStyled = styled.input`
+width: 120px;
 `

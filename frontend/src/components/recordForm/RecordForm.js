@@ -25,7 +25,7 @@ export default function RecordForm({onSave, recordData, setRecordData}) {
                            type="text"/>
                 </label>
                 <p>Tags</p>
-                <UserTagList tags={recordData.tagList} onTagClick={tag=>setRecordData({...recordData, tagList: recordData.tagList.filter(existingTag=> existingTag!==tag)})}/>
+                <UserTagList recordForm tags={recordData.tagList} onTagClick={tag=>setRecordData({...recordData, tagList: recordData.tagList.filter(existingTag=> existingTag!==tag)})}/>
 
                 <label>
                     Description
@@ -58,7 +58,6 @@ export default function RecordForm({onSave, recordData, setRecordData}) {
 
 const FormStyled = styled.form`
     display: grid;
-
 `;
 
 const DivStyled = styled.div`
