@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useMemo, useState} from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import RecordContext from "../../contexts/RecordContext";
 import RecordForm from "../../components/recordForm/RecordForm";
@@ -17,7 +17,17 @@ export default function EditIdeaPage() {
     const record = records.find((record) => record.id === id);
     const [recordData, setRecordData] = useState(record);
 
-    const filteredUserTagList = userTagList.filter(tag=>!recordData.tagList.includes(tag._id)).map(tagItem=>tagItem._id)
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const filteredUserTagList = useMemo(() => {
+        if (!searchTerm) return userTagList.filter(tag => !recordData.tagList.includes(tag._id)).map(tagItem => tagItem._id);
+
+        return userTagList.filter(tag=>!recordData.tagList.includes(tag._id)).map(tagItem=>tagItem._id).filter((tag) => {
+            return (
+                tag.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        });
+    }, [searchTerm, userTagList, recordData.tagList]);
 
     return !record ? null : (
 <>
@@ -26,7 +36,13 @@ export default function EditIdeaPage() {
         <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
 
         <SidebarStyled>
-            <UserTagList tags={filteredUserTagList} onTagClick={(tag)=> setRecordData({...recordData, tagList: [...recordData.tagList, tag]})}/>
+            <UserTagList tags={filteredUserTagList} onTagClick={onTagClick}/>
+            <SidebarSection4Styled>
+                <input name="search"
+                       value={searchTerm || ""}
+                       onChange={(event) => setSearchTerm(event.target.value)}
+                       type="text"/>
+            </SidebarSection4Styled>
             <AddNewTagInput recordData={recordData} setRecordData={setRecordData}/>
         </SidebarStyled>
 
@@ -34,6 +50,11 @@ export default function EditIdeaPage() {
     <TabBar/>
 </>
     );
+
+    function onTagClick(tag) {
+        setRecordData({...recordData, tagList: [...recordData.tagList, tag]});
+        setSearchTerm("")
+    }
 
     function handleSave(record) {
         const {id, titel, recordLink, description, timestamp, publicStaus, tagList} = record;
@@ -53,5 +74,11 @@ position: relative;
 align-self: center;
 justify-content: end;
 row-gap: 50px;
+`
+const SidebarSection4Styled = styled.label`
+display: grid;
+align-content: end;
+justify-content: end;
+
 `
 
