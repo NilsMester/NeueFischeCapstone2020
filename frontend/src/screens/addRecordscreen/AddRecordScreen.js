@@ -17,7 +17,7 @@ const initialState = {
     publicStatus: true,
 }
 
-export default function AddRecordPage() {
+export default function AddRecordScreen() {
     const {createRecord} = useContext(RecordContext)
     const [recordData, setRecordData] = useState(initialState);
     const history = useHistory();

@@ -2,36 +2,36 @@ import React from 'react';
 import UserContextProvider from "./contexts/UserContextProvider";
 import {Redirect, Route, Switch} from "react-router-dom";
 import styled from 'styled-components/macro';
-import LoginPage from "./pages/loginPage/LoginPage";
+import LoginScreen from "./screens/loginScreen/LoginScreen";
 import ProtectedRoute from "./routing/ProtectedRoute";
-import HomePage from "./pages/HomePage";
-import AddRecordPage from "./pages/addRecordPage/AddRecordPage"
+import HomePage from "./screens/HomeScreen";
+import AddRecordScreen from "./screens/addRecordscreen/AddRecordScreen"
 import RecordContextProvider from "./contexts/RecordContextProvider";
-import SingleRecordPage from "./pages/singleRecordPage/SingleRecordPage";
-import EditRecordPage from "./pages/editRecordPage/EditRecordPage";
+import SingleRecordScreen from "./screens/singleRecordScreen/SingleRecordScreen";
+import EditRecordPage from "./screens/editRecordScreen/EditRecordScreen";
 import TagsContextProvider from "./contexts/TagsContextProvider";
-import UserRecordListPage from "./pages/userRecordListPage/UserRecordListPage";
+import UserRecordListScreen from "./screens/userRecordListScreen/UserRecordListScreen";
 
 function App() {
     return (
         <UserContextProvider>
             <RecordContextProvider>
                 <TagsContextProvider>
-                <PageLayout>
-                <Switch>
-                    <Route path="/login" component={LoginPage}/>
-                    <ProtectedRoute path="/home" component={HomePage}/>
-                    <ProtectedRoute path="/records" component={UserRecordListPage}/>
-                    <ProtectedRoute path= "/newRecord" component={AddRecordPage}/>
-                    <ProtectedRoute path= "/record/:id" component={SingleRecordPage}/>
-                    <ProtectedRoute path= "/edit/:id" component={EditRecordPage}/>
+                    <PageLayout>
+                        <Switch>
+                            <Route path="/login" component={LoginScreen}/>
+                            <ProtectedRoute path="/home" component={HomePage}/>
+                            <ProtectedRoute path="/records" component={UserRecordListScreen}/>
+                            <ProtectedRoute path="/newRecord" component={AddRecordScreen}/>
+                            <ProtectedRoute path="/record/:id" component={SingleRecordScreen}/>
+                            <ProtectedRoute path="/edit/:id" component={EditRecordPage}/>
 
-                    <Route path="/">
-                        <Redirect to="/records"/>
-                    </Route>
-                </Switch>
-                </PageLayout>
-            </TagsContextProvider>
+                            <Route path="/">
+                                <Redirect to="/records"/>
+                            </Route>
+                        </Switch>
+                    </PageLayout>
+                </TagsContextProvider>
             </RecordContextProvider>
         </UserContextProvider>
     );
