@@ -3,7 +3,7 @@ import UserTagList from "./tags/UserTagList";
 import styled from 'styled-components/macro';
 import AddNewTagInput from "./tags/AddNewTagInput";
 
-export default function SideBar({ tags, onTagClick,searchTerm, setSearchTerm,recordData, setRecordData}){
+export default function SideBar({ tags, onTagClick, searchTerm, setSearchTerm,recordData, setRecordData}){
 
     return(
         <>

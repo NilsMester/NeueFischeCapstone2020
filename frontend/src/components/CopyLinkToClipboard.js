@@ -4,31 +4,25 @@ import {HiOutlineClipboardCopy} from "react-icons/hi";
 
 
 export default function CopyLinkToClipboard(record) {
+
     const [copySuccess, setCopySuccess] = useState('Copy Link');
 
-    function copyToClipBoard(event) {
-        const textArea = document.createElement("textarea")
-        textArea.value = record.recordLink
-        document.body.appendChild(textArea);
-        document.execCommand('copy');
-        event.target.focus();
-        textArea.select();
-        setCopySuccess('Copied!');
+    async function copyLinkUrlToClipboard() {
 
         try {
-            const successful = document.execCommand('copy');
-            const msg = successful ? 'Successful!' : 'Unsuccessful!';
+            await navigator.clipboard.writeText(record.recordLink);
+            const msg = 'Successful!';
+            console.log('Page URL copied to clipboard');
             setCopySuccess(msg);
         } catch (err) {
+            console.error('Failed to copy: ', err);
             setCopySuccess('Opps, unable to copy');
         }
-
-        document.queryCommandSupported('copy')
-        document.body.removeChild(textArea);
     }
 
-    return (<CopyLinkStyled>
-            <CopyLinkIconStyled onClick={copyToClipBoard}/>
+    return (
+        <CopyLinkStyled>
+            <CopyLinkIconStyled onClick={copyLinkUrlToClipboard}/>
             <DescriptionStyled>{copySuccess}</DescriptionStyled>
         </CopyLinkStyled>
     )
