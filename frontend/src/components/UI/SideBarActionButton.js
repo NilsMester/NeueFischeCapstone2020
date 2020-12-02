@@ -8,18 +8,18 @@ export default function SideBarActionButton({ children, ...rest }) {
 
 const SidebarButtonStyled = styled.button`
   width: 120px;
-  height: 30px;
-  color: var(--secondary1);
+  height: 36px;
+  color: var(--orange-75);
   border: var(--gray-50);
-  border-radius: var(--size-xs);
+  border-radius: var(--size-s) 0 0 var(--size-s);
   background: var(--grey-main);
   position: absolute;
-   right: 0;
+  right: 0;
   
   ${(props) =>
     props.first && props.showFirstSidebarArea
         ? css`
-          top: 10%;
+          top: 3%;
         `
         : props.first && !props.showFirstSidebarArea
         ? css`
@@ -31,11 +31,8 @@ const SidebarButtonStyled = styled.button`
           top: 25%;
         `
             
-        : props.second && !props.showFirstSidebarArea
-        ? css`
-          top: 70%;
-        `
+        
         : css`
-          top: 70%;
+          top: 74%;
         `}
 `;

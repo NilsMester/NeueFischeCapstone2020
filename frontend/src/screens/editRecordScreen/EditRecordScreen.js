@@ -24,10 +24,13 @@ export default function EditIdeaPage() {
 <>
     <Header titel="Edit your Record"/>
     <MainGridStyled>
-        <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
+        <FormStyled onSubmit={handleSubmit}>
+            <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
+        </FormStyled>
+
         <SideBarForm sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>
     </MainGridStyled>
-    <TabBar/>
+    <TabBar onSave={handleSave} recordData={recordData}/>
 </>
     );
 
@@ -41,9 +44,22 @@ export default function EditIdeaPage() {
         editRecord(id, titel, recordLink, description, timestamp, publicStaus, tagList);
         history.goBack();
     }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        handleSave(recordData);
+    }
+
 }
+
+const FormStyled = styled.form`
+    display: grid;
+    grid-template-rows: min-content 1fr min-content  min-content 0.5fr min-content ;
+    grid-row-gap: 12px;
+`;
 
 const MainGridStyled = styled.div`
 display: grid;
-grid-template-columns: 1fr 0.5fr;
+grid-template-columns: 1fr min-content;
+padding: 10px 0 10px 10px;
 `
