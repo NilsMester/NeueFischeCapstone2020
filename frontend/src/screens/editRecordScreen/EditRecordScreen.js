@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import TabBar from "../../components/UI/TabBar";
 import styled from 'styled-components/macro';
 import TagsContext from "../../contexts/TagsContext";
-import SideBar from "../../components/SideBar";
+import SideBarForm from "../../components/recordForm/SideBarForm";
 import {SearchFilterTagList} from "../../components/services/SearchFilterTagList";
 
 export default function EditIdeaPage() {
@@ -25,7 +25,7 @@ export default function EditIdeaPage() {
     <Header titel="Edit your Record"/>
     <MainGridStyled>
         <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
-        <SideBar sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>
+        <SideBarForm sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>
     </MainGridStyled>
     <TabBar/>
 </>

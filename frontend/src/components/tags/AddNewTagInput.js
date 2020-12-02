@@ -25,7 +25,6 @@ const SidebarSection4Styled = styled.label`
 display: grid;
 align-content: end;
 justify-content: end;
-
 `
 
 const InputStyled = styled.input`

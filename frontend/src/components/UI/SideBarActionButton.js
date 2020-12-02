@@ -7,21 +7,35 @@ export default function SideBarActionButton({ children, ...rest }) {
 }
 
 const SidebarButtonStyled = styled.button`
- 
+  width: 120px;
+  height: 30px;
   color: var(--secondary1);
   border: var(--gray-50);
   border-radius: var(--size-xs);
   background: var(--grey-main);
-
+  position: absolute;
+   right: 0;
   
   ${(props) =>
-    props.first
+    props.first && props.showFirstSidebarArea
+        ? css`
+          top: 10%;
+        `
+        : props.first && !props.showFirstSidebarArea
         ? css`
           top: 15%;
-          right: 0;
+        `
+
+        : props.second && !props.showFirstSidebarArea
+        ? css`
+          top: 25%;
+        `
+            
+        : props.second && !props.showFirstSidebarArea
+        ? css`
+          top: 70%;
         `
         : css`
-           top: 65%;
-          right: 0;
+          top: 70%;
         `}
 `;

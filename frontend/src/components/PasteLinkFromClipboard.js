@@ -14,10 +14,8 @@ export default function PasteLinkFromClipboard({recordData, setRecordData}) {
             setPasteSuccess(msg)
             setRecordData({...recordData, recordLink: (recordData.recordLink, "")});
             setRecordData({...recordData, recordLink: (recordData.recordLink, text)});
-            console.log('Pasted content: ', text);
         } catch
             (err) {
-            console.error('Failed to read clipboard contents: ', err);
             setPasteSuccess('Opps, unable to paste');
         }
     }
