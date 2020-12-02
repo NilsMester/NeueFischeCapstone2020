@@ -3,6 +3,7 @@ import UserTagList from "../tags/UserTagList";
 import styled from 'styled-components/macro';
 import AddNewTagInput from "../tags/AddNewTagInput";
 import SideBarActionButton from "../UI/SideBarActionButton";
+import InputField from "../UI/InputField";
 
 export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTerm,recordData, setRecordData}){
 
@@ -27,7 +28,8 @@ export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTer
                 <SidebarSection1Styled>
                     <UserTagList sidebar tags={tags} onTagClick={onTagClick}/>
                     <LabelStyled> Search your Tag
-                        <InputStyled name="search"
+                        <InputField search
+                                     name="search"
                                      value={searchTerm || ""}
                                      onChange={(event) => setSearchTerm(event.target.value)}
                                      type="text"/>
@@ -49,9 +51,6 @@ export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTer
 
 }
 
-const InputStyled = styled.input`
-width: 120px;
-`
 
 const LabelStyled = styled.label`
 padding: 8px 0;

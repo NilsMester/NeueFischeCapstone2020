@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components/macro';
+import InputField from "../UI/InputField";
 
 export default function AddNewTagInput({recordData, setRecordData}){
 
@@ -7,10 +8,11 @@ export default function AddNewTagInput({recordData, setRecordData}){
 
     return (
         <SidebarSection4Styled>
-            <InputStyled name="addNewTag"
-                   value={addNewTag || ""}
-                   onChange={event => setAddNewTag(event.target.value)}
-                   type="text"/>
+            <InputField search
+                        name="addNewTag"
+                        value={addNewTag || ""}
+                        onChange={event => setAddNewTag(event.target.value)}
+                        type="text"/>
             <button type="button" onClick={handleTagKlickButton}>Add Tag</button>
         </SidebarSection4Styled>
     )
@@ -27,6 +29,3 @@ align-content: end;
 justify-content: end;
 `
 
-const InputStyled = styled.input`
-width: 120px;
-`
