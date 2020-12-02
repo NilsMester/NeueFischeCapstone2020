@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-export default function SideBarActionButton({ children, ...rest }) {
+export default function RecordActionButton({ children, ...rest }) {
     return <SidebarButtonStyled {...rest}>{children}</SidebarButtonStyled>;
 }
 

@@ -12,10 +12,8 @@ export default function CopyLinkToClipboard(record) {
         try {
             await navigator.clipboard.writeText(record.recordLink);
             const msg = 'Successful!';
-            console.log('Page URL copied to clipboard');
             setCopySuccess(msg);
         } catch (err) {
-            console.error('Failed to copy: ', err);
             setCopySuccess('Opps, unable to copy');
         }
     }

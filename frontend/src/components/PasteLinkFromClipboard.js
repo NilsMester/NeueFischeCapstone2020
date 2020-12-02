@@ -14,37 +14,36 @@ export default function PasteLinkFromClipboard({recordData, setRecordData}) {
             setPasteSuccess(msg)
             setRecordData({...recordData, recordLink: (recordData.recordLink, "")});
             setRecordData({...recordData, recordLink: (recordData.recordLink, text)});
-            console.log('Pasted content: ', text);
         } catch
             (err) {
-            console.error('Failed to read clipboard contents: ', err);
             setPasteSuccess('Opps, unable to paste');
         }
     }
 
     return (
-        <CopyLinkStyled>
-            <CopyLinkIconStyled onClick={pasteLinkUrlFromClipboardToForm}/>
+        <PasteLinkStyled>
+            <PasteLinkIconStyled onClick={pasteLinkUrlFromClipboardToForm}/>
             <DescriptionStyled>{pasteSuccess}</DescriptionStyled>
-        </CopyLinkStyled>
+        </PasteLinkStyled>
     )
 
 }
 
-const CopyLinkStyled = styled.div` 
+const PasteLinkStyled = styled.div` 
 display: grid;
 grid-template-rows: min-content min-content;
+align-content: end;
+justify-content: center;
 justify-items: center;
-align-items: center;
-text-align: center;
 color: var(--grey-50);
 `
 
-    const CopyLinkIconStyled = styled(BiPaste)`
+const PasteLinkIconStyled = styled(BiPaste)`
 color: var(--secondary1);
 height: 30px;
 width: 30px;
 `
 const DescriptionStyled = styled.p`
 font-size: 0.6em;
+margin: 0;
 `

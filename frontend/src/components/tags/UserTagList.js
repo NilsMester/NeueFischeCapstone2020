@@ -23,7 +23,8 @@ ${(props) =>
           padding: 0;
           margin: 0;
           display: grid;
-          height: 50vh;
+          height: 40vh;
+          width: 33vw;
           justify-content: end;
           align-content: start;
           overflow-x: scroll;

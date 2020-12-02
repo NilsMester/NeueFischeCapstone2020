@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import styled from 'styled-components/macro';
 import TabBar from "../../components/UI/TabBar";
 import TagsContext from "../../contexts/TagsContext";
-import SideBar from "../../components/SideBar";
+import SideBarForm from "../../components/recordForm/SideBarForm";
 import {SearchFilterTagList} from "../../components/services/SearchFilterTagList";
 
 const initialState = {
@@ -22,17 +22,17 @@ export default function AddRecordScreen() {
     const [recordData, setRecordData] = useState(initialState);
     const history = useHistory();
     const {userTagList} = useContext(TagsContext);
-
     const [searchTerm, setSearchTerm] = useState("");
 
     const filteredUserTagList = SearchFilterTagList({searchTerm, userTagList, recordData});
 
     return(
         <>
+
             <Header titel="New Record"/>
             <MainGridStyled>
                 <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData} />
-                <SideBar sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>
+                <SideBarForm sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>
             </MainGridStyled>
             <TabBar/>
         </>
@@ -53,7 +53,8 @@ export default function AddRecordScreen() {
 
 const MainGridStyled = styled.div`
 display: grid;
-grid-template-columns: 1fr 0.5fr;
+grid-template-columns: 1fr min-content;
+position: relative;
 `
 
 

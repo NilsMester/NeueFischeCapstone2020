@@ -3,46 +3,54 @@ import {useHistory} from 'react-router-dom';
 import styled from 'styled-components/macro';
 import UserTagList from "../tags/UserTagList";
 import PasteLinkFromClipboard from "../PasteLinkFromClipboard";
+import InputField from "../UI/InputField";
 
 export default function RecordForm({onSave, recordData, setRecordData}) {
 
     const history = useHistory();
     return (
         <FormStyled onSubmit={handleSubmit}>
-            <DivStyled>
-                <label>
-                    Titel
-                    <input name="titel"
-                           value={recordData.titel || ""}
-                           onChange={handleChange}
-                           type="text"/>
-                </label>
+            <label>
+                Titel
+                <InputField
+                    titel
+                    name="titel"
+                    value={recordData.titel || ""}
+                    onChange={handleChange}
+                    type="text"/>
+            </label>
 
-                <div>
-                    <label>
-                        RecordLink
-                        <input name="recordLink"
-                               value={recordData.recordLink || ""}
-                               onChange={handleChange}
-                               type="text"/>
-                    </label>
-                    <PasteLinkFromClipboard recordData={recordData} setRecordData={setRecordData} handleChange={handleChange} />
-                </div>
+            <LinkSectionStyled>
+                <LinkLableStyled>
+                    RecordLink
+                    <InputField
+                        recordLink
+                        name="recordLink"
+                        value={recordData.recordLink || ""}
+                        onChange={handleChange}
+                        type="text"/>
+                </LinkLableStyled>
+                <PasteLinkFromClipboard recordData={recordData} setRecordData={setRecordData} handleChange={handleChange}/>
+            </LinkSectionStyled>
 
-                <p>Tags</p>
-                <UserTagList recordForm tags={recordData.tagList} onTagClick={tag=>setRecordData({...recordData, tagList: recordData.tagList.filter(existingTag=> existingTag!==tag)})}/>
+            <p>Tags</p>
+            <UserTagList recordForm tags={recordData.tagList} onTagClick={tag => setRecordData({
+                ...recordData,
+                tagList: recordData.tagList.filter(existingTag => existingTag !== tag)
+            })}/>
 
-                <label>
-                    Description
-                    <input name="description"
-                           value={recordData.description || ""}
-                           onChange={handleChange}
-                           type="test"/>
-                </label>
+            <label>
+                Description
+                <InputField
+                    description
+                    name="description"
+                    value={recordData.description || ""}
+                    onChange={handleChange}
+                    type="test"/>
+            </label>
 
-                <button type="button" onClick={onCancel}>Cancel</button>
-                <button>Save</button>
-            </DivStyled>
+            <button type="button" onClick={onCancel}>Cancel</button>
+            <button>Save</button>
         </FormStyled>
     );
 
@@ -63,10 +71,20 @@ export default function RecordForm({onSave, recordData, setRecordData}) {
 
 const FormStyled = styled.form`
     display: grid;
+    grid-template-rows: min-content min-content min-content 1fr 0.5fr min-content min-content;
+    grid-row-gap: 12px;
 `;
 
-const DivStyled = styled.div`
-display: grid;
-grid-template-rows: min-content min-content min-content 1fr 0.5fr min-content min-content;
+const LinkSectionStyled = styled.div`
+display:grid ;
+grid-template-rows: min-content;
+grid-template-columns: 0.5fr 0.2fr 0.3fr;
+justify-content: end;
+padding: 0 10px 0 0;
 `
+
+const LinkLableStyled = styled.label`
+`
+
+
 
