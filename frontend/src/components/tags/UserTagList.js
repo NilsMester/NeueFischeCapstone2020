@@ -19,6 +19,7 @@ const StyledTagsList = styled.ul`
 ${(props) =>
     props.sidebar
         ? css`
+         
           list-style: none;
           padding: 0;
           margin: 0;
@@ -26,29 +27,25 @@ ${(props) =>
           height: 40vh;
           width: 33vw;
           justify-content: end;
-          align-content: start;
+          align-content: end;
           overflow-x: scroll;
           -ms-overflow-style: none;
           ::-webkit-scrollbar {
           display: none;
           }
         `
-
-        : props.recordForm
-        ? css` 
+        
+        : props.formTags
+        ? css`
+          width: 66vw;
+          overflow: scroll;
           list-style: none;
+          text-align: center;
           padding: 0;
-          margin: 0;
-          display: grid;
-          height: 33vh;
-          justify-content: center;
-          align-content: start;
-          overflow-x: scroll;
-          -ms-overflow-style: none;
-          ::-webkit-scrollbar {
-          display: none;
-          }
-        `
+          margin: 0; 
+        
+        ` 
+        
         : css`
           overflow: scroll;
           list-style: none;

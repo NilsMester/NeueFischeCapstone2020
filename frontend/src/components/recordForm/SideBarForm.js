@@ -27,12 +27,13 @@ export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTer
             {showFirstSidebarArea ?
                 <SidebarSection1Styled>
                     <UserTagList sidebar tags={tags} onTagClick={onTagClick}/>
-                    <LabelStyled> Search your Tag
-                        <InputField search
-                                     name="search"
-                                     value={searchTerm || ""}
-                                     onChange={(event) => setSearchTerm(event.target.value)}
-                                     type="text"/>
+                    <LabelStyled> Search Tag
+                        <InputField
+                            search
+                            name="search"
+                            value={searchTerm || ""}
+                            onChange={(event) => setSearchTerm(event.target.value)}
+                            type="text"/>
                     </LabelStyled>
                 </SidebarSection1Styled>
                 : null}
@@ -53,7 +54,10 @@ export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTer
 
 
 const LabelStyled = styled.label`
-padding: 8px 0;
+position: relative;
+padding: 0 4px;
+font-size: 0.8em;
+color: var(--grey-main);
 `
 
 const SidebarStyled = styled.div`
@@ -62,7 +66,7 @@ position: relative;
 
 const SidebarSection1Styled = styled.div`
 position: relative;
-top: 15%;
+top: 12%;
 `
 
 const SidebarSection2Styled = styled.div`

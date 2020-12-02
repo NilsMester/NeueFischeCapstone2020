@@ -1,27 +1,16 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
 import styled from 'styled-components/macro';
 import UserTagList from "../tags/UserTagList";
 import PasteLinkFromClipboard from "../PasteLinkFromClipboard";
 import InputField from "../UI/InputField";
+import {ReactTinyLink} from "react-tiny-link";
 
-export default function RecordForm({onSave, recordData, setRecordData}) {
-
-    const history = useHistory();
+export default function RecordForm({recordData, setRecordData}) {
+console.log(recordData.recordLink)
     return (
-        <FormStyled onSubmit={handleSubmit}>
-            <label>
-                Titel
-                <InputField
-                    titel
-                    name="titel"
-                    value={recordData.titel || ""}
-                    onChange={handleChange}
-                    type="text"/>
-            </label>
-
+            <>
             <LinkSectionStyled>
-                <LinkLableStyled>
+                <section>
                     RecordLink
                     <InputField
                         recordLink
@@ -29,61 +18,101 @@ export default function RecordForm({onSave, recordData, setRecordData}) {
                         value={recordData.recordLink || ""}
                         onChange={handleChange}
                         type="text"/>
-                </LinkLableStyled>
+                </section>
                 <PasteLinkFromClipboard recordData={recordData} setRecordData={setRecordData} handleChange={handleChange}/>
             </LinkSectionStyled>
 
+                <TagsSectionStyled>
             <p>Tags</p>
-            <UserTagList recordForm tags={recordData.tagList} onTagClick={tag => setRecordData({
+            <UserTagList formTags tags={recordData.tagList} onTagClick={tag => setRecordData({
                 ...recordData,
                 tagList: recordData.tagList.filter(existingTag => existingTag !== tag)
             })}/>
+                </TagsSectionStyled>
 
-            <label>
+                <LableStyled>
+                    Titel
+                    <InputField
+                        titel
+                        name="titel"
+                        value={recordData.titel || ""}
+                        onChange={handleChange}
+                        type="text"/>
+                </LableStyled>
+
+                <PreviewStyled>
+                <CheckForLink />
+                </PreviewStyled>
+
+            <LableStyled>
                 Description
-                <InputField
+                <DescriptionTextAreaStyled
                     description
                     name="description"
                     value={recordData.description || ""}
                     onChange={handleChange}
                     type="test"/>
-            </label>
-
-            <button type="button" onClick={onCancel}>Cancel</button>
-            <button>Save</button>
-        </FormStyled>
+            </LableStyled>
+        </>
     );
 
     function handleChange(event) {
         setRecordData({...recordData, [event.target.name]: event.target.value});
     }
-
-    function onCancel() {
-        history.goBack();
-    }
-
-    function handleSubmit(event) {
-        event.preventDefault();
-        onSave(recordData);
-    }
+    
+    function CheckForLink(){
+        if (recordData.recordLink !== ""){
+            return(
+            <ReactTinyLink
+                cardSize="small"
+                showGraphic={true}
+                maxLine={0}
+                minLine={0}
+                url={recordData.recordLink}
+            />)} return null }
 
 }
 
-const FormStyled = styled.form`
-    display: grid;
-    grid-template-rows: min-content min-content min-content 1fr 0.5fr min-content min-content;
-    grid-row-gap: 12px;
-`;
+
 
 const LinkSectionStyled = styled.div`
 display:grid ;
 grid-template-rows: min-content;
-grid-template-columns: 0.5fr 0.2fr 0.3fr;
-justify-content: end;
-padding: 0 10px 0 0;
+grid-template-columns: 0.5fr 0.5fr;
+padding: 0 5px 0 0;
 `
 
-const LinkLableStyled = styled.label`
+const PreviewStyled = styled.div`
+margin: 0 10px 0 0;
+
+`
+
+const LableStyled = styled.label`
+margin: 0 10px 0 0;
+`
+
+const TagsSectionStyled = styled.section`
+p{margin: 0}
+`
+
+const DescriptionTextAreaStyled = styled.textarea`
+display: block;
+  background-color: var(--grey-50);
+  padding: var(--size-s);
+  color: var(--white1);
+  border-radius: var(--size-s);
+  border-width: thin;
+  border-style: solid;
+  border-color: lightgrey;
+  width: 100%;
+  height: 60px;
+  font-size: 0.8em;
+  
+  :focus {
+    outline: none;
+}
+
+
 `
 
 

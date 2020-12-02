@@ -15,7 +15,7 @@ export default function TagStyled({onClick, children}){
 }
 
 const VisualBorder = styled.div`
-    width: 100px;
+    width: 112px;
     height: 30px;
     position: relative;
     padding: 2px;
@@ -61,7 +61,7 @@ const BorderVisualWrapper = styled.div`
     display: grid;
     align-content: center;
     justify-content: center;    
-    font-size: 0.5em;
+    font-size: 0.6em;
     color: var(--orange-75);
     cursor: pointer;
     width: 100%;
