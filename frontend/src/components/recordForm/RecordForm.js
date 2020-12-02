@@ -18,14 +18,17 @@ export default function RecordForm({onSave, recordData, setRecordData}) {
                            type="text"/>
                 </label>
 
-                <label>
-                    RecordLink
-                    <input name="recordLink"
-                           value={recordData.recordLink || ""}
-                           onChange={handleChange}
-                           type="text"/>
-                </label>
-                <PasteLinkFromClipboard recordData={recordData} setRecordData={setRecordData} />
+                <div>
+                    <label>
+                        RecordLink
+                        <input name="recordLink"
+                               value={recordData.recordLink || ""}
+                               onChange={handleChange}
+                               type="text"/>
+                    </label>
+                    <PasteLinkFromClipboard recordData={recordData} setRecordData={setRecordData} handleChange={handleChange} />
+                </div>
+
                 <p>Tags</p>
                 <UserTagList recordForm tags={recordData.tagList} onTagClick={tag=>setRecordData({...recordData, tagList: recordData.tagList.filter(existingTag=> existingTag!==tag)})}/>
 
@@ -64,6 +67,6 @@ const FormStyled = styled.form`
 
 const DivStyled = styled.div`
 display: grid;
-grid-template-rows: min-content min-content min-content 1fr 0.75fr min-content min-content;
+grid-template-rows: min-content min-content min-content 1fr 0.5fr min-content min-content;
 `
 

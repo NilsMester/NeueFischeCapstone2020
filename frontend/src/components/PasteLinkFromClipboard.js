@@ -1,49 +1,46 @@
 import React, {useState} from 'react'
 import styled from 'styled-components/macro';
-import {HiOutlineClipboardCopy} from "react-icons/hi";
+import {BiPaste} from "react-icons/bi";
 
+export default function PasteLinkFromClipboard({recordData, setRecordData}) {
 
-export default function PasteLinkFromClipboard(record, setRecord) {
     const [pasteSuccess, setPasteSuccess] = useState('Paste Link');
 
-    function pasteFromClipBoard(event) {
+   async function pasteLinkUrlFromClipboardToForm() {
 
-        const pasteTextarea = document.querySelector('.paste');
-
-        navigator.clipboard.readText()
-            .then((text) => {
-                pasteTextarea.textContent = text;
-                setPasteSuccess('Async readText successful, "' + text + '" written');
-
-            })
-            .catch((err) => setPasteSuccess('Async readText failed with error: "' + err + '"'));
         try {
-            const successful = document.execCommand('paste');
-            const msg = successful ? 'Successful!' : 'Unsuccessful!';
-            setPasteSuccess(msg);
-        } catch (err) {
-            setPasteSuccess('Opps, unable to copy');
+            const text = await navigator.clipboard.readText();
+            const msg = 'Successful!';
+            setPasteSuccess(msg)
+            setRecordData({...recordData, recordLink: (recordData.recordLink, "")});
+            setRecordData({...recordData, recordLink: (recordData.recordLink, text)});
+            console.log('Pasted content: ', text);
+        } catch
+            (err) {
+            console.error('Failed to read clipboard contents: ', err);
+            setPasteSuccess('Opps, unable to paste');
         }
     }
 
     return (
-        <>
-        <CopyLinkStyled type="radio" className="paste" value={pasteFromClipBoard}/>
-            <CopyLinkIconStyled onClick={pasteFromClipBoard}/>
+        <CopyLinkStyled>
+            <CopyLinkIconStyled onClick={pasteLinkUrlFromClipboardToForm}/>
             <DescriptionStyled>{pasteSuccess}</DescriptionStyled>
-        </>
+        </CopyLinkStyled>
     )
 
 }
 
-const CopyLinkStyled = styled.input` 
-  visibility: hidden;
-   height: 0;
-  width: 0;
-  opacity: 0;
+const CopyLinkStyled = styled.div` 
+display: grid;
+grid-template-rows: min-content min-content;
+justify-items: center;
+align-items: center;
+text-align: center;
+color: var(--grey-50);
 `
 
-    const CopyLinkIconStyled = styled(HiOutlineClipboardCopy)`
+    const CopyLinkIconStyled = styled(BiPaste)`
 color: var(--secondary1);
 height: 30px;
 width: 30px;
