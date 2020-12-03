@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import {TiArrowBack} from "react-icons/ti";
 import {useHistory} from "react-router-dom";
-import {RiSave3Fill, RiSave3Line} from "react-icons/ri";
+import {RiSave3Line} from "react-icons/ri";
 
 export default function TabBar({ onSave, recordData}){
     const history = useHistory();
