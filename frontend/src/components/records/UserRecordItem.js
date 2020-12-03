@@ -37,6 +37,6 @@ align-items: start;
 
 const TitelStyled = styled.h2`
 margin: 0;
-color: var(--grey-main);
+color: var(--white1);;
 text-align: center;
 `

@@ -4,7 +4,7 @@ import UserTagList from "../tags/UserTagList";
 import CopyLinkToClipboard from "../CopyLinkToClipboard";
 import OpenLink from "../OpenLink";
 
-export default function Record({record, actions = [], className}) {
+export default function Record({record, className}) {
 
     return (
         <SingleRecordStyled className={className}>
@@ -14,7 +14,6 @@ export default function Record({record, actions = [], className}) {
             <TextStyled>{record.description}</TextStyled>
             <ActionSection>
                 <OpenLink recordLink={record.recordLink}/>
-                <div>{actions}</div>
                 <CopyLinkToClipboard recordLink={record.recordLink} />
             </ActionSection>
         </SingleRecordStyled>

@@ -12,7 +12,7 @@ const SidebarButtonStyled = styled.button`
   color: var(--orange-75);
   border: var(--gray-50);
   border-radius: var(--size-s) 0 0 var(--size-s);
-  background: var(--grey-main);
+  background: var(--grey-50);
   position: absolute;
   right: 0;
   
@@ -29,8 +29,11 @@ const SidebarButtonStyled = styled.button`
         : props.second && !props.showFirstSidebarArea
         ? css`
           top: 25%;
-        `
-            
+        ` 
+            : props.delete
+                ? css`
+          top: 25%;
+        `   
         
         : css`
           top: 74%;

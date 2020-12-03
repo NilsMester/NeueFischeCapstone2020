@@ -9,7 +9,7 @@ const SidebarButtonStyled = styled.button`
   color: var(--secondary1);
   border: var(--gray-50);
   border-radius: var(--size-xs);
-  background: var(--grey-main);
+  background: var(--grey-50);
   width: 90px;
   height: 30px;
 `;

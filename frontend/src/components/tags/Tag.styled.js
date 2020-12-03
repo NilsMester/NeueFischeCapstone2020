@@ -15,7 +15,7 @@ export default function TagStyled({onClick, children}){
 }
 
 const VisualBorder = styled.div`
-    width: 112px;
+    width: 111px;
     height: 30px;
     position: relative;
     padding: 2px;
@@ -49,10 +49,10 @@ const VisualBorder = styled.div`
     content: "";
     display: block;
     position: absolute;
-    top: 7px;
-    right: -10px;
-    width: 16px;
-    height: 16px;
+    top: 6px;
+    right: -11px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     z-index: 2;
 }
@@ -87,12 +87,12 @@ const BorderVisualWrapper = styled.div`
     content: "";
     display: block;
     position: absolute;
-    top: 7px;
-    right: -10px;
-    width: 12px;
-    height: 12px;
+    top: 6px;
+    right: -11px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: var(--white1);
+    background: var(--grey-main);
     z-index: 3;
     }
 `
@@ -111,6 +111,6 @@ const RightHide = styled.div`
     right: -10px;
     width: 10px;
     height: 18px;
-    background: var(--white1);
+    background: var(--grey-main);
     z-index: 4;
 `

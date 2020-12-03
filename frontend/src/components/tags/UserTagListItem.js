@@ -30,6 +30,6 @@ padding: 2px 0;
         `
         : css`
           display: inline-block;
-          padding: 6px 0 0 0; 
+          padding: 8px 0 0 0; 
           `
 }`;

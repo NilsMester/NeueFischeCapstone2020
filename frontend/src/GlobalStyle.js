@@ -2,13 +2,13 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
   :root {
-   --grey-main: #2C2C2C;
+   --grey-main: #2D2D2D;
    --grey-50: #5F5F5F;
    
    --orange-main: #FEA676;
    --orange-75: #FFC491;
    
-   --secondary1: #96EDE3;
+   --secondary1: #6BC4A6;
    --secondary2: #ed96a0;
   
    --white1: #f8f8f8; //Guyabano
@@ -36,8 +36,9 @@ export default createGlobalStyle`
   }
   
   body{
-    background-color: var(--white1);
-     display: grid;
+    background-color: var(--grey-main);
+    color: var(--grey-50);
+    display: grid;
   }
    
   input, textarea {

@@ -2,8 +2,10 @@ import React, {useContext} from 'react';
 import RecordContext from "../../contexts/RecordContext";
 import {useParams, useHistory } from 'react-router-dom';
 import Header from "../../components/Header";
-import RecordActionButton from "../../components/UI/RecordActionButton";
 import RecordDetails from "../../components/records/RecordDetails";
+import SideBarActionButton from "../../components/UI/SideBarActionButton";
+import TabBar from "../../components/UI/TabBar";
+import styled from 'styled-components/macro';
 
 export default function DetailsRecordScreen(){
     const{records, deleteRecord} = useContext(RecordContext);
@@ -15,23 +17,15 @@ export default function DetailsRecordScreen(){
     return !record ? null : (
         <>
             <Header titel="Your Record"/>
-            <RecordDetails record={record} actions={getActions()}/>
+            <MainGridStyled>
+                <SideBarActionButton first showFirstSidebarArea={false}
+                                     onClick={() => history.push(`/edit/${record.id}`)}>Edit</SideBarActionButton>
+                <SideBarActionButton delete onClick={handleDelete}>Delete</SideBarActionButton>
+                <RecordDetails record={record}/>
+            </MainGridStyled>
+            <TabBar/>
         </>
 );
-
-    function getActions() {
-        return [
-            <RecordActionButton key="delete" onClick={handleDelete}>
-                Delete
-            </RecordActionButton>,
-            <RecordActionButton
-                key="edit"
-                onClick={() => history.push(`/edit/${record.id}`)}
-            >
-                Edit
-            </RecordActionButton>,
-        ];
-    }
 
     function handleDelete() {
         deleteRecord(id);
@@ -39,3 +33,10 @@ export default function DetailsRecordScreen(){
     }
 
 }
+
+const MainGridStyled = styled.div`
+display: grid;
+grid-template-columns: 1fr min-content;
+position: relative;
+padding: 10px 0 10px 10px;
+`
