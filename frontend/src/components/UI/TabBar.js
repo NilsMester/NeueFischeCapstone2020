@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import {TiArrowBack} from "react-icons/ti";
 import {useHistory} from "react-router-dom";
-import {RiSave3Line} from "react-icons/ri";
+import {IoChevronBackSharp} from "react-icons/io5";
+import {FaRegSave} from "react-icons/fa";
 
 export default function TabBar({ onSave, recordData}){
     const history = useHistory();
 return(
-        <ActionBarStyled>
-            <ButtonLeftStyled><HistoryGoBackButtonStyled onClick={() => history.goBack()}/></ButtonLeftStyled>
-    <ButtonRightStyled onClick={handleSubmit}><SafeButtonStyled>Save</SafeButtonStyled></ButtonRightStyled>
-        </ActionBarStyled>
+    <ActionBarStyled>
+        <ButtonLeftStyled><HistoryGoBackButtonStyled onClick={() => history.goBack()}/></ButtonLeftStyled>
+        <ButtonRightStyled onClick={handleSubmit}><SafeButtonStyled>Save</SafeButtonStyled></ButtonRightStyled>
+    </ActionBarStyled>
 )
 
     function handleSubmit(event) {
@@ -40,13 +40,13 @@ border-radius: 30% 30% 0 0;
 background-color: var(--grey-50);
 `
 
-const HistoryGoBackButtonStyled = styled(TiArrowBack)`
+const HistoryGoBackButtonStyled = styled(IoChevronBackSharp)`
 height: 35px;
 width: 35px;
 color: var(--secondary1);
 `
 
-const SafeButtonStyled = styled(RiSave3Line)`
+const SafeButtonStyled = styled(FaRegSave)`
 height: 35px;
 width: 35px;
 color: var(--secondary1);

@@ -31,7 +31,6 @@ const ActionSection = styled.section`
 display: grid;
 grid-template-columns: 0.5fr 0.5fr 0.5fr;
 justify-items: center;
-
 align-items: center;
 `
 

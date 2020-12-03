@@ -8,7 +8,9 @@ export default function TagStyled({onClick, children}){
             <RightHide/>
             <LeftHide/>
             <BorderVisualWrapper>
+                <ChildStyled>
                 {children}
+                </ChildStyled>
             </BorderVisualWrapper>
         </VisualBorder>
     )
@@ -21,8 +23,7 @@ const VisualBorder = styled.div`
     padding: 2px;
     margin-right: 4px;
     border-radius: 4px;
-    z-index: 1;
-    
+    z-index: 1; 
     background: linear-gradient(
         to right,
     var(--orange-75),
@@ -113,4 +114,8 @@ const RightHide = styled.div`
     height: 18px;
     background: var(--grey-main);
     z-index: 4;
+`
+const ChildStyled = styled.p`
+     z-index: 10;
+     font-size: 0.9em;
 `

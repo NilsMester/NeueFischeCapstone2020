@@ -38,7 +38,7 @@ export default createGlobalStyle`
   
   body{
     background-color: var(--grey-main);
-    color: var(--grey-50);
+    color: var(--grey-25);
     display: grid;
   }
    
