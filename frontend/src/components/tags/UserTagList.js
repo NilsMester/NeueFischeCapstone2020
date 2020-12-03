@@ -45,6 +45,7 @@ ${(props) =>
           padding: 0;
           margin: 0; 
           overflow-x: hidden;
+          overflow-y: scroll;
           -ms-overflow-style: none;
           ::-webkit-scrollbar {
           display: none;

@@ -35,7 +35,7 @@ grid-template-rows: min-content min-content;
 align-content: end;
 justify-content: center;
 justify-items: center;
-color: var(--grey-50);
+color: var(--white1);
 `
 
 const PasteLinkIconStyled = styled(BiPaste)`

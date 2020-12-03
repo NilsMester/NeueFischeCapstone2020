@@ -18,7 +18,7 @@ const HeaderStyled = styled.header`
   display: grid;
   grid-template-columns: 1fr min-content;
 
-  background: var(--grey-main);
+  background: var(--grey-50);
   padding: var(--size-s);
 `;
 

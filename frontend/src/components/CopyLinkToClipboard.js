@@ -33,7 +33,7 @@ grid-template-rows: min-content min-content;
 justify-items: center;
 align-items: center;
 text-align: center;
-color: var(--grey-50);
+color: var(--white1);
 `
 
     const CopyLinkIconStyled = styled(HiOutlineClipboardCopy)`

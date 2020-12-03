@@ -24,7 +24,7 @@ export default function UserRecordItem({record, actions = [], className}) {
 const SingleRecordStyled = styled.section`
 display: grid;
 grid-template-rows: 5 (1fr);
-row-gap: 8px;
+row-gap: 16px;
 `;
 
 const ActionSection = styled.section`
@@ -36,6 +36,7 @@ align-items: start;
 `
 
 const TitelStyled = styled.h2`
+font-size: 1.1em;
 margin: 0;
 color: var(--white1);;
 text-align: center;

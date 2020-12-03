@@ -57,7 +57,7 @@ const LabelStyled = styled.label`
 position: relative;
 padding: 0 4px;
 font-size: 0.8em;
-color: var(--grey-main);
+color: var(--grey-50);
 `
 
 const SidebarStyled = styled.div`
