@@ -38,8 +38,7 @@ ${(props) =>
         : props.formTags
         ? css`
           width: 64vw;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
+          
           overflow: scroll;
           list-style: none;
           text-align: center;

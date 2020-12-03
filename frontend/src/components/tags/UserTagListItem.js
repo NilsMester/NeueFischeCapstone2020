@@ -29,7 +29,7 @@ padding: 2px 0;
         padding: 8px 0 0 0;
         `
         : css`
-          display: inline;
+          display: inline-block;
           padding: 8px 0 6px 0; 
           `
 }`;
