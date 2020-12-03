@@ -29,7 +29,7 @@ export default function UserRecordList () {
 }
 
 const StyledRecordsList = styled.ul`
-    padding: 25px 0 0 0;
+    padding: 16px 0 0 0;
     overflow: scroll;
     list-style: none;
     

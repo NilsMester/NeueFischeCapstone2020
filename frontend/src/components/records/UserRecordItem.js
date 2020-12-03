@@ -30,9 +30,9 @@ row-gap: 16px;
 const ActionSection = styled.section`
 display: grid;
 grid-template-columns: 0.5fr 0.5fr 0.5fr;
-height: 35px;
 justify-items: center;
-align-items: start;
+
+align-items: center;
 `
 
 const TitelStyled = styled.h2`

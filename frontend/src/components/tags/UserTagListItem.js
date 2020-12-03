@@ -26,10 +26,10 @@ padding: 2px 0;
         max-height: 40px;
         display: grid;
         align-content: center;
-        padding: 2px 0;
+        padding: 8px 0 0 0;
         `
         : css`
-          display: inline-block;
-          padding: 8px 0 0 0; 
+          display: inline;
+          padding: 8px 0 6px 0; 
           `
 }`;

@@ -15,7 +15,7 @@ export default function TagStyled({onClick, children}){
 }
 
 const VisualBorder = styled.div`
-    width: 111px;
+    width: 105px;
     height: 30px;
     position: relative;
     padding: 2px;
