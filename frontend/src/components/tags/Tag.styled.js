@@ -37,7 +37,7 @@ const VisualBorder = styled.div`
     display: block;
     position: absolute;
     top: 7px;
-    left: -5px;
+    left: -4px;
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -49,10 +49,10 @@ const VisualBorder = styled.div`
     content: "";
     display: block;
     position: absolute;
-    top: 6px;
-    right: -11px;
-    width: 18px;
-    height: 18px;
+    top: 7px;
+    right: -9px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     z-index: 2;
 }
@@ -75,7 +75,7 @@ const BorderVisualWrapper = styled.div`
     display: block;
     position: absolute;
     top: 7px;
-    left: -5px;
+    left: -4px;
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -87,10 +87,10 @@ const BorderVisualWrapper = styled.div`
     content: "";
     display: block;
     position: absolute;
-    top: 6px;
-    right: -11px;
-    width: 14px;
-    height: 14px;
+    top: 7px;
+    right: -9px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: var(--grey-main);
     z-index: 3;

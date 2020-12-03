@@ -37,7 +37,7 @@ ${(props) =>
         
         : props.formTags
         ? css`
-          width: 66vw;
+          width: 64vw;
           overflow: scroll;
           list-style: none;
           text-align: center;
