@@ -29,14 +29,14 @@ background-color: rgba(65,65,65,0.1);
 const ButtonLeftStyled = styled.button`
 width: auto;
 height: auto;
-border-radius: 0 75% 0 0;
+border-radius: 30% 30% 0 0;
 background-color: var(--grey-50);
 `
 
 const ButtonRightStyled = styled.button`
 width: auto;
 height: auto;
-border-radius: 75% 0 0 0;
+border-radius: 30% 30% 0 0;
 background-color: var(--grey-50);
 `
 
