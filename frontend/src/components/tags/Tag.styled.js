@@ -100,7 +100,7 @@ const LeftHide = styled.div`
     position: absolute;
     top:6px;
     left: 2px;
-    width: 10px;
+    width: 11px;
     height: 18px;
     background: var(--grey-50);
     z-index: 8;

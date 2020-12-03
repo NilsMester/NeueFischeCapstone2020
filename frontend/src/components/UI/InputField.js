@@ -9,9 +9,9 @@ export default function InputField({ children, ...rest }) {
 
 const InputFieldStyled = styled.input`
   display: block;
-  background-color: var(--grey-50);
+  background-color: var(--grey-25);
   padding: var(--size-s);
-  color: var(--white1);
+  color: var(--grey-main);
   border-radius: var(--size-s);
   border-width: thin;
   border-style: solid;
