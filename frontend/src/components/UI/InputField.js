@@ -6,7 +6,6 @@ export default function InputField({ children, ...rest }) {
     return <InputFieldStyled {...rest}>{children}</InputFieldStyled>;
 }
 
-
 const InputFieldStyled = styled.input`
   display: block;
   height: 30px;

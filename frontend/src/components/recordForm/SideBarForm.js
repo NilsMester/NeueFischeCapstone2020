@@ -1,33 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import UserTagList from "../tags/UserTagList";
 import styled from 'styled-components/macro';
-import AddNewTagInput from "../tags/AddNewTagInput";
-import SideBarActionButton from "../UI/SideBarActionButton";
 import InputField from "../UI/InputField";
 
-export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTerm,recordData, setRecordData}){
-
-    const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false)
-    const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false)
-
-    function handleClickFirstButton(){
-        setShowFirstSidebarArea(!showFirstSidebarArea)
-        setShowSecondSideBarArea(false)
-    }
-
-    function handleClickSecondButton(){
-        setShowFirstSidebarArea(false)
-        setShowSecondSideBarArea(!showSecondSideBarArea)
-    }
+export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTerm, showFirstSidebarArea, showSecondSideBarArea, actionsFirstButton=[], actionsSecondButton=[], actionsSecondButtonInGrid=[], actionsSecondArea=[]}){
 
     return(
         <SidebarStyled>
-            <SideBarActionButton first showFirstSidebarArea={showFirstSidebarArea} onClick={handleClickFirstButton}>Tags</SideBarActionButton>
+            <div>{actionsFirstButton}</div>
 
             {!showFirstSidebarArea && !showSecondSideBarArea ?
-                <SideBarActionButton second showFirstSidebarArea={showFirstSidebarArea} onClick={handleClickSecondButton}>
-                    New Tag
-                </SideBarActionButton>
+                <div>{actionsSecondButton}</div>
 
                 : showFirstSidebarArea ?
                     <SidebarSection1Styled>
@@ -40,23 +23,16 @@ export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTer
                                         onChange={(event) => setSearchTerm(event.target.value)}
                                         type="text"/>
                         </LabelStyled>
-                        <SideBarActionButton showFirstSidebarArea={showFirstSidebarArea}
-                                             onClick={handleClickSecondButton}>
-                            New Tag
-                        </SideBarActionButton>
+                        {actionsSecondButtonInGrid}
                     </SidebarSection1Styled>
 
                     : showSecondSideBarArea ?
                         <>
-                            <SideBarActionButton second showFirstSidebarArea={showFirstSidebarArea}
-                                                 onClick={handleClickSecondButton}>
-                                New Tag
-                            </SideBarActionButton>
+                            {actionsSecondButton}
                             <SidebarSection2Styled>
-                                <AddNewTagInput recordData={recordData} setRecordData={setRecordData}/>
+                                {actionsSecondArea}
                             </SidebarSection2Styled></>
                         : null}
-
         </SidebarStyled>
     )
 

@@ -8,6 +8,8 @@ import TabBar from "../../components/UI/TabBar";
 import TagsContext from "../../contexts/TagsContext";
 import SideBarForm from "../../components/recordForm/SideBarForm";
 import {SearchFilterTagList} from "../../components/services/SearchFilterTagList";
+import SideBarActionButton from "../../components/UI/SideBarActionButton";
+import AddNewTagInput from "../../components/tags/AddNewTagInput";
 
 const initialState = {
     titel:"",
@@ -23,6 +25,8 @@ export default function AddRecordScreen() {
     const history = useHistory();
     const {userTagList} = useContext(TagsContext);
     const [searchTerm, setSearchTerm] = useState("");
+    const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false)
+    const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false)
 
     const filteredUserTagList = SearchFilterTagList({searchTerm, userTagList, recordData});
 
@@ -30,12 +34,45 @@ export default function AddRecordScreen() {
         <>
             <Header titel="New Record"/>
             <MainGridStyled>
-                <RecordForm onSubmit={handleSave} recordData={recordData} setRecordData={setRecordData} />
-                <SideBarForm sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>
+
+                <RecordForm onSubmit={handleSave} recordData={recordData} setRecordData={setRecordData}/>
+                <SideBarForm sidebar
+                             tags={filteredUserTagList}
+                             onTagClick={onTagClick}
+                             searchTerm={searchTerm}
+                             setSearchTerm={setSearchTerm}
+                             showFirstSidebarArea={showFirstSidebarArea}
+                             showSecondSideBarArea={showSecondSideBarArea}
+                             actionsFirstButton={[
+                                 <SideBarActionButton first key="secondButtonAbsolut" onClick={handleClickFirstButton}>
+                                     Tags
+                                 </SideBarActionButton>]}
+                             actionsSecondButton={[
+                                 <SideBarActionButton key="secondButtonAbsolut" second
+                                                      onClick={handleClickSecondButton}>
+                                     New Tag
+                                 </SideBarActionButton>]}
+                             actionsSecondButtonInGrid={[
+                                 <SideBarActionButton key="secondButtonInGrid" onClick={handleClickSecondButton}>
+                                     New Tag
+                                 </SideBarActionButton>]}
+                             actionsSecondArea={[<AddNewTagInput key="actionSecondArea" recordData={recordData}
+                                                                 setRecordData={setRecordData}/>]}
+                />
             </MainGridStyled>
             <TabBar newAndChange onSave={handleSave} recordData={recordData}/>
         </>
     );
+
+    function handleClickFirstButton(){
+        setShowFirstSidebarArea(!showFirstSidebarArea)
+        setShowSecondSideBarArea(false)
+    }
+
+    function handleClickSecondButton(){
+        setShowFirstSidebarArea(false)
+        setShowSecondSideBarArea(!showSecondSideBarArea)
+    }
 
     function onTagClick(tag) {
         setRecordData({...recordData, tagList: [...recordData.tagList, tag]});
