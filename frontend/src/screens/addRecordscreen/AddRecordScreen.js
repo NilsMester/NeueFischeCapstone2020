@@ -28,7 +28,6 @@ export default function AddRecordScreen() {
 
     return(
         <>
-
             <Header titel="New Record"/>
             <MainGridStyled>
                 <RecordForm onSubmit={handleSave} recordData={recordData} setRecordData={setRecordData} />
