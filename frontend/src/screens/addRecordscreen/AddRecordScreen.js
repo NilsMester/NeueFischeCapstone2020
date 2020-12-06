@@ -48,7 +48,7 @@ export default function AddRecordScreen() {
                                      Tags
                                  </SideBarActionButton>]}
                              actionsSecondButton={[
-                                 <SideBarActionButton second key="secondButtonAbsolut" second
+                                 <SideBarActionButton second key="secondButtonAbsolut"
                                                       onClick={handleClickSecondButton}>
                                      New Tag
                                  </SideBarActionButton>]}

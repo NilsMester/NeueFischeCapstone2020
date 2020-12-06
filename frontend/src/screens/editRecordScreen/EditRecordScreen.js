@@ -43,7 +43,7 @@ export default function EditIdeaPage() {
                                      Tags
                                  </SideBarActionButton>]}
                              actionsSecondButton={[
-                                 <SideBarActionButton second key="secondButtonAbsolutEdit" second
+                                 <SideBarActionButton second key="secondButtonAbsolutEdit"
                                                       onClick={handleClickSecondButton}>
                                      New Tag
                                  </SideBarActionButton>]}
