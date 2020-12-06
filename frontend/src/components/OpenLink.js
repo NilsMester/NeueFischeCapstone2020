@@ -17,7 +17,7 @@ grid-template-rows: min-content min-content;
 justify-items: center;
 align-items: center;
 text-align: center;
-color: var(--white1);
+color: var(--grey-50);
 `
 
 const OpenLinkIconStyled = styled(HiLink)`

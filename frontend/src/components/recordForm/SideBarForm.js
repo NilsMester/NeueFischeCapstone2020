@@ -24,54 +24,73 @@ export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTer
         <SidebarStyled>
             <SideBarActionButton first showFirstSidebarArea={showFirstSidebarArea} onClick={handleClickFirstButton}>Tags</SideBarActionButton>
 
-            {showFirstSidebarArea ?
-                <SidebarSection1Styled>
-                    <UserTagList sidebar tags={tags} onTagClick={onTagClick}/>
-                    <LabelStyled> Search Tag
-                        <InputField
-                            search
-                            name="search"
-                            value={searchTerm || ""}
-                            onChange={(event) => setSearchTerm(event.target.value)}
-                            type="text"/>
-                    </LabelStyled>
-                </SidebarSection1Styled>
-                : null}
+            {!showFirstSidebarArea && !showSecondSideBarArea ?
+                <SideBarActionButton second showFirstSidebarArea={showFirstSidebarArea} onClick={handleClickSecondButton}>
+                    New Tag
+                </SideBarActionButton>
 
-            <SideBarActionButton second showFirstSidebarArea={showFirstSidebarArea} onClick={handleClickSecondButton}>New
-                Tag</SideBarActionButton>
+                : showFirstSidebarArea ?
+                    <SidebarSection1Styled>
+                        <UserTagList sidebar tags={tags} onTagClick={onTagClick}/>
+                        <LabelStyled>
+                            <InputField search
+                                        placeholder="search"
+                                        name="search"
+                                        value={searchTerm || ""}
+                                        onChange={(event) => setSearchTerm(event.target.value)}
+                                        type="text"/>
+                        </LabelStyled>
+                        <SideBarActionButton showFirstSidebarArea={showFirstSidebarArea}
+                                             onClick={handleClickSecondButton}>
+                            New Tag
+                        </SideBarActionButton>
+                    </SidebarSection1Styled>
 
-            {showSecondSideBarArea ?
-                <SidebarSection2Styled>
-                    <AddNewTagInput recordData={recordData} setRecordData={setRecordData}/>
-                </SidebarSection2Styled>
-                : null}
+                    : showSecondSideBarArea ?
+                        <>
+                            <SideBarActionButton second showFirstSidebarArea={showFirstSidebarArea}
+                                                 onClick={handleClickSecondButton}>
+                                New Tag
+                            </SideBarActionButton>
+                            <SidebarSection2Styled>
+                                <AddNewTagInput recordData={recordData} setRecordData={setRecordData}/>
+                            </SidebarSection2Styled></>
+                        : null}
 
         </SidebarStyled>
     )
 
 }
 
-
 const LabelStyled = styled.label`
+margin: 0;
 position: relative;
-padding: 0 4px;
+width: 120px;
 font-size: 0.8em;
 color: var(--grey-50);
 `
 
 const SidebarStyled = styled.div`
 position: relative;
+grid-area: sidebar;
 `
 
 const SidebarSection1Styled = styled.div`
+padding: 4px 0 0 0;
 position: relative;
-top: 12%;
+top: 13%;
+display: grid;
+row-gap: 8px;
+justify-items: end;
 `
 
 const SidebarSection2Styled = styled.div`
 position: relative;
-top: 32%;
+top: 30%;
+display: grid;
+row-gap: 8px;
+justify-items: end;
+padding: 8px 0 0 0;
 `
 
 

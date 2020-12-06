@@ -1,6 +1,8 @@
 package de.neuefische.capstoneproject.link_librarian.security;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import java.io.IOException;
 import java.util.Collections;
 
 @Service
+@Slf4j
 public class JwtAuthentifikationFilter extends OncePerRequestFilter {
 
     private final JwtUtilities jwtUtilities;
@@ -44,8 +47,8 @@ public class JwtAuthentifikationFilter extends OncePerRequestFilter {
                         )
                 );
             }
-        }catch (Exception e){
-            System.out.println(e);
+        }catch (JwtException e){
+            logger.error("parsing Jwt token went wrong", e);
         }
 
         filterChain.doFilter(httpServletRequest,httpServletResponse);

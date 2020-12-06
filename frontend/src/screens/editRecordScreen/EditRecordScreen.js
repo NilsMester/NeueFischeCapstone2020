@@ -27,7 +27,6 @@ export default function EditIdeaPage() {
         <FormStyled onSubmit={handleSubmit}>
             <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
         </FormStyled>
-
         <SideBarForm sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>
     </MainGridStyled>
     <TabBar onSave={handleSave} recordData={recordData}/>

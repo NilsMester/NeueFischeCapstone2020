@@ -21,7 +21,6 @@ const VisualBorder = styled.div`
     height: 30px;
     position: relative;
     padding: 2px;
-    margin-right: 4px;
     border-radius: 4px;
     z-index: 1; 
     background: linear-gradient(
@@ -93,7 +92,7 @@ const BorderVisualWrapper = styled.div`
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--grey-main);
+    background: var(--white1);
     z-index: 3;
     }
 `
@@ -109,10 +108,10 @@ const LeftHide = styled.div`
 const RightHide = styled.div`
    position: absolute;
     top: 6px;
-    right: -10px;
-    width: 10px;
+    right: -11px;
+    width: 11px;
     height: 18px;
-    background: var(--grey-main);
+    background: var(--white1);
     z-index: 4;
 `
 const ChildStyled = styled.p`

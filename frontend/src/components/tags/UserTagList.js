@@ -20,13 +20,14 @@ ${(props) =>
     props.sidebar
         ? css`
           list-style: none;
-          padding: 0;
+          padding: 0 6px 0 0;
           margin: 0;
           display: grid;
-          height: 40vh;
+          height: 30vh;
           width: 33vw;
           justify-content: end;
           align-content: start;
+          row-gap: 4px;
           overflow-y: scroll;
           overflow-x: hidden;
           -ms-overflow-style: none;
@@ -37,13 +38,12 @@ ${(props) =>
         
         : props.formTags
         ? css`
-          width: 64vw;
-          
-          overflow: scroll;
+          width: 62vw;
+          height: 25vh;
           list-style: none;
           text-align: center;
-          padding: 0 0 0 8px;
-          margin: 0; 
+          padding: 0;
+          margin: 0;
           overflow-x: hidden;
           overflow-y: scroll;
           -ms-overflow-style: none;

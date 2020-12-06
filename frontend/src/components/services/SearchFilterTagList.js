@@ -1,15 +1,15 @@
 import {useMemo} from 'react';
 
 export function SearchFilterTagList({searchTerm, userTagList, recordData}){
-
-    const filteredUserTagList = useMemo(() => {
-        if (!searchTerm) return userTagList.filter(tag => !recordData.tagList.includes(tag._id)).map(tagItem => tagItem._id);
-
-        return userTagList.filter(tag=>!recordData.tagList.includes(tag._id)).map(tagItem=>tagItem._id).filter((tag) => {
-            return (
-                tag.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-        });
+    return useMemo(() => {
+        return userTagList
+            .map(tagItem=>tagItem._id)
+            .filter(tag=>!recordData.tagList.includes(tag))
+            .filter(includeSearchTerm(searchTerm));
     }, [searchTerm, userTagList, recordData.tagList])
-    return filteredUserTagList;
+}
+
+function includeSearchTerm (searchTerm) {
+    return (tag) => !searchTerm && tag.toLowerCase().includes(searchTerm.toLowerCase());
+
 }

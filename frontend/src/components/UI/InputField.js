@@ -9,6 +9,7 @@ export default function InputField({ children, ...rest }) {
 
 const InputFieldStyled = styled.input`
   display: block;
+  height: 30px;
   background-color: var(--grey-25);
   padding: var(--size-s);
   color: var(--grey-main);
@@ -16,28 +17,26 @@ const InputFieldStyled = styled.input`
   border-width: thin;
   border-style: solid;
   border-color: lightgrey;
+  box-shadow: 0 1px 5px 1px var(--grey-25);
+
   :focus {
     outline: none;
 }
   ${(props) =>
-    props.titel
+    props.formField
         ? css`
           width: 100%;
-          padding: var(--size-s);
+          padding: 6px;
           font-size: 0.8em;
-        `
-        
-        : props.recordLink
-        ? css`
-           width: 100%;
-           padding: 10px;
-           font-size: 0.5em;
         `
 
         : props.search
             ? css`
-            width: 100%;
+            margin: 0;
+            width: 120px;
+            padding: 6px;
             font-size: 0.8em;
+            right: 0;
         `
         : css`
            

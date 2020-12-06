@@ -126,8 +126,6 @@ public class RecordServiceTest {
                 Query query = new Query(new Criteria().andOperator(
                         Criteria.where("email").is("alex@web.de"),
                         Criteria.where("recordList").elemMatch(Criteria.where("_id").is("1"))));
-                String expectedId = "uniqueId";
-                Instant expectedTime = Instant.parse("2020-10-26T10:00:00Z");
                 Update update = new Update();
 
                 Record editedRecord = new Record(
@@ -159,7 +157,7 @@ public class RecordServiceTest {
         }
 
         @Test
-        @DisplayName("The \"editRecord\" method should return the added record object")
+        @DisplayName("The \"deleteRecord\" method should delete the record object")
         void deleteRecordTest() {
                 //Given
                 String principalName = "alex@web.de";

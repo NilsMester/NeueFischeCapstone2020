@@ -14,6 +14,7 @@ export default function DetailsRecordScreen(){
     const history = useHistory();
 
     const record = records.find((record) => record.id === id);
+
     return !record ? null : (
         <>
             <Header titel="Your Record"/>

@@ -184,8 +184,8 @@ public class RecordControllerIntegrationTest {
         HttpEntity<AddRecordDto> entity = getValidAuthorizationEntity(recordToAdd);
         ResponseEntity<Record> response = restTemplate.exchange(url, HttpMethod.POST, entity, Record.class);
 
-        Object updatedLinkLibrarianUser = linkLibrarianUserDao.findById("alex@web.de");
-        Object expectedLinkLibrarianUser =  Optional.of(new LinkLibrarianUser(
+        Optional <LinkLibrarianUser> savedLinkLibrarianUser = linkLibrarianUserDao.findById("alex@web.de");
+        LinkLibrarianUser expectedLinkLibrarianUser =  new LinkLibrarianUser(
                 "alex@web.de",
                 new ArrayList<>(List.of(
 
@@ -210,7 +210,7 @@ public class RecordControllerIntegrationTest {
                                 Instant.parse("2020-11-22T18:35:24.00Z"),
                                 true,
                                 List.of("Java", "MongoDB", "Spring"))
-                ))));
+                )));
 
         Record expectedRecord = new Record("new generated id",
                 "someTitel",
@@ -223,7 +223,7 @@ public class RecordControllerIntegrationTest {
         //Then
         assertThat(response.getStatusCode(), is(HttpStatus.OK));
         assertThat(response.getBody(), is(expectedRecord));
-        assertThat(updatedLinkLibrarianUser, is(expectedLinkLibrarianUser));
+        assertThat(savedLinkLibrarianUser.get(), is(expectedLinkLibrarianUser));
     }
 
 
@@ -249,8 +249,8 @@ public class RecordControllerIntegrationTest {
         HttpEntity<Record> entity = getValidAuthorizationEntity(editedRecord);
         ResponseEntity<Record> response = restTemplate.exchange(url, HttpMethod.PUT, entity, Record.class);
 
-        Object updatedLinkLibrarianUser = linkLibrarianUserDao.findById("alex@web.de");
-        Object expectedLinkLibrarianUser =  Optional.of(new LinkLibrarianUser(
+        Optional<LinkLibrarianUser> savedLinkLibrarianUser = linkLibrarianUserDao.findById("alex@web.de");
+        LinkLibrarianUser expectedLinkLibrarianUser = new LinkLibrarianUser(
                 "alex@web.de",
                 new ArrayList<>(List.of(
 
@@ -268,7 +268,7 @@ public class RecordControllerIntegrationTest {
                                 Instant.parse("2020-11-19T18:35:24.00Z"),
                                 true,
                                 new ArrayList<>(List.of("React", "Css", "Styled-component")))
-                ))));
+                )));
 
         Record expectedRecord = new Record("1",
                 "Fancy Stuff",
@@ -281,7 +281,7 @@ public class RecordControllerIntegrationTest {
         //Then
         assertThat(response.getStatusCode(), is(HttpStatus.OK));
         assertThat(response.getBody(), is(expectedRecord));
-        assertThat(updatedLinkLibrarianUser, is(expectedLinkLibrarianUser));
+        assertThat(savedLinkLibrarianUser, is(expectedLinkLibrarianUser));
     }
 
     @Test

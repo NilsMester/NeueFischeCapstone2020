@@ -8,7 +8,7 @@ export default function UserRecordListScreen () {
    <>
         <Header titel="Your Records"/>
         <UserRecordList/>
-        <TabBar/>
+        <TabBar recordsView/>
      </>
     )
 
