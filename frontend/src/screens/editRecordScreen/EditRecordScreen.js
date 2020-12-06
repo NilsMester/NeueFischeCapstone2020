@@ -38,21 +38,21 @@ export default function EditIdeaPage() {
                              showFirstSidebarArea={showFirstSidebarArea}
                              showSecondSideBarArea={showSecondSideBarArea}
                              actionsFirstButton={[
-                                 <SideBarActionButton first key="firstButtonAbsolutEdit"
+                                 <SideBarActionButton first key="firstButtonAbsolut"
                                                       onClick={handleClickFirstButton}>
                                      Tags
                                  </SideBarActionButton>]}
                              actionsSecondButton={[
-                                 <SideBarActionButton second key="secondButtonAbsolutEdit"
+                                 <SideBarActionButton second key="secondButtonAbsolut"
                                                       onClick={handleClickSecondButton}>
                                      New Tag
                                  </SideBarActionButton>]}
                              actionsSecondButtonInGrid={[
-                                 <SideBarActionButton key="secondButtonInGridEdit"
+                                 <SideBarActionButton key="secondButtonInGrid"
                                                       onClick={handleClickSecondButton}>
                                      New Tag
                                  </SideBarActionButton>]}
-                             actionsSecondArea={[<AddNewTagInput key="actionSecondAreaEdit"
+                             actionsSecondArea={[<AddNewTagInput key="actionSecondArea"
                                                                  recordData={recordData}
                                                                  setRecordData={setRecordData}/>]}
                 />
