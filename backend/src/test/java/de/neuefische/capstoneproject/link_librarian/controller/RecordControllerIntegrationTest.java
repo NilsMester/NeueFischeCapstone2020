@@ -250,7 +250,7 @@ public class RecordControllerIntegrationTest {
         ResponseEntity<Record> response = restTemplate.exchange(url, HttpMethod.PUT, entity, Record.class);
 
         Optional<LinkLibrarianUser> savedLinkLibrarianUser = linkLibrarianUserDao.findById("alex@web.de");
-        LinkLibrarianUser expectedLinkLibrarianUser = new LinkLibrarianUser(
+        Optional<LinkLibrarianUser> expectedLinkLibrarianUser =  Optional.of( new LinkLibrarianUser(
                 "alex@web.de",
                 new ArrayList<>(List.of(
 
@@ -268,7 +268,7 @@ public class RecordControllerIntegrationTest {
                                 Instant.parse("2020-11-19T18:35:24.00Z"),
                                 true,
                                 new ArrayList<>(List.of("React", "Css", "Styled-component")))
-                )));
+                ))));
 
         Record expectedRecord = new Record("1",
                 "Fancy Stuff",
