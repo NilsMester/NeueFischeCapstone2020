@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import RecordForm from "../../components/recordForm/RecordForm";
 import RecordContext from "../../contexts/RecordContext";
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import Header from "../../components/Header";
 import styled from 'styled-components/macro';
 import TabBar from "../../components/UI/TabBar";
@@ -44,11 +44,11 @@ export default function AddRecordScreen() {
                              showFirstSidebarArea={showFirstSidebarArea}
                              showSecondSideBarArea={showSecondSideBarArea}
                              actionsFirstButton={[
-                                 <SideBarActionButton first key="secondButtonAbsolut" onClick={handleClickFirstButton}>
+                                 <SideBarActionButton first key="firstButtonAbsolut" onClick={handleClickFirstButton}>
                                      Tags
                                  </SideBarActionButton>]}
                              actionsSecondButton={[
-                                 <SideBarActionButton key="secondButtonAbsolut" second
+                                 <SideBarActionButton second key="secondButtonAbsolut" second
                                                       onClick={handleClickSecondButton}>
                                      New Tag
                                  </SideBarActionButton>]}

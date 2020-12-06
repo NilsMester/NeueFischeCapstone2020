@@ -8,6 +8,8 @@ import styled from 'styled-components/macro';
 import TagsContext from "../../contexts/TagsContext";
 import SideBarForm from "../../components/recordForm/SideBarForm";
 import {SearchFilterTagList} from "../../components/services/SearchFilterTagList";
+import SideBarActionButton from "../../components/UI/SideBarActionButton";
+import AddNewTagInput from "../../components/tags/AddNewTagInput";
 
 export default function EditIdeaPage() {
     const {editRecord, records} = useContext(RecordContext);
@@ -17,48 +19,83 @@ export default function EditIdeaPage() {
     const record = records.find((record) => record.id === id);
     const [recordData, setRecordData] = useState(record);
     const [searchTerm, setSearchTerm] = useState("");
+    const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false)
+    const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false)
 
     const filteredUserTagList = SearchFilterTagList({searchTerm, userTagList, recordData});
 
     return !record ? null : (
-<>
-    <Header titel="Edit your Record"/>
-    <MainGridStyled>
-        <FormStyled onSubmit={handleSubmit}>
-            <RecordForm onSave={handleSave} recordData={recordData} setRecordData={setRecordData}/>
-        </FormStyled>
-        <SideBarForm sidebar tags={filteredUserTagList} onTagClick={onTagClick} searchTerm={searchTerm} setSearchTerm={setSearchTerm} recordData={recordData} setRecordData={setRecordData}/>
-    </MainGridStyled>
-    <TabBar onSave={handleSave} recordData={recordData}/>
-</>
+        <>
+            <Header titel="Edit your Record"/>
+            <MainGridStyled>
+
+                <RecordForm onSubmit={handleSave} recordData={recordData} setRecordData={setRecordData}/>
+                <SideBarForm sidebar
+                             tags={filteredUserTagList}
+                             onTagClick={onTagClick}
+                             searchTerm={searchTerm}
+                             setSearchTerm={setSearchTerm}
+                             showFirstSidebarArea={showFirstSidebarArea}
+                             showSecondSideBarArea={showSecondSideBarArea}
+                             actionsFirstButton={[
+                                 <SideBarActionButton first key="firstButtonAbsolutEdit"
+                                                      onClick={handleClickFirstButton}>
+                                     Tags
+                                 </SideBarActionButton>]}
+                             actionsSecondButton={[
+                                 <SideBarActionButton second key="secondButtonAbsolutEdit" second
+                                                      onClick={handleClickSecondButton}>
+                                     New Tag
+                                 </SideBarActionButton>]}
+                             actionsSecondButtonInGrid={[
+                                 <SideBarActionButton key="secondButtonInGridEdit"
+                                                      onClick={handleClickSecondButton}>
+                                     New Tag
+                                 </SideBarActionButton>]}
+                             actionsSecondArea={[<AddNewTagInput key="actionSecondAreaEdit"
+                                                                 recordData={recordData}
+                                                                 setRecordData={setRecordData}/>]}
+                />
+
+            </MainGridStyled>
+            <TabBar newAndChange onSave={handleSave} recordData={recordData}/>
+        </>
     );
+
+    function handleClickFirstButton(){
+        setShowFirstSidebarArea(!showFirstSidebarArea)
+        setShowSecondSideBarArea(false)
+    }
+
+    function handleClickSecondButton(){
+        setShowFirstSidebarArea(false)
+        setShowSecondSideBarArea(!showSecondSideBarArea)
+    }
 
     function onTagClick(tag) {
         setRecordData({...recordData, tagList: [...recordData.tagList, tag]});
         setSearchTerm("")
     }
 
-    function handleSave(record) {
-        const {id, titel, recordLink, description, timestamp, publicStaus, tagList} = record;
+    function handleSave(recordData) {
+        const {id, titel, recordLink, description, timestamp, publicStaus, tagList} = recordData;
         editRecord(id, titel, recordLink, description, timestamp, publicStaus, tagList);
         history.goBack();
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        handleSave(recordData);
-    }
-
 }
-
-const FormStyled = styled.form`
-    display: grid;
-    grid-template-rows: min-content 1fr min-content  min-content 0.5fr min-content ;
-    grid-row-gap: 12px;
-`;
 
 const MainGridStyled = styled.div`
 display: grid;
 grid-template-columns: 1fr min-content;
+grid-template-rows: min-content min-content min-content min-content min-content;
+grid-template-areas: 
+" link link"
+"tags sidebar"
+"titel sidebar"
+"description sidebar"
+"preview preview";
+row-gap: 24px;
+position: relative;
 padding: 10px 0 10px 10px;
 `
