@@ -1,12 +1,10 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
 import styled from 'styled-components/macro';
 import UserRecordItem from "./UserRecordItem";
-import RecordActionButton from "../UI/RecordActionButton";
+import DetailsIcon from "../DetailsIcon";
 
 export default function UserRecordList ({records}) {
 
-    const history = useHistory();
 
     return (
         <>
@@ -16,9 +14,7 @@ export default function UserRecordList ({records}) {
                         <UserRecordItem
                             record={record}
                             actions={[
-                                <RecordActionButton key="details" onClick={() => history.push(`/record/${record.id}`)}>
-                                    Details
-                                </RecordActionButton>
+                                <DetailsIcon key="details" record={record}/>
                             ]}
                         />
                     </li>

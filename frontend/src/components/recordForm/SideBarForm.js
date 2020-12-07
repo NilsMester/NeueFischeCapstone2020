@@ -3,16 +3,21 @@ import UserTagList from "../tags/UserTagList";
 import styled from 'styled-components/macro';
 import InputField from "../UI/InputField";
 
-export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTerm, showFirstSidebarArea, showSecondSideBarArea, actionsFirstButton=[], actionsSecondButton=[], actionsSecondButtonInGrid=[], actionsSecondArea=[]}){
+export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTerm, showFirstSidebarArea, showSecondSideBarArea, actionsFirstButton=[], actionsSecondButton=[], actionsSecondButtonInGrid=[], actionsSecondArea=[], placeHolder=[]}){
 
     return(
         <SidebarStyled>
+            {placeHolder}
             <div>{actionsFirstButton}</div>
 
             {!showFirstSidebarArea && !showSecondSideBarArea ?
+
                 <div>{actionsSecondButton}</div>
 
                 : showFirstSidebarArea ?
+                    <>
+
+                    <ButtonArea/>
                     <SidebarSection1Styled>
                         <UserTagList sidebar tags={tags} onTagClick={onTagClick}/>
                         <LabelStyled>
@@ -25,10 +30,11 @@ export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTer
                         </LabelStyled>
                         {actionsSecondButtonInGrid}
                     </SidebarSection1Styled>
-
+                    </>
                     : showSecondSideBarArea ?
                         <>
                             {actionsSecondButton}
+                            <ButtonArea/>
                             <SidebarSection2Styled>
                                 {actionsSecondArea}
                             </SidebarSection2Styled></>
@@ -37,6 +43,10 @@ export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTer
     )
 
 }
+
+const ButtonArea = styled.div` 
+height: 40px;
+`
 
 const LabelStyled = styled.label`
 margin: 0;
@@ -48,25 +58,23 @@ color: var(--grey-50);
 
 const SidebarStyled = styled.div`
 position: relative;
-grid-area: sidebar;
 `
 
 const SidebarSection1Styled = styled.div`
 padding: 4px 0 0 0;
-position: relative;
-top: 13%;
 display: grid;
+grid-area: tagsListbar;
 row-gap: 8px;
 justify-items: end;
 `
 
 const SidebarSection2Styled = styled.div`
 position: relative;
-top: 30%;
 display: grid;
+grid-area: addTagField;
 row-gap: 8px;
 justify-items: end;
-padding: 8px 0 0 0;
+padding: 65px 0 0 0;
 `
 
 

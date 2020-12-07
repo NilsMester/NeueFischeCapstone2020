@@ -25,23 +25,58 @@ const SidebarButton = styled.button`
         `
         : props.second && !props.showFirstSidebarArea
         ? css`
-          top: 18%;
-        `
-        : props.firstSticky
-            ? css`
-          
-          top: 9.6vh;
-          bottom: 90.4vh;
-          z-index: 20;
-        ` 
-            : props.secondSticky && !props.showFirstSidebarArea
-                ? css`
-          color: var(--secondary1);
-          top: 18.5vh;
-          bottom: 81.5vh;
+          top: 55px;
            z-index: 20;
         `
-        
+        : props.firstSticky && !props.showFirstSidebarArea && !props.showSecondSideBarArea
+            ? css`
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 80px;
+          top: 64px;
+          z-index: 20;
+        ` 
+            : props.firstSticky && props.showFirstSidebarArea
+                ? css`
+            width: 120px;
+            display: flex;
+          align-items: center;
+          justify-content: center;
+          top: 64px;
+           z-index: 20;
+        `
+                : props.firstSticky && props.showSecondSideBarArea
+                    ? css`
+
+            width: 120px;
+            display: flex;
+          align-items: center;
+          justify-content: center;
+          top: 64px;
+           z-index: 20;
+        `
+            : props.secondSticky && !props.showFirstSidebarArea && !props.showSecondSideBarArea
+                ? css`
+            width: 80px;
+            display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--secondary1);
+          top: 119px;
+          z-index: 20;
+        ` 
+                    : props.secondSticky && props.showSecondSideBarArea
+                        ? css`
+            width: 120px;
+            display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--secondary1);
+          top: 119px;
+           z-index: 20;
+        `
+                            
         : props.edit
             ? css`
           top: 0;
@@ -56,6 +91,9 @@ const SidebarButton = styled.button`
         ` 
             : css`
           position: relative;
-          
+          color: var(--secondary1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         `}
 `;

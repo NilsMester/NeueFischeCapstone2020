@@ -5,7 +5,7 @@ import {HiOutlineClipboardCopy} from "react-icons/hi";
 
 export default function CopyLinkToClipboard(record) {
 
-    const [copySuccess, setCopySuccess] = useState('Copy Link');
+    const [copySuccess, setCopySuccess] = useState('Copy');
 
     async function copyLinkUrlToClipboard() {
 
