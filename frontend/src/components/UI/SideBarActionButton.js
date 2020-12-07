@@ -1,7 +1,12 @@
 import styled from 'styled-components/macro';
 import {css} from "styled-components";
+import React from "react";
 
-export default styled.button`
+export default function SideBarActionButton({ children, ...rest }){
+    return <SidebarButton {...rest}>{children}</SidebarButton>;
+}
+
+const SidebarButton = styled.button`
   width: 120px;
   height: 36px;
   color: var(--orange-75);
