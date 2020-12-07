@@ -8,7 +8,7 @@ import TagsContext from "../../contexts/TagsContext";
 import SideBarForm from "../../components/recordForm/SideBarForm";
 import SideBarActionButton from "../../components/UI/SideBarActionButton";
 import AddNewTagInput from "../../components/tags/AddNewTagInput";
-import {SearchFilterTagsRecordList} from "../../components/services/SearchFilterTagsRecordList";
+import searchFilterTagsRecordList from "../../components/services/searchFilterTagsRecordList";
 import SearchIcon from "../../components/SearchIcon";
 
 export default function UserRecordListScreen () {
@@ -20,7 +20,7 @@ export default function UserRecordListScreen () {
     const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false)
     const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false)
 
-    const filteredUserTagList = SearchFilterTagsRecordList({searchTerm, userTagList});
+    const filteredUserTagList = searchFilterTagsRecordList(searchTerm, userTagList);
 
     return(
         <>
