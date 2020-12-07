@@ -7,9 +7,10 @@ import TabBar from "../../components/UI/TabBar";
 import styled from 'styled-components/macro';
 import TagsContext from "../../contexts/TagsContext";
 import SideBarForm from "../../components/recordForm/SideBarForm";
-import {SearchFilterTagList} from "../../components/services/SearchFilterTagList";
+
 import SideBarActionButton from "../../components/UI/SideBarActionButton";
 import AddNewTagInput from "../../components/tags/AddNewTagInput";
+import searchFilterTagList from "../../components/services/searchFilterTagList";
 
 export default function EditIdeaPage() {
     const {editRecord, records} = useContext(RecordContext);
@@ -22,7 +23,7 @@ export default function EditIdeaPage() {
     const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false)
     const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false)
 
-    const filteredUserTagList = SearchFilterTagList({searchTerm, userTagList, recordData});
+    const filteredUserTagList = searchFilterTagList(searchTerm, userTagList, recordData);
 
     return !record ? null : (
         <>
@@ -48,7 +49,7 @@ export default function EditIdeaPage() {
                                      New Tag
                                  </SideBarActionButton>]}
                              actionsSecondButtonInGrid={[
-                                 <SideBarActionButton key="secondButtonInGrid"
+                                 <SideBarActionButton secondInGrid key="secondButtonInGrid"
                                                       onClick={handleClickSecondButton}>
                                      New Tag
                                  </SideBarActionButton>]}

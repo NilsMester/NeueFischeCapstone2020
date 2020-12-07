@@ -7,9 +7,9 @@ import styled from 'styled-components/macro';
 import TabBar from "../../components/UI/TabBar";
 import TagsContext from "../../contexts/TagsContext";
 import SideBarForm from "../../components/recordForm/SideBarForm";
-import {SearchFilterTagList} from "../../components/services/SearchFilterTagList";
 import SideBarActionButton from "../../components/UI/SideBarActionButton";
 import AddNewTagInput from "../../components/tags/AddNewTagInput";
+import searchFilterTagList from "../../components/services/searchFilterTagList";
 
 const initialState = {
     titel:"",
@@ -28,7 +28,7 @@ export default function AddRecordScreen() {
     const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false)
     const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false)
 
-    const filteredUserTagList = SearchFilterTagList({searchTerm, userTagList, recordData});
+    const filteredUserTagList = searchFilterTagList(searchTerm, userTagList, recordData);
 
     return(
         <>
@@ -53,7 +53,7 @@ export default function AddRecordScreen() {
                                      New Tag
                                  </SideBarActionButton>]}
                              actionsSecondButtonInGrid={[
-                                 <SideBarActionButton key="secondButtonInGrid" onClick={handleClickSecondButton}>
+                                 <SideBarActionButton secondInGrid key="secondButtonInGrid" onClick={handleClickSecondButton}>
                                      New Tag
                                  </SideBarActionButton>]}
                              actionsSecondArea={[<AddNewTagInput key="actionSecondArea" recordData={recordData}

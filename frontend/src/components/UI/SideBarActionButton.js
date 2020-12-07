@@ -85,9 +85,17 @@ const SidebarButton = styled.button`
         `
         : props.delete
             ? css`
-          top: 34%;
+          top: 55px;
           color: var(--secondary1);
           right: -10px;
+        `
+        : props.secondInGrid
+        ? css`
+           position: relative;
+          color: var(--orange-75);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         ` 
             : css`
           position: relative;
