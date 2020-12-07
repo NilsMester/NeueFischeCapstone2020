@@ -21,9 +21,9 @@ const initialState = {
 
 export default function AddRecordScreen() {
     const {createRecord} = useContext(RecordContext)
+    const {userTagList} = useContext(TagsContext);
     const [recordData, setRecordData] = useState(initialState);
     const history = useHistory();
-    const {userTagList} = useContext(TagsContext);
     const [searchTerm, setSearchTerm] = useState("");
     const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false)
     const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false)

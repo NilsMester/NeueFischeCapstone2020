@@ -26,10 +26,33 @@ const SidebarButton = styled.button`
         : props.second && !props.showFirstSidebarArea
         ? css`
           top: 18%;
+        `
+        : props.firstSticky
+            ? css`
+          
+          top: 9.6vh;
+          bottom: 90.4vh;
+          z-index: 20;
         ` 
+            : props.secondSticky && !props.showFirstSidebarArea
+                ? css`
+          color: var(--secondary1);
+          top: 18.5vh;
+          bottom: 81.5vh;
+           z-index: 20;
+        `
+        
+        : props.edit
+            ? css`
+          top: 0;
+          color: var(--secondary1);
+          right: -10px;
+        `
         : props.delete
             ? css`
-          top: 26%;
+          top: 34%;
+          color: var(--secondary1);
+          right: -10px;
         ` 
             : css`
           position: relative;

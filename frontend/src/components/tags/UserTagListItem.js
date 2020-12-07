@@ -26,7 +26,6 @@ padding: 2px 0;
         max-height: 40px;
         display: grid;
         align-content: center;
-        
         padding: 0;
         `
         : css`
