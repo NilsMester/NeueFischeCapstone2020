@@ -25,14 +25,75 @@ const SidebarButton = styled.button`
         `
         : props.second && !props.showFirstSidebarArea
         ? css`
-          top: 18%;
+          top: 55px;
+           z-index: 20;
+        `
+        : props.firstSticky && !props.showFirstSidebarArea && !props.showSecondSideBarArea
+            ? css`
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 80px;
+          top: 64px;
+          z-index: 20;
         ` 
+            : props.firstSticky && props.showFirstSidebarArea
+                ? css`
+            width: 120px;
+            display: flex;
+          align-items: center;
+          justify-content: center;
+          top: 64px;
+           z-index: 20;
+        `
+                : props.firstSticky && props.showSecondSideBarArea
+                    ? css`
+
+            width: 120px;
+            display: flex;
+          align-items: center;
+          justify-content: center;
+          top: 64px;
+           z-index: 20;
+        `
+            : props.secondSticky && !props.showFirstSidebarArea && !props.showSecondSideBarArea
+                ? css`
+            width: 80px;
+            display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--secondary1);
+          top: 119px;
+          z-index: 20;
+        ` 
+                    : props.secondSticky && props.showSecondSideBarArea
+                        ? css`
+            width: 120px;
+            display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--secondary1);
+          top: 119px;
+           z-index: 20;
+        `
+                            
+        : props.edit
+            ? css`
+          top: 0;
+          color: var(--secondary1);
+          right: -10px;
+        `
         : props.delete
             ? css`
-          top: 26%;
+          top: 34%;
+          color: var(--secondary1);
+          right: -10px;
         ` 
             : css`
           position: relative;
-          
+          color: var(--secondary1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         `}
 `;

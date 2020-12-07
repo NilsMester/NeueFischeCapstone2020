@@ -1,40 +1,37 @@
-import React, {useContext} from 'react';
-import RecordContext from "../../contexts/RecordContext";
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components/macro';
 import UserRecordItem from "./UserRecordItem";
-import RecordActionButton from "../UI/RecordActionButton";
+import DetailsIcon from "../DetailsIcon";
 
-export default function UserRecordList () {
+export default function UserRecordList ({records}) {
 
-    const {records} = useContext(RecordContext);
-    const history = useHistory();
 
     return (
-        <StyledRecordsList>
-            {records?.map((record) => (
-                <li key={record.id}>
-                    <UserRecordItem
-                        record={record}
-                        actions={[
-                            <RecordActionButton key="details" onClick={() => history.push(`/record/${record.id}`)}>
-                                Details
-                            </RecordActionButton>
-                        ]}
-                    />
-                </li>
-            ))}
-        </StyledRecordsList>
+        <>
+            <StyledRecordsList>
+                {records?.map((record) => (
+                    <li key={record.id}>
+                        <UserRecordItem
+                            record={record}
+                            actions={[
+                                <DetailsIcon key="details" record={record}/>
+                            ]}
+                        />
+                    </li>
+                ))}
+            </StyledRecordsList>
+        </>
     );
 }
 
 const StyledRecordsList = styled.ul`
-    padding: 16px 0 0 0;
+    padding: 0;
     overflow: scroll;
     list-style: none;
-    
     display:grid;
+    grid-area: recordsList;
     row-gap: 50px;
     grid-auto-rows: min-content;
     margin:0;
+ 
 `;

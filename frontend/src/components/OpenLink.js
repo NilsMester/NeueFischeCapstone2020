@@ -6,7 +6,7 @@ export default function OpenLink({recordLink}){
 
     return (<OpenLinkStyled>
             <OpenLinkIconStyled onClick={()=>window.location.href = recordLink}/>
-            <DescriptionStyled>Visit Link</DescriptionStyled>
+            <DescriptionStyled>Visit</DescriptionStyled>
         </OpenLinkStyled>
     )
 }

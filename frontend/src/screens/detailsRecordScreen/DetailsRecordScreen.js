@@ -19,12 +19,15 @@ export default function DetailsRecordScreen(){
         <>
             <Header titel="Your Record"/>
             <MainGridStyled>
-                <SideBarActionButton first showFirstSidebarArea={false}
+                <ButtonGroup>
+                <SideBarActionButton
+                edit showFirstSidebarArea={false}
                                      onClick={() => history.push(`/edit/${record.id}`)}>Edit</SideBarActionButton>
                 <SideBarActionButton delete onClick={handleDelete}>Delete</SideBarActionButton>
+                </ButtonGroup>
                 <RecordDetails record={record}/>
             </MainGridStyled>
-            <TabBar/>
+            <TabBar recordsView/>
         </>
 );
 
@@ -37,7 +40,20 @@ export default function DetailsRecordScreen(){
 
 const MainGridStyled = styled.div`
 display: grid;
-grid-template-columns: 1fr min-content;
+grid-template-columns: 1fr;
+grid-template-rows: min-content min-content min-content min-content min-content;
+grid-template-areas: 
+" titel titel"
+"tags button"
+"description description"
+"preview preview"
+"interactions interactions";
+row-gap: 24px;
 position: relative;
-padding: 10px 0 10px 10px;
+padding: 10px;
+`
+
+const ButtonGroup = styled.div`
+position: relative;
+grid-area: button;
 `

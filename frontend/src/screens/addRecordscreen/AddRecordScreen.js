@@ -21,9 +21,9 @@ const initialState = {
 
 export default function AddRecordScreen() {
     const {createRecord} = useContext(RecordContext)
+    const {userTagList} = useContext(TagsContext);
     const [recordData, setRecordData] = useState(initialState);
     const history = useHistory();
-    const {userTagList} = useContext(TagsContext);
     const [searchTerm, setSearchTerm] = useState("");
     const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false)
     const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false)
@@ -90,16 +90,18 @@ export default function AddRecordScreen() {
 const MainGridStyled = styled.div`
 display: grid;
 grid-template-columns: 1fr min-content;
-grid-template-rows: min-content min-content min-content min-content min-content;
+grid-template-rows: 40px 40px 106px 30px 78px auto;
 grid-template-areas: 
-" link link"
-"tags sidebar"
-"titel sidebar"
-"description sidebar"
+"link ."
+"tags button1"
+"tags tagsListbar"
+"titel ."
+"description addTagField"
 "preview preview";
 row-gap: 24px;
 position: relative;
 padding: 10px 0 10px 10px;
 `
+
 
 

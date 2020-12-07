@@ -94,7 +94,7 @@ const LinkSectionStyled = styled.div`
 display: grid ;
 grid-template-columns: 1fr 0.25fr;
 align-items: center;
-grid-area: link;
+grid-area: 1 / 1 / 1/ 3;
 gap: 8px;
 padding: 0 10px 0 0;
 `
