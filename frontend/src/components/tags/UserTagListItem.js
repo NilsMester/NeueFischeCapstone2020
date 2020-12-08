@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components/macro';
 import TagStyled from "./Tag.styled";
 import {css} from "styled-components";
 
-export default function RecordTagsListItem({tag, onClick, ...rest}){
+export default function RecordTagsListItem({tag,searchTermTagsArray, onClick, ...rest}){
+
+    const [chosenFilterTag, setChosenFilterTag] = useState(false);
+
+    useEffect(()=>{
+        if(!searchTermTagsArray){
+            return null;
+        }else if(searchTermTagsArray.includes(tag)){
+            setChosenFilterTag(true)}
+        else if(!searchTermTagsArray.includes(tag)){
+            setChosenFilterTag(false)}
+    }, [setChosenFilterTag, searchTermTagsArray, tag])
 
     return (
         <StyledListItem {...rest}>
-            <TagStyled onClick={onClick}>
+            <TagStyled chosen={chosenFilterTag} onClick={onClick}>
                 {tag}
             </TagStyled>
         </StyledListItem>

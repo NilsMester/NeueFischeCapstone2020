@@ -4,8 +4,9 @@ import {useHistory} from "react-router-dom";
 import {IoChevronBackSharp} from "react-icons/io5";
 import {RiAddCircleFill} from "react-icons/ri";
 import {AiOutlineSave, AiOutlineHome} from "react-icons/ai";
+import ResetFilter from "../ResetFilter";
 
-export default function TabBar({ onSave, recordData, ...rest}) {
+export default function TabBar({ onSave, recordData, filterisactive, onClickDeleteFilter, ...rest}) {
     const history = useHistory();
 
     const Tabs = (props) =>{
@@ -34,14 +35,22 @@ export default function TabBar({ onSave, recordData, ...rest}) {
                     </ButtonStyled>
                 </ActionBar3Tabs>
             )
-        }return null
+        }return (
+            <ActionBar3Tabs {...rest}>
+                <ButtonStyled onClick={() => history.goBack()}>
+                    <HistoryGoBackButtonStyled/>
+                </ButtonStyled>
+                <ButtonStyled onClick={() => history.push(`/newRecord`)}>
+                    <NewRecordButtonStyled/>
+                </ButtonStyled>
+                <ButtonStyled  filterisactive={filterisactive} onClick={onClickDeleteFilter}>
+                    <ResetFilter />
+                </ButtonStyled>
+            </ActionBar3Tabs>
+        )
     }
-
-    return ( <Tabs {...rest}/>
-
+    return ( <Tabs/>
     )
-
-
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -81,7 +90,7 @@ const ButtonStyled = styled.button`
 width: auto;
 height: 45px;
 border-radius: 30% 30% 0 0;
-
+color: ${props => props.filterisactive ? `var(--secondary1)` : `var(--grey-25)`};
 border-color: var(--grey-25);
 background: linear-gradient(
         to bottom,

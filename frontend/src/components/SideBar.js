@@ -1,9 +1,9 @@
 import React from 'react';
-import UserTagList from "../tags/UserTagList";
+import UserTagList from "./tags/UserTagList";
 import styled from 'styled-components/macro';
-import InputField from "../UI/InputField";
+import InputField from "./UI/InputField";
 
-export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTerm, showFirstSidebarArea, showSecondSideBarArea, actionsFirstButton=[], actionsSecondButton=[], actionsSecondButtonInGrid=[], actionsSecondArea=[], placeHolder=[]}){
+export default function SideBar({ tags,searchTermTagsArray, onTagClick, searchTerm, setSearchTerm, showFirstSidebarArea, showSecondSideBarArea, actionsFirstButton=[], actionsSecondButton=[], actionsSecondButtonInGrid=[], actionsSecondArea=[], placeHolder=[]}){
 
     return(
         <SidebarStyled>
@@ -16,10 +16,9 @@ export default function SideBarForm({ tags, onTagClick, searchTerm, setSearchTer
 
                 : showFirstSidebarArea ?
                     <>
-
                     <ButtonArea/>
                     <SidebarSection1Styled>
-                        <UserTagList sidebar tags={tags} onTagClick={onTagClick}/>
+                        <UserTagList sidebar tags={tags} searchTermTagsArray={searchTermTagsArray} onTagClick={onTagClick}/>
                         <LabelStyled>
                             <InputField search
                                         placeholder="search"
