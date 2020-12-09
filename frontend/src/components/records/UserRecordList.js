@@ -33,7 +33,6 @@ const StyledRecordsList = styled.ul`
     padding: 0;
     overflow: scroll;
     list-style: none;
-    min-width: 100vw;
     display:grid;
     grid-area: recordsList;
     row-gap: 50px;
