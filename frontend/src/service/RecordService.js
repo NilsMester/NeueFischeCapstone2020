@@ -4,7 +4,6 @@ const header = (token) => ({
     headers: {
         Authorization: `Bearer ${token}`,
     },
-
 });
 
 export const getUserRecordList = (token) =>
