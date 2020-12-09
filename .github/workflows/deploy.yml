@@ -68,8 +68,8 @@ jobs:
       - name: push docker container to heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:push web -a mega-manager-2000-3d
+        run: heroku container:push web -a tab-log
       - name: deploy/release docker container to heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release web -a mega-manager-2000-3d
+        run: heroku container:release web -a tab-log
