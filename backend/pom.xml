@@ -73,7 +73,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>link-librarian</finalName>
+		<finalName>tablog</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

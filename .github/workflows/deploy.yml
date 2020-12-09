@@ -47,7 +47,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: backend-build.jar
-          path: backend/target/TabLog.jar
+          path: backend/target/tablog.jar
 
   deploy:
     name: deploy to heroku
