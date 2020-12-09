@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>de.neuefische.capstoneproject</groupId>
-	<artifactId>link_librarian</artifactId>
+	<artifactId>tablog</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>link_librarian</name>
+	<name>tablog</name>
 	<description>Project to manage links of different topics</description>
 
 	<properties>
