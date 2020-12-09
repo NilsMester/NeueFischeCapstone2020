@@ -1,7 +1,5 @@
 package de.neuefische.capstoneproject.link_librarian.security;
 
-
-
 import de.neuefische.capstoneproject.link_librarian.dao.UserDao;
 import de.neuefische.capstoneproject.link_librarian.model.LoginUser;
 import org.springframework.security.core.userdetails.User;
