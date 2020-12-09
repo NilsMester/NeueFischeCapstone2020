@@ -3,12 +3,12 @@ import styled from 'styled-components/macro';
 import UserTagListItem from "./UserTagListItem";
 import {css} from "styled-components";
 
-export default function UserTagList ({tags, onTagClick, ...rest}) {
+export default function UserTagList ({tags,searchTermTagsArray , onTagClick, ...rest}) {
 
     return (
         <StyledTagsList {...rest}>
             {tags?.map((tag) => (
-                <UserTagListItem {...rest} key={tag} tag={tag} onClick={() => onTagClick(tag)}/>
+                <UserTagListItem {...rest} key={tag} tag={tag} searchTermTagsArray={searchTermTagsArray} onClick={()=>onTagClick(tag)}/>
             ))}
         </StyledTagsList>
     );

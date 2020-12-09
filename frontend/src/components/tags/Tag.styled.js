@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-export default function TagStyled({onClick, children}){
+export default function TagStyled({onClick,chosen, children}){
 
     return (
-        <VisualBorder onClick={onClick}>
+        <VisualBorder chosen={chosen} onClick={onClick}>
             <RightHide/>
             <LeftHide/>
             <BorderVisualWrapper>
@@ -17,22 +17,17 @@ export default function TagStyled({onClick, children}){
 }
 
 const VisualBorder = styled.div`
+    background: ${props => props.chosen ? "linear-gradient(to right,var(--secondary1),var(--secondary1),var(--secondary1),var(--secondary1))":"linear-gradient(to right,var(--orange-75),var(--orange-75),var(--orange-75),var(--orange-75))"};
     width: 105px;
     height: 30px;
     position: relative;
     padding: 2px;
     border-radius: 4px;
-    z-index: 1; 
-    background: linear-gradient(
-        to right,
-    var(--orange-75),
-    var(--orange-75),
-    var(--orange-75),
-    var(--orange-75)
-);
+    z-index: 1
+;
  
  &::before{
-    background: var(--orange-75);
+    background: ${props => props.chosen ? "linear-gradient(to right,var(--secondary1),var(--secondary1),var(--secondary1),var(--secondary1))":"linear-gradient(to right,var(--orange-75),var(--orange-75),var(--orange-75),var(--orange-75))"};
     content: "";
     display: block;
     position: absolute;
@@ -45,7 +40,7 @@ const VisualBorder = styled.div`
  }
  
 &::after{
-    background: var(--orange-75);    
+    background: ${props => props.chosen ? "linear-gradient(to right,var(--secondary1),var(--secondary1),var(--secondary1),var(--secondary1))":"linear-gradient(to right,var(--orange-75),var(--orange-75),var(--orange-75),var(--orange-75))"};
     content: "";
     display: block;
     position: absolute;

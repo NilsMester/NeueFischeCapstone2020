@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import TabBar from "../../components/UI/TabBar";
 import styled from 'styled-components/macro';
 import TagsContext from "../../contexts/TagsContext";
-import SideBarForm from "../../components/recordForm/SideBarForm";
+import SideBar from "../../components/SideBar";
 
 import SideBarActionButton from "../../components/UI/SideBarActionButton";
 import AddNewTagInput from "../../components/tags/AddNewTagInput";
@@ -31,29 +31,29 @@ export default function EditIdeaPage() {
             <MainGridStyled>
 
                 <RecordForm onSubmit={handleSave} recordData={recordData} setRecordData={setRecordData}/>
-                <SideBarForm sidebar
-                             tags={filteredUserTagList}
-                             onTagClick={onTagClick}
-                             searchTerm={searchTerm}
-                             setSearchTerm={setSearchTerm}
-                             showFirstSidebarArea={showFirstSidebarArea}
-                             showSecondSideBarArea={showSecondSideBarArea}
-                             actionsFirstButton={[
+                <SideBar sidebar
+                         tags={filteredUserTagList}
+                         onTagClick={onTagClick}
+                         searchTerm={searchTerm}
+                         setSearchTerm={setSearchTerm}
+                         showFirstSidebarArea={showFirstSidebarArea}
+                         showSecondSideBarArea={showSecondSideBarArea}
+                         actionsFirstButton={[
                                  <SideBarActionButton first key="firstButtonAbsolut"
                                                       onClick={handleClickFirstButton}>
                                      Tags
                                  </SideBarActionButton>]}
-                             actionsSecondButton={[
+                         actionsSecondButton={[
                                  <SideBarActionButton second key="secondButtonAbsolut"
                                                       onClick={handleClickSecondButton}>
                                      New Tag
                                  </SideBarActionButton>]}
-                             actionsSecondButtonInGrid={[
+                         actionsSecondButtonInGrid={[
                                  <SideBarActionButton secondInGrid key="secondButtonInGrid"
                                                       onClick={handleClickSecondButton}>
                                      New Tag
                                  </SideBarActionButton>]}
-                             actionsSecondArea={[<AddNewTagInput key="actionSecondArea"
+                         actionsSecondArea={[<AddNewTagInput key="actionSecondArea"
                                                                  recordData={recordData}
                                                                  setRecordData={setRecordData}/>]}
                 />
