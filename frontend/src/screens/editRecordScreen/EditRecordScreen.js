@@ -59,7 +59,7 @@ export default function EditIdeaPage() {
                 />
 
             </MainGridStyled>
-            <TabBar newAndChange onSave={handleSave} recordData={recordData}/>
+            <TabBar tabbarsizetwo newAndChange={"newAndChange"} onSave={handleSave} recordData={recordData}/>
         </>
     );
 

@@ -68,7 +68,7 @@ export default function UserRecordListScreen () {
                 />
             </MainGridStyled>
 
-            <TabBar filterisactive={filterIsActive} onClickDeleteFilter={onClickDeleteFilter} />
+            <TabBar recordsView={"recordsView"} filterisactive={filterIsActive} onClickDeleteFilter={onClickDeleteFilter} />
         </>
     );
 

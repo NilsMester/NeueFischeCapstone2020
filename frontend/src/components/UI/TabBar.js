@@ -6,50 +6,49 @@ import {RiAddCircleFill} from "react-icons/ri";
 import {AiOutlineSave, AiOutlineHome} from "react-icons/ai";
 import ResetFilter from "../ResetFilter";
 
-export default function TabBar({ onSave, recordData, filterisactive, onClickDeleteFilter, ...rest}) {
+export default function TabBar({ onSave, recordData, filterisactive, onClickDeleteFilter, newAndChange, recordDetails, recordsView, ...rest}) {
     const history = useHistory();
 
-    const Tabs = (props) =>{
-        if(props.newAndChange){
-            return (
-                <ActionBar2Tabs {...rest}>
+    return(
+        <ActionBarTabs {...rest}>
+            {newAndChange ?
+                <>
                     <ButtonStyled onClick={() => history.goBack()}>
                         <HistoryGoBackButtonStyled/>
                     </ButtonStyled>
                     <ButtonStyled onClick={handleSubmit}>
                         <SafeButtonStyled/>
                     </ButtonStyled>
-                </ActionBar2Tabs>
-            )
-        }else if (props.recordsView){
-            return (
-                <ActionBar3Tabs {...rest}>
-                    <ButtonStyled onClick={() => history.goBack()}>
-                        <HistoryGoBackButtonStyled/>
-                    </ButtonStyled>
-                    <ButtonStyled onClick={() => history.push(`/newRecord`)}>
-                        <NewRecordButtonStyled/>
-                    </ButtonStyled>
-                    <ButtonStyled onClick={() => history.push(`/home`)}>
-                        <HomeButtonStyled/>
-                    </ButtonStyled>
-                </ActionBar3Tabs>
-            )
-        }return (
-            <ActionBar3Tabs {...rest}>
-                <ButtonStyled onClick={() => history.goBack()}>
-                    <HistoryGoBackButtonStyled/>
-                </ButtonStyled>
-                <ButtonStyled onClick={() => history.push(`/newRecord`)}>
-                    <NewRecordButtonStyled/>
-                </ButtonStyled>
-                <ButtonStyled  filterisactive={filterisactive} onClick={onClickDeleteFilter}>
-                    <ResetFilter />
-                </ButtonStyled>
-            </ActionBar3Tabs>
-        )
-    }
-    return ( <Tabs/>
+                </>
+
+                : recordsView ?
+                    <>
+                        <ButtonStyled onClick={() => history.goBack()}>
+                            <HistoryGoBackButtonStyled/>
+                        </ButtonStyled>
+                        <ButtonStyled onClick={() => history.push(`/newRecord`)}>
+                            <NewRecordButtonStyled/>
+                        </ButtonStyled>
+                        <ButtonStyled filterisactive={filterisactive} onClick={onClickDeleteFilter}>
+                            <ResetFilter/>
+                        </ButtonStyled>
+                    </>
+
+                    : recordDetails ?
+                        <>
+                            <ButtonStyled onClick={() => history.goBack()}>
+                                <HistoryGoBackButtonStyled/>
+                            </ButtonStyled>
+                            <ButtonStyled onClick={() => history.push(`/newRecord`)}>
+                                <NewRecordButtonStyled/>
+                            </ButtonStyled>
+                            <ButtonStyled onClick={() => history.push(`/home`)}>
+                                <HomeButtonStyled/>
+                            </ButtonStyled>
+                        </>
+                        : null
+            }
+        </ActionBarTabs>
     )
 
     function handleSubmit(event) {
@@ -58,24 +57,10 @@ export default function TabBar({ onSave, recordData, filterisactive, onClickDele
     }
 
 }
-const ActionBar2Tabs = styled.section`
+const ActionBarTabs = styled.section`
 display: grid;
 align-items: end;
-grid-template-columns: 0.5fr 0.5fr;
-background: linear-gradient(
-    to bottom,
-    #d4d4d4,
-    #9a9a9a,
-    #868686,
-    #737373,
-    var(--grey-50),
-    var(--grey-50))
-`
-
-const ActionBar3Tabs = styled.section`
-display: grid;
-align-items: end;
-grid-template-columns: 0.5fr 0.5fr 0.5fr;
+grid-template-columns: ${props => props.tabbarsizetwo ? ` 0.5fr 0.5fr` : `0.5fr 0.5fr 0.5fr`};
 background: linear-gradient(
     to bottom,
     #d4d4d4,
