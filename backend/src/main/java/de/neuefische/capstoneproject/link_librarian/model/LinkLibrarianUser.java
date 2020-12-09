@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "linklibrarianuser")
+@Document(collection = "tablog-user")
 @Builder
 public class LinkLibrarianUser {
 

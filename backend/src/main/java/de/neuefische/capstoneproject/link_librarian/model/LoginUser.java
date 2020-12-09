@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "user")
+@Document(collection = "login-user")
 @Builder
 public class LoginUser {
 
