@@ -59,7 +59,7 @@ export default function EditIdeaPage() {
                 />
 
             </MainGridStyled>
-            <TabBar tabbarsizetwo newAndChange={"newAndChange"} onSave={handleSave} recordData={recordData}/>
+            <TabBar tabbarswitch={"form"} tabbarcolumns={"twoButton"} onSave={handleSave} recordData={recordData}/>
         </>
     );
 
@@ -83,7 +83,6 @@ export default function EditIdeaPage() {
         editRecord(id, titel, recordLink, description, timestamp, publicStaus, tagList);
         history.goBack();
     }
-
 }
 
 const MainGridStyled = styled.div`

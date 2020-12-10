@@ -5,36 +5,31 @@ import {IoChevronBackSharp} from "react-icons/io5";
 import {RiAddCircleFill} from "react-icons/ri";
 import {AiOutlineSave, AiOutlineHome} from "react-icons/ai";
 import ResetFilter from "../ResetFilter";
+import Login from "../Login";
 
-export default function TabBar({ onSave, recordData, filterisactive, onClickDeleteFilter, newAndChange, recordDetails, recordsView, ...rest}) {
+export default function TabBar({ onSave, recordData, filterisactive, tabbarswitch,handleLogin, onClickDeleteFilter, ...rest}) {
     const history = useHistory();
 
     return(
         <ActionBarTabs {...rest}>
-            {newAndChange ?
+            {tabbarswitch === "login" ?
                 <>
-                    <ButtonStyled onClick={() => history.goBack()}>
-                        <HistoryGoBackButtonStyled/>
-                    </ButtonStyled>
-                    <ButtonStyled onClick={handleSubmit}>
-                        <SafeButtonStyled/>
+                    <ButtonStyled onClick={handleLogin}>
+                        <Login/>
                     </ButtonStyled>
                 </>
 
-                : recordsView ?
+                : tabbarswitch === "form" ?
                     <>
                         <ButtonStyled onClick={() => history.goBack()}>
                             <HistoryGoBackButtonStyled/>
                         </ButtonStyled>
-                        <ButtonStyled onClick={() => history.push(`/newRecord`)}>
-                            <NewRecordButtonStyled/>
-                        </ButtonStyled>
-                        <ButtonStyled filterisactive={filterisactive} onClick={onClickDeleteFilter}>
-                            <ResetFilter/>
+                        <ButtonStyled onClick={handleSubmit}>
+                            <SafeButtonStyled/>
                         </ButtonStyled>
                     </>
 
-                    : recordDetails ?
+                    : tabbarswitch === "list" ?
                         <>
                             <ButtonStyled onClick={() => history.goBack()}>
                                 <HistoryGoBackButtonStyled/>
@@ -42,11 +37,24 @@ export default function TabBar({ onSave, recordData, filterisactive, onClickDele
                             <ButtonStyled onClick={() => history.push(`/newRecord`)}>
                                 <NewRecordButtonStyled/>
                             </ButtonStyled>
-                            <ButtonStyled onClick={() => history.push(`/home`)}>
-                                <HomeButtonStyled/>
+                            <ButtonStyled filterisactive={filterisactive} onClick={onClickDeleteFilter}>
+                                <ResetFilter/>
                             </ButtonStyled>
                         </>
-                        : null
+
+                        : tabbarswitch === "detail" ?
+                            <>
+                                <ButtonStyled onClick={() => history.goBack()}>
+                                    <HistoryGoBackButtonStyled/>
+                                </ButtonStyled>
+                                <ButtonStyled onClick={() => history.push(`/newRecord`)}>
+                                    <NewRecordButtonStyled/>
+                                </ButtonStyled>
+                                <ButtonStyled onClick={() => history.push(`/home`)}>
+                                    <HomeButtonStyled/>
+                                </ButtonStyled>
+                            </>
+                            : null
             }
         </ActionBarTabs>
     )
@@ -60,7 +68,10 @@ export default function TabBar({ onSave, recordData, filterisactive, onClickDele
 const ActionBarTabs = styled.section`
 display: grid;
 align-items: end;
-grid-template-columns: ${props => props.tabbarsizetwo ? ` 0.5fr 0.5fr` : `0.5fr 0.5fr 0.5fr`};
+grid-template-columns: ${props => 
+    props.tabbarcolumns === "oneButton" ? `1fr`
+        : props.tabbarcolumns === "twoButton" ? ` 1fr 1fr` 
+        : `0.5fr 0.5fr 0.5fr`};
 background: linear-gradient(
     to bottom,
     #d4d4d4,

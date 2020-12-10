@@ -60,7 +60,7 @@ export default function AddRecordScreen() {
                                                                  setRecordData={setRecordData}/>]}
                 />
             </MainGridStyled>
-            <TabBar tabbarsizetwo newAndChange={"newAndChange"} onSave={handleSave} recordData={recordData}/>
+            <TabBar tabbarswitch={"form"} tabbarcolumns={"twoButton"} onSave={handleSave} recordData={recordData}/>
         </>
     );
 
