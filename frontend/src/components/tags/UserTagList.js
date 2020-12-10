@@ -53,11 +53,16 @@ ${(props) =>
         `
         
         : css`
-          overflow: scroll;
           list-style: none;
           text-align: center;
+          overflow-x: hidden;
+          overflow-y: scroll;
           padding: 0;
           margin: 0;  
+          -ms-overflow-style: none;
+          ::-webkit-scrollbar {
+          display: none;
+          }
           `
 }`;
 

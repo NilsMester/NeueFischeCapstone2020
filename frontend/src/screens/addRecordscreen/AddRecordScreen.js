@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import RecordForm from "../../components/recordForm/RecordForm";
 import RecordContext from "../../contexts/RecordContext";
 import {useHistory} from 'react-router-dom';
@@ -27,8 +27,18 @@ export default function AddRecordScreen() {
     const [searchTerm, setSearchTerm] = useState("");
     const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false)
     const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false)
+    const [formCouldBeSaved, setFormCouldBeSaved] = useState(false)
 
     const filteredUserTagList = searchFilterTagList(searchTerm, userTagList, recordData);
+
+    useEffect(()=> {
+        if(recordData.titel !== "" && recordData.recordLink !== "" && recordData.tagList.length > 0){
+            setFormCouldBeSaved(true)
+        }else if(recordData.titel === "" || recordData.recordLink === "" || recordData.tagList.length === 0){
+            setFormCouldBeSaved(false)
+        }
+    }, [formCouldBeSaved, setFormCouldBeSaved, recordData.titel,recordData.recordLink, recordData.tagList])
+
 
     return(
         <>
@@ -60,7 +70,7 @@ export default function AddRecordScreen() {
                                                                  setRecordData={setRecordData}/>]}
                 />
             </MainGridStyled>
-            <TabBar tabbarswitch={"form"} tabbarcolumns={"twoButton"} onSave={handleSave} recordData={recordData}/>
+            <TabBar tabbarswitch={"form"} tabbarcolumns={"twoButton"} buttonisactive={formCouldBeSaved} onSave={handleSave} recordData={recordData}/>
         </>
     );
 

@@ -7,7 +7,7 @@ import {AiOutlineSave, AiOutlineHome} from "react-icons/ai";
 import ResetFilter from "../ResetFilter";
 import Login from "../Login";
 
-export default function TabBar({ onSave, recordData, filterisactive, tabbarswitch,handleLogin, onClickDeleteFilter, ...rest}) {
+export default function TabBar({ onSave, recordData, buttonisactive, tabbarswitch, handleLogin , onClickDeleteFilter, ...rest}) {
     const history = useHistory();
 
     return(
@@ -24,7 +24,7 @@ export default function TabBar({ onSave, recordData, filterisactive, tabbarswitc
                         <ButtonStyled onClick={() => history.goBack()}>
                             <HistoryGoBackButtonStyled/>
                         </ButtonStyled>
-                        <ButtonStyled onClick={handleSubmit}>
+                        <ButtonStyled onClick={handleSubmit} buttonisactive={buttonisactive} disabled={!buttonisactive}>
                             <SafeButtonStyled/>
                         </ButtonStyled>
                     </>
@@ -37,7 +37,7 @@ export default function TabBar({ onSave, recordData, filterisactive, tabbarswitc
                             <ButtonStyled onClick={() => history.push(`/newRecord`)}>
                                 <NewRecordButtonStyled/>
                             </ButtonStyled>
-                            <ButtonStyled filterisactive={filterisactive} onClick={onClickDeleteFilter}>
+                            <ButtonStyled buttonisactive={buttonisactive}  onClick={onClickDeleteFilter}>
                                 <ResetFilter/>
                             </ButtonStyled>
                         </>
@@ -86,7 +86,10 @@ const ButtonStyled = styled.button`
 width: auto;
 height: 45px;
 border-radius: 30% 30% 0 0;
-color: ${props => props.filterisactive ? `var(--secondary1)` : `var(--grey-25)`};
+color: ${props => props.buttonisactive ? `var(--secondary1)` : `var(--grey-25)`};
+&:disabled{
+cursor: not-allowed;
+};
 border-color: var(--grey-25);
 background: linear-gradient(
         to bottom,
@@ -119,5 +122,4 @@ color: var(--secondary1);
 const SafeButtonStyled = styled(AiOutlineSave)`
 height: 25px;
 width: 25px;
-color: var(--secondary1);
 `

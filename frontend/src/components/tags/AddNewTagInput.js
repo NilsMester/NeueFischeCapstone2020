@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components/macro';
 import InputField from "../UI/InputField";
 import {RiAddCircleFill} from "react-icons/ri";
@@ -6,6 +6,13 @@ import {RiAddCircleFill} from "react-icons/ri";
 export default function AddNewTagInput({recordData, setRecordData}){
 
     const [addNewTag, setAddNewTag] = useState("");
+    const [disableButton, setDisableButton] = useState(true)
+
+    useEffect(()=> {
+        if(addNewTag !== ""){
+            setDisableButton(false)
+        }else{setDisableButton(true)}
+    }, [addNewTag, setDisableButton])
 
     return (
         <SidebarSection4Styled>
@@ -15,7 +22,9 @@ export default function AddNewTagInput({recordData, setRecordData}){
                         value={addNewTag || ""}
                         onChange={event => setAddNewTag(event.target.value)}
                         type="text"/>
-            <NewRecordButtonStyled type="button" onClick={handleTagKlickButton}>Add Tag</NewRecordButtonStyled>
+            <NewTagButton type="button" disabled={disableButton} onClick={handleTagKlickButton}>
+                <AddTagIcon/>
+            </NewTagButton>
         </SidebarSection4Styled>
     )
 
@@ -31,11 +40,20 @@ align-content: center;
 justify-items: center
 `
 
-const NewRecordButtonStyled = styled(RiAddCircleFill)`
+const AddTagIcon = styled(RiAddCircleFill)`
 height: 30px;
 width: 30px;
+color: var(--orange-75);
+`
+
+const NewTagButton = styled.button`
+padding: 0;
 position: relative;
 top: -8px;
-color: var(--orange-75);
+background-color: unset;
+border-style: none;
+&:disabled{
+cursor: not-allowed;
+};
 `
 

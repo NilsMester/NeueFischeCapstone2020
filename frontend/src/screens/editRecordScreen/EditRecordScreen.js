@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useHistory,useParams} from 'react-router-dom';
 import RecordContext from "../../contexts/RecordContext";
 import RecordForm from "../../components/recordForm/RecordForm";
@@ -22,8 +22,18 @@ export default function EditIdeaPage() {
     const [searchTerm, setSearchTerm] = useState("");
     const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false)
     const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false)
+    const [formCouldBeSaved, setFormCouldBeSaved] = useState(false)
 
     const filteredUserTagList = searchFilterTagList(searchTerm, userTagList, recordData);
+
+    useEffect(()=> {
+        if(recordData.titel !== "" && recordData.recordLink !== "" && recordData.tagList !==[]){
+            setFormCouldBeSaved(true)
+        }else if(recordData.titel === "" || recordData.recordLink === "" || recordData.tagList !==[]){
+            setFormCouldBeSaved(false)
+        }
+    }, [formCouldBeSaved, setFormCouldBeSaved, recordData.titel,recordData.recordLink, recordData.tagList])
+
 
     return !record ? null : (
         <>
@@ -59,7 +69,7 @@ export default function EditIdeaPage() {
                 />
 
             </MainGridStyled>
-            <TabBar tabbarswitch={"form"} tabbarcolumns={"twoButton"} onSave={handleSave} recordData={recordData}/>
+            <TabBar tabbarswitch={"form"} tabbarcolumns={"twoButton"} buttonisactive={formCouldBeSaved} onSave={handleSave} recordData={recordData}/>
         </>
     );
 
