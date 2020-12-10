@@ -19,10 +19,11 @@ export default function LoginScreen(){
     const history = useHistory();
     return(
         <>
-            <Header titel="TabLog"/>
+            <Header titel="Login"/>
             <Main>
-                <Form onSubmit={handleSubmit}>
+                <img src="./Tab_Log_Logo.png" alt="Tab Log Logo"/>
 
+                <Form onSubmit={handleSubmit}>
                     <InputField formField
                                 name="email"
                                 placeholder="E-Mail"
@@ -60,10 +61,15 @@ export default function LoginScreen(){
 
 const Main = styled.main`
 padding: 10px;
+display: grid;
+grid-template-rows: 0.5fr 0.5fr;
+
+justify-content: center;
+grid-row-gap: 16px;
 `
 
 const Form = styled.form`
 display: grid;
-grid-template-rows: 1fr 1fr 1fr;
+grid-template-rows: 0.5fr 0.5fr;
 grid-row-gap: 16px;
 `
