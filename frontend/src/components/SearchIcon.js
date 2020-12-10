@@ -23,7 +23,7 @@ color: var(--grey-50);
 const SearchIcon = styled(ImSearch)`
 height: 15px;
 width: 15px;
-
+margin: 0 5px 0 0;
 ${(props) =>
     props.tagssearch
         ? css`

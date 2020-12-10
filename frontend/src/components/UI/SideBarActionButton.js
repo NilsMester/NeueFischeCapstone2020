@@ -14,7 +14,7 @@ const SidebarButton = styled.button`
   border-radius: var(--size-s) 0 0 var(--size-s);
   background: var(--grey-50);
   box-shadow: 0 2px 5px 1px var(--grey-50);
-  
+  font-family: 'IBM Plex Mono', monospace;
   position: absolute;
   right: 0;
   
