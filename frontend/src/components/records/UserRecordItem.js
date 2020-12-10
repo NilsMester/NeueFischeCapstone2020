@@ -16,10 +16,18 @@ export default function UserRecordItem({record, actions = [], className}) {
                 <CopyLinkToClipboard recordLink={record.recordLink} />
             </Actions>
             <UserTagList tags={record.tagList}/>
+            <PlaceholderDiv/>
         </SingleRecordStyled>
     )
 
 }
+
+const PlaceholderDiv = styled.div`
+height: 0px;
+width: 60%;
+margin: 0 10px 0 0;
+box-shadow: 0 0px 3px 3px var(--grey-25);
+`
 
 const SingleRecordStyled = styled.section`
 display: grid;
