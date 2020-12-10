@@ -1,6 +1,12 @@
 import React, { useContext, useState } from 'react';
 import UserContext from '../../contexts/UserContext';
 import {useHistory} from 'react-router-dom';
+import Header from "../../components/Header";
+import styled from 'styled-components/macro';
+import InputField from "../../components/UI/InputField";
+import Login from "../../components/LogIn";
+import TabBar from "../../components/UI/TabBar";
+
 
 const emptyCredentials = {
     username: '',
@@ -14,31 +20,29 @@ export default function LoginScreen(){
     const history = useHistory();
     return(
         <>
-            <h1>LOGIN</h1>
-            <main>
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        E-Mail
-                        <input
+            <Header titel="TabLog"/>
+            <Main>
+                <Form onSubmit={handleSubmit}>
+
+                        <InputField formField
                             name="email"
+                            placeholder="E-Mail"
                             value={credentials.email || ""}
                             onChange={handleChange}
                             type="text"
                         />
-                    </label>
-                    <label>
-                        Password
-                        <input
+                        <InputField formField
                             name="password"
+                            placeholder="Password"
                             value={credentials.password || ""}
                             onChange={handleChange}
                             type="password"
                         />
-                    </label>
                     {error && <p>{error}</p>}
-                    <button>Login</button>
-                </form>
-            </main>
+                    <Login/>
+                </Form>
+            </Main>
+            <TabBar tabbarsizetwo newAndChange={"newAndChange"}/>
         </>
     );
 
@@ -53,3 +57,13 @@ export default function LoginScreen(){
         setCredentials({ ...credentials, [event.target.name]: event.target.value });
     }
 }
+
+const Main = styled.main`
+padding: 10px;
+`
+
+const Form = styled.form`
+display: grid;
+grid-template-rows: 1fr 1fr 1fr;
+grid-row-gap: 16px;
+`
