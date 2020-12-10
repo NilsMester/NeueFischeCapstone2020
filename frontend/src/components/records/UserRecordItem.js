@@ -23,10 +23,10 @@ export default function UserRecordItem({record, actions = [], className}) {
 }
 
 const PlaceholderDiv = styled.div`
-height: 0px;
+height: 0;
 width: 60%;
 margin: 0 10px 0 0;
-box-shadow: 0 0px 3px 3px var(--grey-25);
+box-shadow: 0 0 3px 3px var(--grey-25);
 `
 
 const SingleRecordStyled = styled.section`
@@ -45,7 +45,8 @@ column-gap: 40px;
 `
 
 const TitelStyled = styled.h2`
-font-size: 1.5em;
+font-family: 'Orbitron', sans-serif;
+font-size: 1.25em;
 margin: 0;
 padding: 0 10px 0 0;
 color: var(--grey-50);

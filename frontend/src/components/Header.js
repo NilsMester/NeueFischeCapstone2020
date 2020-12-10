@@ -13,7 +13,7 @@ export default function Header({titel}){
 const HeaderStyled = styled.header`
   display: grid;
   grid-template-columns: 1fr min-content;
-
+  font-family: 'Orbitron', sans-serif;
   background: var(--grey-50);
   padding: var(--size-s);
   background: linear-gradient(

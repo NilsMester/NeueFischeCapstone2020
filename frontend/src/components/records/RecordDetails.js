@@ -46,6 +46,7 @@ grid-area: interactions;
 `
 
 const TitelStyled = styled.h2`
+font-family: 'Orbitron', sans-serif;
 margin: 0;
 height: 40px;
 color: var(--grey-50);
