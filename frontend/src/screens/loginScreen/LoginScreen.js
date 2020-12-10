@@ -4,7 +4,6 @@ import {useHistory} from 'react-router-dom';
 import Header from "../../components/Header";
 import styled from 'styled-components/macro';
 import InputField from "../../components/UI/InputField";
-import Login from "../../components/LogIn";
 import TabBar from "../../components/UI/TabBar";
 
 
@@ -24,25 +23,26 @@ export default function LoginScreen(){
             <Main>
                 <Form onSubmit={handleSubmit}>
 
-                        <InputField formField
-                            name="email"
-                            placeholder="E-Mail"
-                            value={credentials.email || ""}
-                            onChange={handleChange}
-                            type="text"
-                        />
-                        <InputField formField
-                            name="password"
-                            placeholder="Password"
-                            value={credentials.password || ""}
-                            onChange={handleChange}
-                            type="password"
-                        />
+                    <InputField formField
+                                name="email"
+                                placeholder="E-Mail"
+                                value={credentials.email || ""}
+                                onChange={handleChange}
+                                type="text"
+                                autoComplete="username"
+                    />
+                    <InputField formField
+                                name="password"
+                                placeholder="Password"
+                                value={credentials.password || ""}
+                                onChange={handleChange}
+                                type="password"
+                                autoComplete="current-password"
+                    />
                     {error && <p>{error}</p>}
-                    <Login/>
                 </Form>
             </Main>
-            <TabBar tabbarsizetwo newAndChange={"newAndChange"}/>
+            <TabBar handleLogin={handleSubmit} tabbarswitch={"login"} tabbarcolumns={"oneButton"} />
         </>
     );
 

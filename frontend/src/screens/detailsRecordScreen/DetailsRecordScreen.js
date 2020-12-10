@@ -27,7 +27,7 @@ export default function DetailsRecordScreen(){
                 </ButtonGroup>
                 <RecordDetails record={record}/>
             </MainGridStyled>
-            <TabBar recordDetails={"recordDetails"}/>
+            <TabBar tabbarswitch={"detail"}/>
         </>
 );
 
