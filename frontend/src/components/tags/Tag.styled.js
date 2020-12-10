@@ -18,7 +18,7 @@ export default function TagStyled({onClick,chosen, children}){
 
 const VisualBorder = styled.div`
     background: ${props => props.chosen ? "linear-gradient(to right,var(--secondary1),var(--secondary1),var(--secondary1),var(--secondary1))":"linear-gradient(to right,var(--orange-75),var(--orange-75),var(--orange-75),var(--orange-75))"};
-    width: 105px;
+    width: 110px;
     height: 30px;
     position: relative;
     padding: 2px;

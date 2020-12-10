@@ -20,7 +20,7 @@ ${(props) =>
     props.sidebar
         ? css`
           list-style: none;
-          padding: 0 6px 0 0;
+          padding: 0 2px 0 0;
           margin: 0;
           display: grid;
           height: 30vh;

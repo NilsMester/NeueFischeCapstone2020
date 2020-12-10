@@ -32,8 +32,7 @@ export default createGlobalStyle`
   
   html, body {
     margin: 0;
-    font-family: 'Cuprum', sans-serif;
-  }
+font-family: 'IBM Plex Mono', monospace;  }
   
   body{
     background-color: var(--white1);
