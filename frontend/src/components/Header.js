@@ -9,7 +9,7 @@ export default function Header({titel}){
         <HeaderStyled>
             <HeadingStyled>{titel}</HeadingStyled>
             <LogoIcon onClick={() => history.push(`/home`)}>
-                <img src="./header_Tab_Log_Logo.png" alt="Tab Log Logo"/>
+                <img src="/header_Tab_Log_Logo.png" alt="Tab Log Logo"/>
             </LogoIcon>
         </HeaderStyled>
     )

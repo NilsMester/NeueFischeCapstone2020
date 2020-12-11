@@ -2,21 +2,21 @@ import React from 'react'
 import styled from 'styled-components/macro';
 import {ReactTinyLink} from "react-tiny-link";
 
-export default function LinkPreview({link, recordLinkIsValid}){
+export default function LinkPreview({link, recordLinkIsValid}) {
 
-    return(
+    return (
         <>
             {recordLinkIsValid ?
                 <PreviewStyled>
-                    <CheckForLink/>
+                    <CheckForLink link={link}/>
                 </PreviewStyled> :
                 <PreviewStyled>
                     <h3>Invalid Url!</h3>
                 </PreviewStyled>
             }</>
     )
-
-function CheckForLink() {
+}
+function CheckForLink({link}) {
     if (link !== "" && link.includes("https://" || "www.")){
         return (
             <ReactTinyLink
@@ -28,7 +28,7 @@ function CheckForLink() {
             />)}
     return null;
 }
-}
+
 
 const PreviewStyled = styled.div`
 display: grid;
