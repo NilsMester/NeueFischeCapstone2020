@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 import UserTagList from "../tags/UserTagList";
 import PasteLinkFromClipboard from "../PasteLinkFromClipboard";
 import InputField from "../UI/InputField";
-import {ReactTinyLink} from "react-tiny-link";
+import LinkPreview from "../LinkPreview";
 
 export default function RecordForm({recordData, setRecordData}) {
 
@@ -15,7 +15,7 @@ export default function RecordForm({recordData, setRecordData}) {
             else{
             setRecordLinkIsValid(false);
         }
-    }, [recordData.recordLink, recordData, setRecordData])
+    }, [recordData.recordLink])
 
     return (
         <>
@@ -61,31 +61,12 @@ export default function RecordForm({recordData, setRecordData}) {
                     type="test"/>
             </LableStyled>
 
-            {recordLinkIsValid ?
-            <PreviewStyled>
-                <CheckForLink/>
-            </PreviewStyled>:
-                <PreviewStyled>
-                    <h3>Invalid Url!</h3>
-                </PreviewStyled>}
+            <LinkPreview link={recordData.recordLink} recordLinkIsValid={recordLinkIsValid}/>
         </>
     );
 
     function handleChange(event) {
         setRecordData({...recordData, [event.target.name]: event.target.value});
-    }
-
-    function CheckForLink() {
-        if (recordData.recordLink !== "" && recordData.recordLink.includes("https://" || "www.")){
-            return (
-                <ReactTinyLink
-                    cardSize="small"
-                    showGraphic={true}
-                    maxLine={2}
-                    minLine={2}
-                    url={recordData.recordLink}
-                />)}
-        return null;
     }
 
 }
@@ -99,12 +80,6 @@ gap: 8px;
 padding: 0 10px 0 0;
 `
 
-const PreviewStyled = styled.div`
-display: grid;
-text-align: center;
-grid-area: preview;
-margin: 0 10px 0 0;
-`
 const LinkLableStyled = styled.label`
 width: 100%;
 row-gap: 8px;
@@ -149,8 +124,6 @@ display: block;
   :focus {
     outline: none;
 }
-
-
 `
 
 
