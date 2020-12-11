@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import RecordContext from "../../contexts/RecordContext";
 import {useParams, useHistory } from 'react-router-dom';
 import Header from "../../components/Header";
@@ -9,23 +9,31 @@ import styled from 'styled-components/macro';
 
 export default function DetailsRecordScreen(){
     const{records, deleteRecord} = useContext(RecordContext);
-
-    const {id} = useParams();
     const history = useHistory();
-
+    const {id} = useParams();
     const record = records.find((record) => record.id === id);
+    const [recordData, setRecordData] = useState(record);
 
-    return !record ? null : (
+
+    useEffect(() => {
+            setRecordData(record)
+    },[record])
+
+    if(!recordData){
+        return "loading";
+    }
+
+    return  (
         <>
             <Header titel="Your Record"/>
             <MainGridStyled>
                 <ButtonGroup>
                 <SideBarActionButton
                 edit showFirstSidebarArea={false}
-                                     onClick={() => history.push(`/edit/${record.id}`)}>Edit</SideBarActionButton>
+                                     onClick={() => history.push(`/edit/${recordData?.id}`)}>Edit</SideBarActionButton>
                 <SideBarActionButton delete onClick={handleDelete}>Delete</SideBarActionButton>
                 </ButtonGroup>
-                <RecordDetails record={record}/>
+                <RecordDetails record={recordData}/>
             </MainGridStyled>
             <TabBar tabbarswitch={"detail"}/>
         </>

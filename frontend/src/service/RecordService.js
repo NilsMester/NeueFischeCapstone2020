@@ -8,7 +8,7 @@ const header = (token) => ({
 
 export const getUserRecordList = (token) =>
     axios
-        .get('api/records', header(token))
+        .get('/api/records', header(token))
         .then((response) => response.data);
 
 export const addRecord = (titel, recordLink, description, publicStatus, tagList, token) =>
@@ -18,7 +18,7 @@ export const addRecord = (titel, recordLink, description, publicStatus, tagList,
 
 export const removeRecord = (id, token) =>
     axios
-        .delete('/api/records/' + id, header(token));
+        .delete('/api/records' + id, header(token));
 
 export const updateRecord = (id, titel, recordLink, description, timestamp, publicStatus, tagList, token) =>
     axios

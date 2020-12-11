@@ -9,6 +9,6 @@ const header = (token) => ({
 
 export const getUserTags = (token) =>
     axios
-        .get('api/usertags', header(token))
+        .get('/api/usertags', header(token))
         .then((response) => response.data)
 
