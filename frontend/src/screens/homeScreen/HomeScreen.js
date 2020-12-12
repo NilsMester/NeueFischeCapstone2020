@@ -1,13 +1,13 @@
 import React, {useContext} from 'react';
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import styled from 'styled-components/macro';
-import RecordContext from "../contexts/RecordContext";
-import TagsContext from "../contexts/TagsContext";
-import TabBar from "../components/UI/TabBar";
-import getRecentTags from "../components/tags/getRecentTags";
-import UserTagList from "../components/tags/UserTagList";
-import UserRecordList from "../components/records/UserRecordList";
-import getRecentRecords from "../components/records/getRecentRecords";
+import RecordContext from "../../contexts/RecordContext";
+import TagsContext from "../../contexts/TagsContext";
+import TabBar from "../../components/UI/TabBar";
+import getRecentTags from "../../components/tags/getRecentTags";
+import UserTagList from "../../components/tags/UserTagList";
+import UserRecordList from "../../components/records/UserRecordList";
+import getRecentRecords from "../../components/records/getRecentRecords";
 
 export default function HomeScreen() {
     const {records} = useContext(RecordContext);
@@ -18,12 +18,11 @@ export default function HomeScreen() {
 
     return (
         <>
-            <Header titel="Home"/>
+            <Header titel="Your TabLog"/>
             <MainGridStyled>
-                <h2>Welcome to your TabLog!</h2>
-                <Heading tags>Your most used Tags</Heading>
+                <Heading tags>Most used Tags</Heading>
                 <UserTagList tags={resentTags}/>
-                <Heading>Your recently added Records</Heading>
+                <Heading>Recently added Records</Heading>
                 <RecentRecords>
                     <UserRecordList timeago={true} records={recentRecords}/>
                 </RecentRecords>
@@ -37,7 +36,7 @@ export default function HomeScreen() {
 
 const MainGridStyled = styled.div`
 display: grid ;
-grid-template-rows: 40px min-content min-content;
+grid-template-rows: min-content min-content;
 align-items: center;
 justify-items: center;
 row-gap: 30px;

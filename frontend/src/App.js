@@ -4,7 +4,7 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import styled from 'styled-components/macro';
 import LoginScreen from "./screens/loginScreen/LoginScreen";
 import ProtectedRoute from "./routing/ProtectedRoute";
-import HomePage from "./screens/HomeScreen";
+import HomePage from "./screens/homeScreen/HomeScreen";
 import AddRecordScreen from "./screens/addRecordscreen/AddRecordScreen"
 import RecordContextProvider from "./contexts/RecordContextProvider";
 import DetailsRecordScreen from "./screens/detailsRecordScreen/DetailsRecordScreen";
