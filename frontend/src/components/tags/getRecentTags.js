@@ -12,6 +12,6 @@ export default function getRecentTags(userTagList) {
                 .map(tagItem => tagItem._id)
                 .slice(-userTagList.length, 5))
         } else {
-            return(userTagList.map(tagItem => tagItem).reverse())
+            return(userTagList.map(tagItem => tagItem._id).reverse())
         }
 }
