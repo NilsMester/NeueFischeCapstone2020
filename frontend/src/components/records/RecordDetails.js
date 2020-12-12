@@ -4,7 +4,7 @@ import UserTagList from "../tags/UserTagList";
 import CopyLinkToClipboard from "../CopyLinkToClipboard";
 import OpenLink from "../OpenLink";
 import {ReactTinyLink} from "react-tiny-link";
-import TimeAgo from "react-timeago/lib";
+// import TimeAgo from "react-timeago/lib";
 
 export default function Record({record}) {
 

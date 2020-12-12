@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 import UserTagList from "../tags/UserTagList";
 import CopyLinkToClipboard from "../CopyLinkToClipboard";
 import OpenLink from "../OpenLink";
-import TimeAgo from "react-timeago/lib";
+// import TimeAgo from "react-timeago/lib";
 
 export default function UserRecordItem({record, actions = [], className}) {
 
