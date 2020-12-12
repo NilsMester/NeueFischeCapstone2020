@@ -17,6 +17,7 @@ const SidebarButton = styled.button`
   font-family: 'IBM Plex Mono', monospace;
   position: absolute;
   right: 0;
+  outline: none;
   
   ${(props) =>
     props.first
