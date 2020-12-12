@@ -9,7 +9,7 @@ import Login from "../Login";
 import Logout from "../Logout";
 import ListIcon from "../ListIcon";
 
-export default function TabBar({ onSave, recordData, buttonisactive, tabbarswitch, handleLogin , onClickDeleteFilter, ...rest}) {
+export default function TabBar({ onSave, recordData, buttonisactive, tabbarswitch, handleLogin ,handleLogout, onClickDeleteFilter, ...rest}) {
     const history = useHistory();
 
     return(
@@ -23,7 +23,7 @@ export default function TabBar({ onSave, recordData, buttonisactive, tabbarswitc
 
                 : tabbarswitch === "home" ?
                     <>
-                        <ButtonStyled onClick={handleLogin}>
+                        <ButtonStyled onClick={handleLogout}>
                             <Logout/>
                         </ButtonStyled>
                         <ButtonStyled onClick={() => history.push(`/records`)}>
