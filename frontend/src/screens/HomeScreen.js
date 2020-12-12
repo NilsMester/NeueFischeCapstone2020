@@ -8,12 +8,8 @@ import getRecentTags from "../components/tags/getRecentTags";
 import UserTagList from "../components/tags/UserTagList";
 import UserRecordList from "../components/records/UserRecordList";
 import getRecentRecords from "../components/records/getRecentRecords";
-import {useHistory} from "react-router-dom";
-import UserContext from "../contexts/UserContext";
 
 export default function HomeScreen() {
-    const history = useHistory();
-    const {logout} = useContext(UserContext);
     const {records} = useContext(RecordContext);
     const {userTagList} = useContext(TagsContext);
 
@@ -33,14 +29,10 @@ export default function HomeScreen() {
                 </RecentRecords>
 
             </MainGridStyled>
-            <TabBar tabbarswitch={"home"} tabbarcolumns={"twoButton"} handleLogout={handleLogout}/>
+            <TabBar tabbarswitch={"home"} tabbarcolumns={"twoButton"}/>
         </>
     )
 
-    function handleLogout (){
-        logout();
-        history.push("/login")
-    }
 }
 
 const MainGridStyled = styled.div`

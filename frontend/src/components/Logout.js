@@ -4,9 +4,11 @@ import {RiLogoutBoxLine} from "react-icons/ri";
 
 export default function Logout(){
 
+
     return (
             <LogoutIcon/>
     )
+
 }
 
 
