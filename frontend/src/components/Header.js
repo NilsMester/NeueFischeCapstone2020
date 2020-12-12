@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components/macro';
 import {useHistory} from "react-router-dom";
+import Logout from "./Logout";
+import UserContext from "../contexts/UserContext";
 
 export default function Header({titel}){
     const history = useHistory();
+    const {logout} = useContext(UserContext);
 
     return(
         <HeaderStyled>
@@ -11,8 +14,15 @@ export default function Header({titel}){
             <LogoIcon onClick={() => history.push(`/home`)}>
                 <img src="/header_Tab_Log_Logo.png" alt="Tab Log Logo"/>
             </LogoIcon>
+            <LogoutIcon onClick={handleLogout}> <Logout/> </LogoutIcon>
         </HeaderStyled>
     )
+
+    function handleLogout (){
+        logout();
+        history.push("/login")
+    }
+
 }
 
 const HeaderStyled = styled.header`
@@ -44,4 +54,11 @@ const LogoIcon = styled.div`
 position: absolute;
 left: 10px;
 top: 8px;
+`
+
+const LogoutIcon = styled.div` 
+position: absolute;
+right: 10px;
+top: 10px;
+padding:0;
 `

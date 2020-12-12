@@ -20,6 +20,7 @@ const InputFieldStyled = styled.input`
 
   :focus {
     outline: none;
+    display: none;
 }
   ${(props) =>
     props.formField
