@@ -18,7 +18,7 @@ export default function UserRecordItem({record, actions = [], className}) {
                 <div>{actions}</div>
                 <OpenLink recordLink={record.recordLink}/>
                 <CopyLinkToClipboard recordLink={record.recordLink} />
-                <CreationDate><TimeAgo date={record.timestamp}/></CreationDate>
+                {/*<CreationDate><TimeAgo date={record.timestamp}/></CreationDate>*/}
             </Actions>
             <UserTagList tags={record.tagList}/>
             <PlaceholderDiv/>
@@ -60,10 +60,10 @@ padding: 0 10px 0 0;
 color: var(--grey-50);
 text-align: center;
 `
-const CreationDate = styled.p`
-justify-self: right;
-grid-area: creationTimer;
-font-size: 0.65em;
-text-align: right;
-margin: 0;
-`
+// const CreationDate = styled.p`
+// justify-self: right;
+// grid-area: creationTimer;
+// font-size: 0.65em;
+// text-align: right;
+// margin: 0;
+// `
