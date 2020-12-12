@@ -27,7 +27,7 @@ function App() {
                             <ProtectedRoute path="/record/:id" component={DetailsRecordScreen}/>
                             <ProtectedRoute path="/edit/:id" component={EditRecordPage}/>
                             <Route path="/">
-                                <Redirect to="/records"/>
+                                <Redirect to="/home"/>
                             </Route>
                         </Switch>
                     </PageLayout>

@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 import UserRecordItem from "./UserRecordItem";
 import DetailsIcon from "../DetailsIcon";
 
-export default function UserRecordList ({records}) {
+export default function UserRecordList ({records,timeago , ...rest}) {
 
     return (
         <>
@@ -12,10 +12,10 @@ export default function UserRecordList ({records}) {
                     <TitelStyled>No search results found!</TitelStyled>
                 </NoResearchResult>
                 :
-                <StyledRecordsList>
+                <StyledRecordsList {...rest}>
                     {records?.map((record) => (
                         <li key={record.id}>
-                            <UserRecordItem
+                            <UserRecordItem timeago={timeago}
                                 record={record}
                                 actions={[
                                     <DetailsIcon key="details" record={record}/>
@@ -33,10 +33,10 @@ const StyledRecordsList = styled.ul`
     padding: 0;
     overflow: scroll;
     list-style: none;
-    width: 100vw;
+    width: ${props => props.home ? `66vw` : `100vw`};
     display:grid;
     grid-area: recordsList;
-    row-gap: 50px;
+    row-gap: 30px;
     grid-auto-rows: min-content;
     margin:0;
  

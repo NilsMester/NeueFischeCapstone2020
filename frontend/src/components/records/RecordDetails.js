@@ -4,6 +4,7 @@ import UserTagList from "../tags/UserTagList";
 import CopyLinkToClipboard from "../CopyLinkToClipboard";
 import OpenLink from "../OpenLink";
 import {ReactTinyLink} from "react-tiny-link";
+import TimeAgo from "react-timeago/lib";
 
 export default function Record({record}) {
 
@@ -25,6 +26,7 @@ export default function Record({record}) {
                 minLine={2}
                 url={record.recordLink}
             />
+                <CreationDate><p><TimeAgo date={record.timestamp}/></p></CreationDate>
             </PreviewStyled>
             <ActionSection>
                 <OpenLink recordLink={record.recordLink}/>
@@ -75,4 +77,12 @@ text-align: center;
 grid-area: preview;
 margin: 0 10px 0 0;
 `
+const CreationDate = styled.aside`
+justify-self: right;
+
+p{
+font-size: var(--size-m);
+justify-self: right;
+text-align: right;
+}`
 

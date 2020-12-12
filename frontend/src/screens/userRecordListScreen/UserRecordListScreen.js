@@ -102,7 +102,7 @@ height: 64px;
 
 const MainGridStyled = styled.div`
 display: flex ;
-grid-template-columns: 1fr min-content;
+grid-template-columns: min-content min-content;
 grid-template-rows: 40px 40px 106px 30px 78px auto;
 grid-template-areas: 
 "recordsList placeholder"
@@ -113,7 +113,6 @@ grid-template-areas:
 "recordsList .";
 ;
 row-gap: 24px;
-position: relative;
 padding: 10px 0 10px 10px;
 overflow: scroll;
 `
