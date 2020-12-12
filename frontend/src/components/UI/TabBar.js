@@ -6,6 +6,8 @@ import {RiAddCircleFill} from "react-icons/ri";
 import {AiOutlineSave, AiOutlineHome} from "react-icons/ai";
 import ResetFilter from "../ResetFilter";
 import Login from "../Login";
+import Logout from "../Logout";
+import ListIcon from "../ListIcon";
 
 export default function TabBar({ onSave, recordData, buttonisactive, tabbarswitch, handleLogin , onClickDeleteFilter, ...rest}) {
     const history = useHistory();
@@ -18,6 +20,16 @@ export default function TabBar({ onSave, recordData, buttonisactive, tabbarswitc
                         <Login/>
                     </ButtonStyled>
                 </>
+
+                : tabbarswitch === "home" ?
+                    <>
+                        <ButtonStyled onClick={handleLogin}>
+                            <Logout/>
+                        </ButtonStyled>
+                        <ButtonStyled onClick={() => history.push(`/records`)}>
+                            <ListIcon/>
+                        </ButtonStyled>
+                    </>
 
                 : tabbarswitch === "form" ?
                     <>

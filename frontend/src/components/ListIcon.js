@@ -1,15 +1,16 @@
 import React from 'react'
 import styled from 'styled-components/macro';
-import {RiLoginBoxLine} from "react-icons/ri";
+import {HiViewList} from "react-icons/hi";
 
-export default function Login(){
+export default function ListIcon(){
 
     return (
-            <LoginIcon/>
+            <LogoutIcon/>
     )
 }
 
-const LoginIcon = styled(RiLoginBoxLine)`
+
+const LogoutIcon = styled(HiViewList)`
 color: var(--secondary1);
 height: 30px;
 width: 30px;
