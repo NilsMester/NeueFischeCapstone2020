@@ -7,7 +7,7 @@
 „Ach…wo hatte ich noch gleich diesen Link?“
 
 Mit TabLog gehört diese Frage der Vergangenheit an. Speichere und kategorisiere deine Links um sie jeder Zeit wiederzufinden. "Dieses eine Backrezept“, der Lieblingsmix auf YouTube oder doch das Tutorial, das du dir unbedingt noch anschauen möchtest 
-...mit der Full Stack WebApp "TabLog" fürst du deine eigene Bibliothek.
+...mit der Full Stack WebApp "TabLog" führst du deine eigene Bibliothek.
 
 ![](TabLogGif_36sek.gif)
 
