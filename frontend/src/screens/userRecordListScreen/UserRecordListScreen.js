@@ -11,10 +11,13 @@ import searchFilterTagsRecordList from "../../components/services/searchFilterTa
 import SearchIcon from "../../components/SearchIcon";
 import SearchRecordInput from "../../components/SearchRecordInput";
 import searchFilterRecordList from "../../components/records/searchFilterRecordList";
+import {getUserTags} from "../../service/TagsAggregationService";
+import UserContext from "../../contexts/UserContext";
 
 export default function UserRecordListScreen () {
     const {records} = useContext(RecordContext);
-    const {userTagList} = useContext(TagsContext);
+    const {userTagList, setUserTagList} = useContext(TagsContext);
+    const {token, tokenIsValid} = useContext(UserContext);
     const [searchTermText, setSearchTermText] = useState("");
     const [searchTermTagsArray, setSearchTermTagsArray] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -25,6 +28,12 @@ export default function UserRecordListScreen () {
     const filteredUserTagList = searchFilterTagsRecordList(searchTerm, userTagList);
 
     const filteredRecordList = searchFilterRecordList(searchTermText, records, searchTermTagsArray)
+
+    useEffect(() => {
+        tokenIsValid() && getUserTags(token)
+            .then(setUserTagList)
+            .catch(console.log);
+    }, [token, tokenIsValid, setUserTagList, records]);
 
     useEffect(()=> {
         if(searchTermText !== "" || searchTermTagsArray.length > 0){

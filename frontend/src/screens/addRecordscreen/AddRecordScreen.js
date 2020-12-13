@@ -92,9 +92,8 @@ export default function AddRecordScreen() {
     function handleSave(recordData) {
         const{titel, recordLink, description, publicStatus, tagList} = recordData;
         createRecord(titel, recordLink, description, publicStatus, tagList);
-        history.push('/');
+        history.push('/records');
     }
-
 }
 
 const MainGridStyled = styled.div`
