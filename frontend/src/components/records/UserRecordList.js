@@ -30,7 +30,7 @@ export default function UserRecordList ({records,timeago , ...rest}) {
 }
 
 const StyledRecordsList = styled.ul`
-    padding: 0;
+    padding: 0 10px 0 0;
     overflow: scroll;
     list-style: none;
     width: ${props => props.home ? `66vw` : `100vw`};
@@ -39,7 +39,10 @@ const StyledRecordsList = styled.ul`
     row-gap: 30px;
     grid-auto-rows: min-content;
     margin:0;
- 
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+    display: none;
+       }
 `;
 
 const TitelStyled = styled.h2`

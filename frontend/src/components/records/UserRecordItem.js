@@ -55,8 +55,9 @@ padding: 10px 0 0 0;
 const TitelStyled = styled.h2`
 font-family: 'Orbitron', sans-serif;
 font-size: 1.2em;
+max-width: 95vw;
 margin: 0;
-padding: 0 10px 0 0;
+padding: 0;
 color: var(--grey-50);
 text-align: center;
 `

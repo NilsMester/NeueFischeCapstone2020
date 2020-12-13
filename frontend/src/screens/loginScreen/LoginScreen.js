@@ -63,7 +63,6 @@ const Main = styled.main`
 padding: 10px;
 display: grid;
 grid-template-rows: 0.5fr 0.5fr;
-
 justify-content: center;
 grid-row-gap: 16px;
 `

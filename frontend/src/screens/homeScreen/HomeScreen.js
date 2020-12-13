@@ -41,8 +41,12 @@ align-items: center;
 justify-items: center;
 row-gap: 30px;
 position: relative;
-padding: 10px 0;
+padding: 10px 10px 10px 0;
 overflow: scroll;
+-ms-overflow-style: none;
+    ::-webkit-scrollbar {
+    display: none;
+       }
 `
 
 const RecentRecords = styled.section`
