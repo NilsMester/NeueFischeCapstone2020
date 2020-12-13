@@ -14,7 +14,6 @@ export default function DetailsRecordScreen(){
     const record = records.find((record) => record.id === id);
     const [recordData, setRecordData] = useState(record);
 
-
     useEffect(() => {
             setRecordData(record)
     },[record])
