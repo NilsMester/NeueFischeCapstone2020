@@ -57,7 +57,7 @@ ${(props) =>
           text-align: center;
           overflow-x: hidden;
           overflow-y: scroll;
-          padding: 0;
+          padding: 0 0 10px 0;
           margin: 0;  
           -ms-overflow-style: none;
           ::-webkit-scrollbar {

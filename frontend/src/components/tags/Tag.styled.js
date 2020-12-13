@@ -23,8 +23,8 @@ const VisualBorder = styled.div`
     position: relative;
     padding: 2px;
     border-radius: 4px;
-    z-index: 1
-;
+    z-index: 1;
+    box-shadow: 0 10px 10px -10px var(--grey-50);
  
  &::before{
     background: ${props => props.chosen ? "linear-gradient(to right,var(--secondary1),var(--secondary1),var(--secondary1),var(--secondary1))":"linear-gradient(to right,var(--orange-75),var(--orange-75),var(--orange-75),var(--orange-75))"};
