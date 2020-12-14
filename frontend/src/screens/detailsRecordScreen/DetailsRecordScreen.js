@@ -24,7 +24,7 @@ export default function DetailsRecordScreen(){
 
     return  (
         <>
-            <Header titel="Your Record"/>
+            <Header titel="Your Record" showLogout={true}/>
             <MainGridStyled>
                 <ButtonGroup>
                 <SideBarActionButton
@@ -34,7 +34,7 @@ export default function DetailsRecordScreen(){
                 </ButtonGroup>
                 <RecordDetails record={recordData}/>
             </MainGridStyled>
-            <TabBar tabbarswitch={"detail"}/>
+            <TabBar tabbarswitch={"detail"} />
         </>
 );
 

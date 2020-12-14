@@ -37,7 +37,7 @@ export default function EditIdeaPage() {
 
     return !record ? null : (
         <>
-            <Header titel="Edit your Record"/>
+            <Header titel="Edit your Record" showLogout={true}/>
             <MainGridStyled>
 
                 <RecordForm onSubmit={handleSave} recordData={recordData} setRecordData={setRecordData}/>
@@ -69,7 +69,7 @@ export default function EditIdeaPage() {
                 />
 
             </MainGridStyled>
-            <TabBar tabbarswitch={"form"} tabbarcolumns={"twoButton"} buttonisactive={formCouldBeSaved} onSave={handleSave} recordData={recordData}/>
+            <TabBar tabbarswitch={"form"} tabbarcolumns={"twoButton"} buttonisactive={formCouldBeSaved} onSave={handleSave} recordData={recordData} />
         </>
     );
 

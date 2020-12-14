@@ -45,7 +45,7 @@ export default function UserRecordListScreen () {
 
     return(
         <>
-            <Header titel="Your Records"/>
+            <Header titel="Your Records" showLogout={true}/>
 
             <MainGridStyled>
                 <UserRecordList records={filteredRecordList}/>

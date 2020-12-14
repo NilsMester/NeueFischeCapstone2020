@@ -42,7 +42,7 @@ export default function AddRecordScreen() {
 
     return(
         <>
-            <Header titel="New Record"/>
+            <Header titel="New Record" showLogout={true}/>
             <MainGridStyled>
 
                 <RecordForm onSubmit={handleSave} recordData={recordData} setRecordData={setRecordData}/>
@@ -70,7 +70,7 @@ export default function AddRecordScreen() {
                                                                  setRecordData={setRecordData}/>]}
                 />
             </MainGridStyled>
-            <TabBar tabbarswitch={"form"} tabbarcolumns={"twoButton"} buttonisactive={formCouldBeSaved} onSave={handleSave} recordData={recordData}/>
+            <TabBar tabbarswitch={"form"} tabbarcolumns={"twoButton"} buttonisactive={formCouldBeSaved} onSave={handleSave} recordData={recordData} />
         </>
     );
 

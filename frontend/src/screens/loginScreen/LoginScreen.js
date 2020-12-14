@@ -19,7 +19,7 @@ export default function LoginScreen(){
     const history = useHistory();
     return(
         <>
-            <Header titel="Login"/>
+            <Header titel="Login" showLogout={false}/>
             <Main>
                 <img src="./Tab_Log_Logo.png" alt="Tab Log Logo"/>
 

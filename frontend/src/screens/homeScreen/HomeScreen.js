@@ -18,7 +18,7 @@ export default function HomeScreen() {
 
     return (
         <>
-            <Header titel="Your TabLog"/>
+            <Header titel="Your TabLog" showLogout={true}/>
             <MainGridStyled>
                 <Heading tags>Most used Tags</Heading>
                 <UserTagList tags={resentTags}/>

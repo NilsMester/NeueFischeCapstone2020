@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 import Logout from "./Logout";
 import UserContext from "../contexts/UserContext";
 
-export default function Header({titel}){
+export default function Header({titel, showLogout}){
     const history = useHistory();
     const {logout} = useContext(UserContext);
 
@@ -14,7 +14,10 @@ export default function Header({titel}){
             <LogoIcon onClick={() => history.push(`/home`)}>
                 <img src="/header_Tab_Log_Logo.png" alt="Tab Log Logo"/>
             </LogoIcon>
-            <LogoutIcon onClick={handleLogout}> <Logout/> </LogoutIcon>
+            {showLogout ?
+                <LogoutIcon onClick={handleLogout}><Logout/></LogoutIcon>
+                : null
+            }
         </HeaderStyled>
     )
 
