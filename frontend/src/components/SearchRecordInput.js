@@ -1,26 +1,27 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import InputField from "./UI/InputField";
+import InputField from './UI/InputField';
 
-export default function SearchRecordInput({searchTermText, setSearchTermText}){
-
+export default function SearchRecordInput({
+    searchTermText,
+    setSearchTermText,
+}) {
     return (
         <SidebarSection4Styled>
-            <InputField search
-                        name="searchTermText"
-                        placeholder="Search Record"
-                        value={searchTermText || ""}
-                        onChange={event => setSearchTermText(event.target.value)}
-                        type="text"/>
+            <InputField
+                search
+                name="searchTermText"
+                placeholder="Search Record"
+                value={searchTermText || ''}
+                onChange={(event) => setSearchTermText(event.target.value)}
+                type="text"
+            />
         </SidebarSection4Styled>
-    )
-
+    );
 }
 
 const SidebarSection4Styled = styled.label`
-display: grid;
-align-content: center;
-justify-items: center
-`
-
-
+    display: grid;
+    align-content: center;
+    justify-items: center;
+`;

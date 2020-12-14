@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import UserContext from './UserContext';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
@@ -37,8 +37,7 @@ export default function UserContextProvider({ children }) {
             .post('/auth/login', loginData)
             .then((response) => setToken(response.data));
 
-    const logout = () =>
-        deleteTokenFromLocalStorage();
+    const logout = () => deleteTokenFromLocalStorage();
 
     return (
         <UserContext.Provider
