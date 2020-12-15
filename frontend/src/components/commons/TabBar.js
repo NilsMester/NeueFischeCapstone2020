@@ -20,64 +20,64 @@ export default function TabBar({
     const history = useHistory();
 
     return (
-        <ActionBarTabs {...rest}>
+        <ActionBarStyled {...rest}>
             {tabbarswitch === 'login' ? (
                 <>
-                    <ButtonStyled onClick={handleLogin}>
+                    <TabButton onClick={handleLogin}>
                         <LoginIcon />
-                    </ButtonStyled>
+                    </TabButton>
                 </>
             ) : tabbarswitch === 'home' ? (
                 <>
-                    <ButtonStyled onClick={() => history.push(`/records`)}>
+                    <TabButton onClick={() => history.push(`/records`)}>
                         <ListIcon />
-                    </ButtonStyled>
-                    <ButtonStyled onClick={() => history.push(`/newRecord`)}>
-                        <NewRecordButtonStyled />
-                    </ButtonStyled>
+                    </TabButton>
+                    <TabButton onClick={() => history.push(`/newRecord`)}>
+                        <NewRecordButton />
+                    </TabButton>
                 </>
             ) : tabbarswitch === 'form' ? (
                 <>
-                    <ButtonStyled onClick={() => history.goBack()}>
-                        <HistoryGoBackButtonStyled />
-                    </ButtonStyled>
-                    <ButtonStyled
+                    <TabButton onClick={() => history.goBack()}>
+                        <HistoryGoBackButton />
+                    </TabButton>
+                    <TabButton
                         onClick={handleSubmit}
                         buttonisactive={buttonisactive}
                         disabled={!buttonisactive}
                     >
-                        <SafeButtonStyled />
-                    </ButtonStyled>
+                        <SafeButton />
+                    </TabButton>
                 </>
             ) : tabbarswitch === 'list' ? (
                 <>
-                    <ButtonStyled onClick={() => history.goBack()}>
-                        <HistoryGoBackButtonStyled />
-                    </ButtonStyled>
-                    <ButtonStyled onClick={() => history.push(`/newRecord`)}>
-                        <NewRecordButtonStyled />
-                    </ButtonStyled>
-                    <ButtonStyled
+                    <TabButton onClick={() => history.goBack()}>
+                        <HistoryGoBackButton />
+                    </TabButton>
+                    <TabButton onClick={() => history.push(`/newRecord`)}>
+                        <NewRecordButton />
+                    </TabButton>
+                    <TabButton
                         buttonisactive={buttonisactive}
                         onClick={onClickDeleteFilter}
                     >
                         <ResetFilterIcon />
-                    </ButtonStyled>
+                    </TabButton>
                 </>
             ) : tabbarswitch === 'detail' ? (
                 <>
-                    <ButtonStyled onClick={() => history.goBack()}>
-                        <HistoryGoBackButtonStyled />
-                    </ButtonStyled>
-                    <ButtonStyled onClick={() => history.push(`/newRecord`)}>
-                        <NewRecordButtonStyled />
-                    </ButtonStyled>
-                    <ButtonStyled onClick={() => history.push(`/home`)}>
-                        <HomeButtonStyled />
-                    </ButtonStyled>
+                    <TabButton onClick={() => history.goBack()}>
+                        <HistoryGoBackButton />
+                    </TabButton>
+                    <TabButton onClick={() => history.push(`/newRecord`)}>
+                        <NewRecordButton />
+                    </TabButton>
+                    <TabButton onClick={() => history.push(`/home`)}>
+                        <HomeButton />
+                    </TabButton>
                 </>
             ) : null}
-        </ActionBarTabs>
+        </ActionBarStyled>
     );
 
     function handleSubmit(event) {
@@ -85,7 +85,7 @@ export default function TabBar({
         onSave(recordData);
     }
 }
-const ActionBarTabs = styled.section`
+const ActionBarStyled = styled.section`
     display: grid;
     align-items: end;
     grid-template-columns: ${(props) =>
@@ -105,7 +105,7 @@ const ActionBarTabs = styled.section`
     );
 `;
 
-const ButtonStyled = styled.button`
+const TabButton = styled.button`
     width: auto;
     height: 45px;
     border-radius: 30% 30% 0 0;
@@ -126,25 +126,25 @@ const ButtonStyled = styled.button`
     );
 `;
 
-const HistoryGoBackButtonStyled = styled(IoChevronBackSharp)`
+const HistoryGoBackButton = styled(IoChevronBackSharp)`
     height: 25px;
     width: 25px;
     color: var(--secondary1);
 `;
 
-const NewRecordButtonStyled = styled(RiAddCircleFill)`
+const NewRecordButton = styled(RiAddCircleFill)`
     height: 25px;
     width: 25px;
     color: var(--secondary1);
 `;
 
-const HomeButtonStyled = styled(AiOutlineHome)`
+const HomeButton = styled(AiOutlineHome)`
     height: 25px;
     width: 25px;
     color: var(--secondary1);
 `;
 
-const SafeButtonStyled = styled(AiOutlineSave)`
+const SafeButton = styled(AiOutlineSave)`
     height: 25px;
     width: 25px;
 `;

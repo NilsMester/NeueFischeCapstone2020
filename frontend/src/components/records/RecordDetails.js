@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import UserTagList from '../tags/UserTagList';
+import TagList from '../tags/TagList';
 import CopyLinkToClipboard from '../UI/CopyLinkToClipboard';
 import OpenLink from '../UI/OpenLink';
 import { ReactTinyLink } from 'react-tiny-link';
@@ -9,14 +9,14 @@ import TimeAgo from 'react-timeago/lib';
 export default function Record({ record }) {
     return (
         <>
-            <TitelStyled>{record.titel}</TitelStyled>
+            <Titel>{record.titel}</Titel>
 
-            <TagsSectionStyled>
-                <TagsSubTitelStaled>Tags</TagsSubTitelStaled>
-                <UserTagList formTags tags={record.tagList} />
-            </TagsSectionStyled>
-            <TextStyled>{record.description}</TextStyled>
-            <PreviewStyled>
+            <TagsSection>
+                <TagsSubTitel>Tags</TagsSubTitel>
+                <TagList formTags tags={record.tagList} />
+            </TagsSection>
+            <Description>{record.description}</Description>
+            <Preview>
                 <ReactTinyLink
                     cardSize="small"
                     showGraphic={true}
@@ -29,16 +29,16 @@ export default function Record({ record }) {
                         <TimeAgo date={record.timestamp} />
                     </p>
                 </CreationDate>
-            </PreviewStyled>
-            <ActionSection>
+            </Preview>
+            <Interactions>
                 <OpenLink recordLink={record.recordLink} />
                 <CopyLinkToClipboard recordLink={record.recordLink} />
-            </ActionSection>
+            </Interactions>
         </>
     );
 }
 
-const ActionSection = styled.section`
+const Interactions = styled.section`
     display: grid;
     grid-template-columns: 0.5fr 0.5fr;
     height: 35px;
@@ -47,7 +47,7 @@ const ActionSection = styled.section`
     grid-area: interactions;
 `;
 
-const TitelStyled = styled.h2`
+const Titel = styled.h2`
     font-family: 'Orbitron', sans-serif;
     margin: 0;
     height: 40px;
@@ -58,20 +58,21 @@ const TitelStyled = styled.h2`
     grid-area: titel;
 `;
 
-const TextStyled = styled.p`
+const Description = styled.p`
     margin: 0;
     color: var(--grey-50);
 `;
 
-const TagsSectionStyled = styled.section`
+const TagsSection = styled.section`
     grid-area: tags;
     height: 26vh;
 `;
 
-const TagsSubTitelStaled = styled.p`
+const TagsSubTitel = styled.p`
     margin: 0;
 `;
-const PreviewStyled = styled.div`
+
+const Preview = styled.section`
     display: grid;
     text-align: center;
     grid-area: preview;
@@ -79,7 +80,6 @@ const PreviewStyled = styled.div`
 `;
 const CreationDate = styled.aside`
     justify-self: right;
-
     p {
         font-size: var(--size-m);
         justify-self: right;

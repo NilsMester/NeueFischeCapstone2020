@@ -7,7 +7,7 @@ export default function TagStyled({ onClick, chosen, children }) {
             <RightHide />
             <LeftHide />
             <BorderVisualWrapper>
-                <ChildStyled>{children}</ChildStyled>
+                <TagName>{children}</TagName>
             </BorderVisualWrapper>
         </VisualBorder>
     );
@@ -115,7 +115,7 @@ const RightHide = styled.div`
     background: var(--white1);
     z-index: 4;
 `;
-const ChildStyled = styled.p`
+const TagName = styled.p`
     z-index: 10;
     font-size: 0.9em;
 `;

@@ -12,7 +12,7 @@ export default function DetailsIcon({ record }) {
                 key="details"
                 onClick={() => history.push(`/record/${record.id}`)}
             />
-            <DescriptionStyled>Details</DescriptionStyled>
+            <Description>Details</Description>
         </Details>
     );
 }
@@ -32,6 +32,6 @@ const DetailsIconStyled = styled(CgDetailsMore)`
     width: 30px;
 `;
 
-const DescriptionStyled = styled.p`
+const Description = styled.p`
     font-size: 0.6em;
 `;

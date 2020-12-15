@@ -22,7 +22,6 @@ export default function EditIdeaPage() {
     const [searchTerm, setSearchTerm] = useState('');
     const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false);
     const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false);
-    const [formCouldBeSaved, setFormCouldBeSaved] = useState(false);
 
     const filteredUserTagList = searchFilterTagList(
         searchTerm,
@@ -31,31 +30,22 @@ export default function EditIdeaPage() {
     );
 
     useEffect(() => {
-        if (
-            recordData.titel !== '' &&
-            recordData.recordLink !== '' &&
-            recordData.tagList !== []
-        ) {
-            setFormCouldBeSaved(true);
-        } else if (
-            recordData.titel === '' ||
-            recordData.recordLink === '' ||
-            recordData.tagList !== []
-        ) {
-            setFormCouldBeSaved(false);
-        }
-    }, [
-        formCouldBeSaved,
-        setFormCouldBeSaved,
-        recordData.titel,
-        recordData.recordLink,
-        recordData.tagList,
-    ]);
+        setRecordData(record);
+    }, [record]);
+
+    if (!recordData) {
+        return 'loading';
+    }
+
+    const formCouldBeSaved =
+        recordData?.titel &&
+        recordData?.recordLink &&
+        recordData?.tagList?.length;
 
     return !record ? null : (
         <>
             <Header titel="Edit your Record" showLogout={true} />
-            <MainGridStyled>
+            <MainGrid>
                 <RecordForm
                     onSubmit={handleSave}
                     recordData={recordData}
@@ -104,7 +94,7 @@ export default function EditIdeaPage() {
                         />,
                     ]}
                 />
-            </MainGridStyled>
+            </MainGrid>
             <TabBar
                 tabbarswitch={'form'}
                 tabbarcolumns={'twoButton'}
@@ -153,7 +143,7 @@ export default function EditIdeaPage() {
     }
 }
 
-const MainGridStyled = styled.div`
+const MainGrid = styled.main`
     display: grid;
     grid-template-columns: 1fr min-content;
     grid-template-rows: 40px 40px 106px 30px 78px auto;

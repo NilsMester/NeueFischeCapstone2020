@@ -1,5 +1,5 @@
 import React from 'react';
-import UserTagList from '../tags/UserTagList';
+import TagList from '../tags/TagList';
 import styled from 'styled-components/macro';
 import InputField from '../UI/InputField';
 
@@ -18,7 +18,7 @@ export default function SideBar({
     placeHolder = [],
 }) {
     return (
-        <SidebarStyled>
+        <SideBarStyled>
             {placeHolder}
             <div>{actionsFirstButton}</div>
 
@@ -27,14 +27,14 @@ export default function SideBar({
             ) : showFirstSidebarArea ? (
                 <>
                     <ButtonArea />
-                    <SidebarSection1Styled>
-                        <UserTagList
+                    <TagsSection>
+                        <TagList
                             sidebar
                             tags={tags}
                             searchTermTagsArray={searchTermTagsArray}
                             onTagClick={onTagClick}
                         />
-                        <LabelStyled>
+                        <TagSearchLabel>
                             <InputField
                                 search
                                 placeholder="search"
@@ -45,20 +45,20 @@ export default function SideBar({
                                 }
                                 type="text"
                             />
-                        </LabelStyled>
+                        </TagSearchLabel>
                         {actionsSecondButtonInGrid}
-                    </SidebarSection1Styled>
+                    </TagsSection>
                 </>
             ) : showSecondSideBarArea ? (
                 <>
                     {actionsSecondButton}
                     <ButtonArea />
-                    <SidebarSection2Styled>
+                    <RecordTextSearchSection>
                         {actionsSecondArea}
-                    </SidebarSection2Styled>
+                    </RecordTextSearchSection>
                 </>
             ) : null}
-        </SidebarStyled>
+        </SideBarStyled>
     );
 }
 
@@ -66,7 +66,7 @@ const ButtonArea = styled.div`
     height: 40px;
 `;
 
-const LabelStyled = styled.label`
+const TagSearchLabel = styled.label`
     margin: 0;
     position: relative;
     width: 120px;
@@ -74,11 +74,11 @@ const LabelStyled = styled.label`
     color: var(--grey-50);
 `;
 
-const SidebarStyled = styled.div`
+const SideBarStyled = styled.div`
     position: relative;
 `;
 
-const SidebarSection1Styled = styled.div`
+const TagsSection = styled.section`
     padding: 4px 0 0 0;
     display: grid;
     grid-area: tagsListbar;
@@ -86,11 +86,12 @@ const SidebarSection1Styled = styled.div`
     justify-items: end;
 `;
 
-const SidebarSection2Styled = styled.div`
+const RecordTextSearchSection = styled.section`
     position: relative;
     display: grid;
     grid-area: addTagField;
     row-gap: 8px;
+    font-size: 0.8em;
     justify-items: end;
     padding: 65px 0 0 0;
 `;

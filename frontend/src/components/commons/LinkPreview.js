@@ -6,13 +6,13 @@ export default function LinkPreview({ link, recordLinkIsValid }) {
     return (
         <>
             {recordLinkIsValid ? (
-                <PreviewStyled>
+                <Preview>
                     <CheckForLink link={link} />
-                </PreviewStyled>
+                </Preview>
             ) : (
-                <PreviewStyled>
+                <Preview>
                     <h3>Invalid Url!</h3>
-                </PreviewStyled>
+                </Preview>
             )}
         </>
     );
@@ -32,7 +32,7 @@ function CheckForLink({ link }) {
     return null;
 }
 
-const PreviewStyled = styled.div`
+const Preview = styled.div`
     display: grid;
     text-align: center;
     grid-area: preview;
