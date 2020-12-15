@@ -4,10 +4,10 @@ import styled from 'styled-components/macro';
 import RecordContext from '../../contexts/RecordContext';
 import TagsContext from '../../contexts/TagsContext';
 import TabBar from '../../components/commons/TabBar';
-import UserTagList from '../../components/tags/UserTagList';
-import UserRecordList from '../../components/records/UserRecordList';
+import TagList from '../../components/tags/TagList';
 import getRecentRecords from '../../components/services/getRecentRecords';
 import getMostUsedTags from '../../components/services/getMostUsedTags';
+import RecordList from '../../components/records/RecordList';
 
 export default function HomeScreen() {
     const { records } = useContext(RecordContext);
@@ -21,10 +21,10 @@ export default function HomeScreen() {
             <Header titel="Your TabLog" showLogout={true} />
             <MainGridStyled>
                 <Heading tags>Most used Tags</Heading>
-                <UserTagList tags={resentTags} />
+                <TagList tags={resentTags} />
                 <Heading>Recently added Records</Heading>
                 <RecentRecords>
-                    <UserRecordList timeago={true} records={recentRecords} />
+                    <RecordList timeago={true} records={recentRecords} />
                 </RecentRecords>
             </MainGridStyled>
             <TabBar tabbarswitch={'home'} tabbarcolumns={'twoButton'} />

@@ -19,7 +19,7 @@ export default function LoginScreen() {
     return (
         <>
             <Header titel="LoginIcon" showLogout={false} />
-            <Main>
+            <MainGrid>
                 <img src="./Tab_Log_Logo.png" alt="Tab Log Logo" />
 
                 <Form onSubmit={handleSubmit}>
@@ -43,7 +43,7 @@ export default function LoginScreen() {
                     />
                     {error && <p>{error}</p>}
                 </Form>
-            </Main>
+            </MainGrid>
             <TabBar
                 handleLogin={handleSubmit}
                 tabbarswitch={'login'}
@@ -67,7 +67,7 @@ export default function LoginScreen() {
     }
 }
 
-const Main = styled.main`
+const MainGrid = styled.main`
     padding: 10px;
     display: grid;
     grid-template-rows: 0.5fr 0.5fr;

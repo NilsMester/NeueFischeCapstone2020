@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Header from '../../components/commons/Header';
 import TabBar from '../../components/commons/TabBar';
-import UserRecordList from '../../components/records/UserRecordList';
+import RecordList from '../../components/records/RecordList';
 import styled from 'styled-components/macro';
 import RecordContext from '../../contexts/RecordContext';
 import TagsContext from '../../contexts/TagsContext';
@@ -14,7 +14,7 @@ import searchFilterRecordList from '../../components/services/searchFilterRecord
 import { getUserTags } from '../../service/TagsAggregationService';
 import UserContext from '../../contexts/UserContext';
 
-export default function UserRecordListScreen() {
+export default function RecordListScreen() {
     const { records } = useContext(RecordContext);
     const { userTagList, setUserTagList } = useContext(TagsContext);
     const { token, tokenIsValid } = useContext(UserContext);
@@ -53,8 +53,8 @@ export default function UserRecordListScreen() {
         <>
             <Header titel="Your Records" showLogout={true} />
 
-            <MainGridStyled>
-                <UserRecordList records={filteredRecordList} />
+            <MainGrid>
+                <RecordList records={filteredRecordList} />
                 <SideBar
                     sidebar
                     tags={filteredUserTagList}
@@ -106,7 +106,7 @@ export default function UserRecordListScreen() {
                     ]}
                     placeHolder={[<PlaceHolder key="placeholder" />]}
                 />
-            </MainGridStyled>
+            </MainGrid>
 
             <TabBar
                 tabbarswitch={'list'}
@@ -147,7 +147,7 @@ const PlaceHolder = styled.div`
     height: 64px;
 `;
 
-const MainGridStyled = styled.div`
+const MainGrid = styled.div`
     display: flex;
     grid-template-columns: min-content min-content;
     grid-template-rows: 40px 40px 106px 30px 78px auto;

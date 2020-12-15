@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import UserTagListItem from './UserTagListItem';
+import UserTagListItem from './TagListItem';
 import { css } from 'styled-components';
 
-export default function UserTagList({
+export default function TagList({
     tags,
     searchTermTagsArray,
     onTagClick,
     ...rest
 }) {
     return (
-        <StyledTagsList {...rest}>
+        <TagListStyled {...rest}>
             {tags?.map((tag) => (
                 <UserTagListItem
                     {...rest}
@@ -20,11 +20,11 @@ export default function UserTagList({
                     onClick={() => onTagClick(tag)}
                 />
             ))}
-        </StyledTagsList>
+        </TagListStyled>
     );
 }
 
-const StyledTagsList = styled.ul`
+const TagListStyled = styled.ul`
     ${(props) =>
         props.sidebar
             ? css`

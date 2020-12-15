@@ -25,7 +25,7 @@ export default function DetailsRecordScreen() {
     return (
         <>
             <Header titel="Your Record" showLogout={true} />
-            <MainGridStyled>
+            <MainGrid>
                 <ButtonGroup>
                     <SideBarActionButton
                         edit
@@ -39,7 +39,7 @@ export default function DetailsRecordScreen() {
                     </SideBarActionButton>
                 </ButtonGroup>
                 <RecordDetails record={recordData} />
-            </MainGridStyled>
+            </MainGrid>
             <TabBar tabbarswitch={'detail'} />
         </>
     );
@@ -50,7 +50,7 @@ export default function DetailsRecordScreen() {
     }
 }
 
-const MainGridStyled = styled.div`
+const MainGrid = styled.main`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content min-content min-content min-content min-content;

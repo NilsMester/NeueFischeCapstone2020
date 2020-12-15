@@ -7,7 +7,7 @@ export default function SearchRecordInput({
     setSearchTermText,
 }) {
     return (
-        <SidebarSection4Styled>
+        <SearchRecordLabel>
             <InputField
                 search
                 name="searchTermText"
@@ -16,11 +16,11 @@ export default function SearchRecordInput({
                 onChange={(event) => setSearchTermText(event.target.value)}
                 type="text"
             />
-        </SidebarSection4Styled>
+        </SearchRecordLabel>
     );
 }
 
-const SidebarSection4Styled = styled.label`
+const SearchRecordLabel = styled.label`
     display: grid;
     align-content: center;
     justify-items: center;

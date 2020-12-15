@@ -16,14 +16,14 @@ export default function CopyLinkToClipboard(record) {
     }
 
     return (
-        <CopyLinkStyled>
-            <CopyLinkIconStyled onClick={copyLinkUrlToClipboard} />
-            <DescriptionStyled>{copySuccess}</DescriptionStyled>
-        </CopyLinkStyled>
+        <CopyLink>
+            <CopyLinkIcon onClick={copyLinkUrlToClipboard} />
+            <Description>{copySuccess}</Description>
+        </CopyLink>
     );
 }
 
-const CopyLinkStyled = styled.div`
+const CopyLink = styled.div`
     display: grid;
     grid-template-rows: min-content min-content;
     justify-items: center;
@@ -32,11 +32,11 @@ const CopyLinkStyled = styled.div`
     color: var(--grey-50);
 `;
 
-const CopyLinkIconStyled = styled(HiOutlineClipboardCopy)`
+const CopyLinkIcon = styled(HiOutlineClipboardCopy)`
     color: var(--secondary1);
     height: 30px;
     width: 30px;
 `;
-const DescriptionStyled = styled.p`
+const Description = styled.p`
     font-size: 0.6em;
 `;

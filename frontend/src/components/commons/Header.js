@@ -10,7 +10,7 @@ export default function Header({ titel, showLogout }) {
 
     return (
         <HeaderStyled>
-            <HeadingStyled>{titel}</HeadingStyled>
+            <Heading>{titel}</Heading>
             <LogoIcon onClick={() => history.push(`/home`)}>
                 <img src="/header_Tab_Log_Logo.png" alt="Tab Log Logo" />
             </LogoIcon>
@@ -46,7 +46,7 @@ const HeaderStyled = styled.header`
     );
 `;
 
-const HeadingStyled = styled.h1`
+const Heading = styled.h1`
     align-self: center;
     justify-self: center;
     font-size: 1.9em;

@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import UserRecordItem from './UserRecordItem';
 import DetailsIcon from '../UI/DetailsIcon';
+import RecordListItem from './RecordListItem';
 
-export default function UserRecordList({ records, timeago, ...rest }) {
+export default function RecordList({ records, timeago, ...rest }) {
     return (
         <>
             {records.length === 0 ? (
                 <NoResearchResult>
-                    <TitelStyled>No search results found!</TitelStyled>
+                    <Titel>No search results found!</Titel>
                 </NoResearchResult>
             ) : (
-                <StyledRecordsList {...rest}>
+                <RecordListStyled {...rest}>
                     {records?.map((record) => (
                         <li key={record.id}>
-                            <UserRecordItem
+                            <RecordListItem
                                 timeago={timeago}
                                 record={record}
                                 actions={[
@@ -26,13 +26,13 @@ export default function UserRecordList({ records, timeago, ...rest }) {
                             />
                         </li>
                     ))}
-                </StyledRecordsList>
+                </RecordListStyled>
             )}
         </>
     );
 }
 
-const StyledRecordsList = styled.ul`
+const RecordListStyled = styled.ul`
     padding: 0 10px 0 0;
     overflow: scroll;
     list-style: none;
@@ -48,7 +48,7 @@ const StyledRecordsList = styled.ul`
     }
 `;
 
-const TitelStyled = styled.h2`
+const Titel = styled.h2`
     font-size: 1.5em;
     margin: 0;
     padding: 0 10px 0 0;

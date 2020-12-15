@@ -22,15 +22,15 @@ export default function RecordTagsListItem({
     }, [setChosenFilterTag, searchTermTagsArray, tag]);
 
     return (
-        <StyledListItem {...rest}>
+        <ListItem {...rest}>
             <TagStyled chosen={chosenFilterTag} onClick={onClick}>
                 {tag}
             </TagStyled>
-        </StyledListItem>
+        </ListItem>
     );
 }
 
-const StyledListItem = styled.li`
+const ListItem = styled.li`
     max-height: 40px;
     display: grid;
     align-content: center;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import RecordForm from '../../components/commons/RecordForm';
 import RecordContext from '../../contexts/RecordContext';
 import { useHistory } from 'react-router-dom';
@@ -27,7 +27,6 @@ export default function AddRecordScreen() {
     const [searchTerm, setSearchTerm] = useState('');
     const [showFirstSidebarArea, setShowFirstSidebarArea] = useState(false);
     const [showSecondSideBarArea, setShowSecondSideBarArea] = useState(false);
-    const [formCouldBeSaved, setFormCouldBeSaved] = useState(false);
 
     const filteredUserTagList = searchFilterTagList(
         searchTerm,
@@ -35,32 +34,15 @@ export default function AddRecordScreen() {
         recordData
     );
 
-    useEffect(() => {
-        if (
-            recordData.titel !== '' &&
-            recordData.recordLink !== '' &&
-            recordData.tagList.length > 0
-        ) {
-            setFormCouldBeSaved(true);
-        } else if (
-            recordData.titel === '' ||
-            recordData.recordLink === '' ||
-            recordData.tagList.length === 0
-        ) {
-            setFormCouldBeSaved(false);
-        }
-    }, [
-        formCouldBeSaved,
-        setFormCouldBeSaved,
-        recordData.titel,
-        recordData.recordLink,
-        recordData.tagList,
-    ]);
+    const formCouldBeSaved =
+        recordData?.titel &&
+        recordData?.recordLink &&
+        recordData?.tagList?.length;
 
     return (
         <>
             <Header titel="New Record" showLogout={true} />
-            <MainGridStyled>
+            <MainGrid>
                 <RecordForm
                     onSubmit={handleSave}
                     recordData={recordData}
@@ -109,7 +91,7 @@ export default function AddRecordScreen() {
                         />,
                     ]}
                 />
-            </MainGridStyled>
+            </MainGrid>
             <TabBar
                 tabbarswitch={'form'}
                 tabbarcolumns={'twoButton'}
@@ -148,7 +130,7 @@ export default function AddRecordScreen() {
     }
 }
 
-const MainGridStyled = styled.div`
+const MainGrid = styled.main`
     display: grid;
     grid-template-columns: 1fr min-content;
     grid-template-rows: 40px 40px 106px 30px 78px auto;

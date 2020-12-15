@@ -16,7 +16,7 @@ export default function AddNewTagInput({ recordData, setRecordData }) {
     }, [addNewTag, setDisableButton]);
 
     return (
-        <SidebarSection4Styled>
+        <AddNewTagLabel>
             <InputField
                 search
                 name="addNewTag"
@@ -32,7 +32,7 @@ export default function AddNewTagInput({ recordData, setRecordData }) {
             >
                 <AddTagIcon />
             </NewTagButton>
-        </SidebarSection4Styled>
+        </AddNewTagLabel>
     );
 
     function handleTagKlickButton() {
@@ -44,7 +44,7 @@ export default function AddNewTagInput({ recordData, setRecordData }) {
     }
 }
 
-const SidebarSection4Styled = styled.label`
+const AddNewTagLabel = styled.label`
     display: grid;
     align-content: center;
     justify-items: center;

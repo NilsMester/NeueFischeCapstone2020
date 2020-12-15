@@ -24,14 +24,14 @@ export default function PasteLinkFromClipboard({ recordData, setRecordData }) {
     }
 
     return (
-        <PasteLinkStyled>
-            <PasteLinkIconStyled onClick={pasteLinkUrlFromClipboardToForm} />
-            <DescriptionStyled>{pasteSuccess}</DescriptionStyled>
-        </PasteLinkStyled>
+        <PasteLink>
+            <PasteLinkIcon onClick={pasteLinkUrlFromClipboardToForm} />
+            <Description>{pasteSuccess}</Description>
+        </PasteLink>
     );
 }
 
-const PasteLinkStyled = styled.div`
+const PasteLink = styled.div`
     display: grid;
     grid-template-rows: min-content min-content;
     align-content: end;
@@ -40,12 +40,12 @@ const PasteLinkStyled = styled.div`
     color: var(--grey-50);
 `;
 
-const PasteLinkIconStyled = styled(BiPaste)`
+const PasteLinkIcon = styled(BiPaste)`
     color: var(--secondary1);
     height: 30px;
     width: 30px;
 `;
-const DescriptionStyled = styled.p`
+const Description = styled.p`
     font-size: 0.6em;
     margin: 0;
 `;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
-import UserTagList from '../tags/UserTagList';
+import TagList from '../tags/TagList';
 import PasteLinkFromClipboard from '../UI/PasteLinkFromClipboard';
 import InputField from '../UI/InputField';
 import LinkPreview from './LinkPreview';
@@ -21,8 +21,8 @@ export default function RecordForm({ recordData, setRecordData }) {
 
     return (
         <>
-            <LinkSectionStyled>
-                <LinkLableStyled>
+            <LinkSection>
+                <LinkLabel>
                     <InputField
                         formField
                         name="recordLink"
@@ -31,17 +31,17 @@ export default function RecordForm({ recordData, setRecordData }) {
                         onChange={handleChange}
                         type="text"
                     />
-                </LinkLableStyled>
+                </LinkLabel>
                 <PasteLinkFromClipboard
                     recordData={recordData}
                     setRecordData={setRecordData}
                     handleChange={handleChange}
                 />
-            </LinkSectionStyled>
+            </LinkSection>
 
-            <TagsSectionStyled>
-                <TagsSubTitelStaled>Tags</TagsSubTitelStaled>
-                <UserTagList
+            <TagsSection>
+                <TagsSubTitel>Tags</TagsSubTitel>
+                <TagList
                     formTags
                     tags={recordData.tagList}
                     onTagClick={(tag) =>
@@ -53,9 +53,9 @@ export default function RecordForm({ recordData, setRecordData }) {
                         })
                     }
                 />
-            </TagsSectionStyled>
+            </TagsSection>
 
-            <TitelLableStyled>
+            <TitelLabel>
                 <InputField
                     formField
                     placeholder="Titel"
@@ -64,10 +64,10 @@ export default function RecordForm({ recordData, setRecordData }) {
                     onChange={handleChange}
                     type="text"
                 />
-            </TitelLableStyled>
+            </TitelLabel>
 
-            <LableStyled>
-                <DescriptionTextAreaStyled
+            <DescriptionLabel>
+                <DescriptionTextArea
                     description
                     placeholder="Description"
                     name="description"
@@ -75,7 +75,7 @@ export default function RecordForm({ recordData, setRecordData }) {
                     onChange={handleChange}
                     type="test"
                 />
-            </LableStyled>
+            </DescriptionLabel>
 
             <LinkPreview
                 link={recordData.recordLink}
@@ -92,7 +92,7 @@ export default function RecordForm({ recordData, setRecordData }) {
     }
 }
 
-const LinkSectionStyled = styled.div`
+const LinkSection = styled.div`
     display: grid;
     grid-template-columns: 1fr 0.25fr;
     align-items: center;
@@ -101,35 +101,35 @@ const LinkSectionStyled = styled.div`
     padding: 0 10px 0 0;
 `;
 
-const LinkLableStyled = styled.label`
+const LinkLabel = styled.label`
     width: 100%;
     row-gap: 8px;
 `;
 
-const TagsSubTitelStaled = styled.p`
+const TagsSubTitel = styled.p`
     margin: 0;
 `;
 
-const LableStyled = styled.label`
+const DescriptionLabel = styled.label`
     display: grid;
     grid-area: description;
     row-gap: 8px;
     margin: 0 10px 0 0;
 `;
 
-const TitelLableStyled = styled.label`
+const TitelLabel = styled.label`
     display: grid;
     grid-area: titel;
     row-gap: 8px;
     margin: 0 10px 0 0;
 `;
 
-const TagsSectionStyled = styled.section`
+const TagsSection = styled.section`
     grid-area: tags;
     height: 26vh;
 `;
 
-const DescriptionTextAreaStyled = styled.textarea`
+const DescriptionTextArea = styled.textarea`
     display: block;
     background-color: var(--grey-25);
     padding: 6px;
