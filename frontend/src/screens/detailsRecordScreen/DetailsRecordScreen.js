@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import RecordContext from '../../contexts/RecordContext';
 import { useParams, useHistory } from 'react-router-dom';
-import Header from '../../components/Header';
+import Header from '../../components/commons/Header';
 import RecordDetails from '../../components/records/RecordDetails';
 import SideBarActionButton from '../../components/UI/SideBarActionButton';
-import TabBar from '../../components/UI/TabBar';
+import TabBar from '../../components/commons/TabBar';
 import styled from 'styled-components/macro';
 
 export default function DetailsRecordScreen() {

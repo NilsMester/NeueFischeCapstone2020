@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Header from '../../components/Header';
-import TabBar from '../../components/UI/TabBar';
+import Header from '../../components/commons/Header';
+import TabBar from '../../components/commons/TabBar';
 import UserRecordList from '../../components/records/UserRecordList';
 import styled from 'styled-components/macro';
 import RecordContext from '../../contexts/RecordContext';
 import TagsContext from '../../contexts/TagsContext';
-import SideBar from '../../components/SideBar';
+import SideBar from '../../components/commons/SideBar';
 import SideBarActionButton from '../../components/UI/SideBarActionButton';
 import searchFilterTagsRecordList from '../../components/services/searchFilterTagsRecordList';
-import SearchIcon from '../../components/SearchIcon';
-import SearchRecordInput from '../../components/SearchRecordInput';
-import searchFilterRecordList from '../../components/records/searchFilterRecordList';
+import SearchIcon from '../../components/UI/SearchIcon';
+import SearchRecordInput from '../../components/commons/SearchRecordInput';
+import searchFilterRecordList from '../../components/services/searchFilterRecordList';
 import { getUserTags } from '../../service/TagsAggregationService';
 import UserContext from '../../contexts/UserContext';
 

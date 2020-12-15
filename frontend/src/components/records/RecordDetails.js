@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import UserTagList from '../tags/UserTagList';
-import CopyLinkToClipboard from '../CopyLinkToClipboard';
-import OpenLink from '../OpenLink';
+import CopyLinkToClipboard from '../UI/CopyLinkToClipboard';
+import OpenLink from '../UI/OpenLink';
 import { ReactTinyLink } from 'react-tiny-link';
 import TimeAgo from 'react-timeago/lib';
 

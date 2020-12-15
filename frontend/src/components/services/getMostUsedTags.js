@@ -1,4 +1,4 @@
-export default function getRecentTags(userTagList) {
+export default function getMostUsedTags(userTagList) {
     if (userTagList.length > 5) {
         return userTagList
             .sort((tagA, tagB) => {

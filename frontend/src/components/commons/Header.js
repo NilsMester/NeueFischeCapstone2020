@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components/macro';
 import { useHistory } from 'react-router-dom';
-import Logout from './Logout';
-import UserContext from '../contexts/UserContext';
+import UserContext from '../../contexts/UserContext';
+import LogoutIcon from '../UI/LogoutIcon';
 
 export default function Header({ titel, showLogout }) {
     const history = useHistory();
@@ -15,9 +15,9 @@ export default function Header({ titel, showLogout }) {
                 <img src="/header_Tab_Log_Logo.png" alt="Tab Log Logo" />
             </LogoIcon>
             {showLogout ? (
-                <LogoutIcon onClick={handleLogout}>
-                    <Logout />
-                </LogoutIcon>
+                <Logout onClick={handleLogout}>
+                    <LogoutIcon />
+                </Logout>
             ) : null}
         </HeaderStyled>
     );
@@ -60,7 +60,7 @@ const LogoIcon = styled.div`
     top: 8px;
 `;
 
-const LogoutIcon = styled.div`
+const Logout = styled.div`
     position: absolute;
     right: 10px;
     top: 10px;

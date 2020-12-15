@@ -1,7 +1,7 @@
 import React from 'react';
-import UserTagList from './tags/UserTagList';
+import UserTagList from '../tags/UserTagList';
 import styled from 'styled-components/macro';
-import InputField from './UI/InputField';
+import InputField from '../UI/InputField';
 
 export default function SideBar({
     tags,

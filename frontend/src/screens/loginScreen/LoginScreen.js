@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import UserContext from '../../contexts/UserContext';
 import { useHistory } from 'react-router-dom';
-import Header from '../../components/Header';
+import Header from '../../components/commons/Header';
 import styled from 'styled-components/macro';
 import InputField from '../../components/UI/InputField';
-import TabBar from '../../components/UI/TabBar';
+import TabBar from '../../components/commons/TabBar';
 
 const emptyCredentials = {
     username: '',
@@ -18,7 +18,7 @@ export default function LoginScreen() {
     const history = useHistory();
     return (
         <>
-            <Header titel="Login" showLogout={false} />
+            <Header titel="LoginIcon" showLogout={false} />
             <Main>
                 <img src="./Tab_Log_Logo.png" alt="Tab Log Logo" />
 
