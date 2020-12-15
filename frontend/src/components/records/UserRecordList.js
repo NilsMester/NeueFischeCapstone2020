@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import UserRecordItem from './UserRecordItem';
-import DetailsIcon from '../DetailsIcon';
+import DetailsIcon from '../UI/DetailsIcon';
 
 export default function UserRecordList({ records, timeago, ...rest }) {
     return (

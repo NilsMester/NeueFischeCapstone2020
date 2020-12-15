@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import UserTagList from '../tags/UserTagList';
-import PasteLinkFromClipboard from '../PasteLinkFromClipboard';
+import PasteLinkFromClipboard from '../UI/PasteLinkFromClipboard';
 import InputField from '../UI/InputField';
-import LinkPreview from '../LinkPreview';
+import LinkPreview from './LinkPreview';
 
 export default function RecordForm({ recordData, setRecordData }) {
     const [recordLinkIsValid, setRecordLinkIsValid] = useState(false);

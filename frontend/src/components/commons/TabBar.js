@@ -4,9 +4,9 @@ import { useHistory } from 'react-router-dom';
 import { IoChevronBackSharp } from 'react-icons/io5';
 import { RiAddCircleFill } from 'react-icons/ri';
 import { AiOutlineSave, AiOutlineHome } from 'react-icons/ai';
-import ResetFilter from '../ResetFilter';
-import Login from '../Login';
-import ListIcon from '../ListIcon';
+import ListIcon from '../UI/ListIcon';
+import ResetFilterIcon from '../UI/ResetFilterIcon';
+import LoginIcon from '../UI/LoginIcon';
 
 export default function TabBar({
     onSave,
@@ -24,7 +24,7 @@ export default function TabBar({
             {tabbarswitch === 'login' ? (
                 <>
                     <ButtonStyled onClick={handleLogin}>
-                        <Login />
+                        <LoginIcon />
                     </ButtonStyled>
                 </>
             ) : tabbarswitch === 'home' ? (
@@ -61,7 +61,7 @@ export default function TabBar({
                         buttonisactive={buttonisactive}
                         onClick={onClickDeleteFilter}
                     >
-                        <ResetFilter />
+                        <ResetFilterIcon />
                     </ButtonStyled>
                 </>
             ) : tabbarswitch === 'detail' ? (

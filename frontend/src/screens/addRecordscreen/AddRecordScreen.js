@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import RecordForm from '../../components/recordForm/RecordForm';
+import RecordForm from '../../components/commons/RecordForm';
 import RecordContext from '../../contexts/RecordContext';
 import { useHistory } from 'react-router-dom';
-import Header from '../../components/Header';
+import Header from '../../components/commons/Header';
 import styled from 'styled-components/macro';
-import TabBar from '../../components/UI/TabBar';
+import TabBar from '../../components/commons/TabBar';
 import TagsContext from '../../contexts/TagsContext';
-import SideBar from '../../components/SideBar';
+import SideBar from '../../components/commons/SideBar';
 import SideBarActionButton from '../../components/UI/SideBarActionButton';
 import AddNewTagInput from '../../components/tags/AddNewTagInput';
 import searchFilterTagList from '../../components/services/searchFilterTagList';

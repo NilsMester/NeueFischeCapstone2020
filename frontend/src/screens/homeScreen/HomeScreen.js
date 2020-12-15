@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
-import Header from '../../components/Header';
+import Header from '../../components/commons/Header';
 import styled from 'styled-components/macro';
 import RecordContext from '../../contexts/RecordContext';
 import TagsContext from '../../contexts/TagsContext';
-import TabBar from '../../components/UI/TabBar';
-import getRecentTags from '../../components/tags/getRecentTags';
+import TabBar from '../../components/commons/TabBar';
 import UserTagList from '../../components/tags/UserTagList';
 import UserRecordList from '../../components/records/UserRecordList';
-import getRecentRecords from '../../components/records/getRecentRecords';
+import getRecentRecords from '../../components/services/getRecentRecords';
+import getMostUsedTags from '../../components/services/getMostUsedTags';
 
 export default function HomeScreen() {
     const { records } = useContext(RecordContext);
     const { userTagList } = useContext(TagsContext);
 
-    const resentTags = getRecentTags(userTagList);
+    const resentTags = getMostUsedTags(userTagList);
     const recentRecords = getRecentRecords(records);
 
     return (

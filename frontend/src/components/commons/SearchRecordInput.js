@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import InputField from './UI/InputField';
+import InputField from '../UI/InputField';
 
 export default function SearchRecordInput({
     searchTermText,
