@@ -58,8 +58,8 @@ export default function RecordForm({ recordData, setRecordData }) {
             <TitelLabel>
                 <InputField
                     formField
-                    placeholder="Titel"
                     name="titel"
+                    placeholder="Titel"
                     value={recordData.titel || ''}
                     onChange={handleChange}
                     type="text"
@@ -103,7 +103,6 @@ const LinkSection = styled.div`
 
 const LinkLabel = styled.label`
     width: 100%;
-    row-gap: 8px;
 `;
 
 const TagsSubTitel = styled.p`
@@ -111,16 +110,12 @@ const TagsSubTitel = styled.p`
 `;
 
 const DescriptionLabel = styled.label`
-    display: grid;
     grid-area: description;
-    row-gap: 8px;
     margin: 0 10px 0 0;
 `;
 
 const TitelLabel = styled.label`
-    display: grid;
     grid-area: titel;
-    row-gap: 8px;
     margin: 0 10px 0 0;
 `;
 
@@ -129,8 +124,23 @@ const TagsSection = styled.section`
     height: 26vh;
 `;
 
+/*const TitelTextArea = styled.textarea`
+    background-color: var(--grey-25);
+    padding: 6px;
+    color: var(--grey-main);
+    border-radius: var(--size-s);
+    border-width: thin;
+    border-style: solid;
+    border-color: lightgrey;
+    width: 100%;
+    font-size: 0.8em;
+    box-shadow: 0 1px 5px 1px var(--grey-25);
+    :focus {
+        outline: none;
+    }
+`;*/
+
 const DescriptionTextArea = styled.textarea`
-    display: block;
     background-color: var(--grey-25);
     padding: 6px;
     color: var(--grey-main);

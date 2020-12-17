@@ -10,7 +10,6 @@ const InputFieldStyled = styled.input`
     display: block;
     height: 30px;
     background-color: var(--grey-25);
-    padding: var(--size-s);
     color: var(--grey-main);
     border-radius: var(--size-s);
     border-width: thin;

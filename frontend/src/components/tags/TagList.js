@@ -47,7 +47,7 @@ const TagListStyled = styled.ul`
             : props.formTags
             ? css`
                   width: 62vw;
-                  height: 25vh;
+                  height: 20vh;
                   list-style: none;
                   text-align: center;
                   padding: 0;
